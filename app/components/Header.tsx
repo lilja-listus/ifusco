@@ -30,6 +30,22 @@ export default function Header({ darkState, handleThemeChange }) {
             );
         });
 
+    const navigationLinks = [
+        { label: 'About Registration', href: '/registration' },
+        // { label: 'Abstracts', href: '/abstracts' },
+        // { label: 'Programme', href: '/programme' },
+        { label: 'About Turku', href: '/about-turku' },
+        { label: 'Accomodation', href: '/accomodation' },
+        { label: 'Contact', href: '/contact' },
+        { label: 'FAQ', href: '/faq' },
+    ].map(({ label, href }) => {
+        return (
+            <Link href={href} key={href}>
+                <Button color="inherit">{label}</Button>
+            </Link>
+        );
+    });
+
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -44,6 +60,11 @@ export default function Header({ darkState, handleThemeChange }) {
                     <Switch checked={darkState} onChange={handleThemeChange} />
                     {links}
                 </Toolbar>
+
+                <Typography variant="h7" className={classes.title} style={{ margin: "0px auto" }}>
+                    {navigationLinks}
+                </Typography>
+
             </AppBar>
         </div>
     );
