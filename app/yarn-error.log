@@ -45,7 +45,7 @@ npm manifest:
       "@material-ui/core": "^4.12.4",
       "@types/material-ui": "^0.21.12",
       "from": "^0.1.7",
-      "graphql": "^16.5.0",
+      "graphql": "^15.3.0",
       "next": "^12.1.6",
       "react": "^17.0.0",
       "react-dom": "^17.0.0"

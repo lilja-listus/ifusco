@@ -28,5 +28,7 @@ type UserResponse {
   user: User
 }
 
-"""Mongo Id scalar type"""
+"""
+Mongo Id scalar type
+"""
 scalar objectId
