@@ -75,6 +75,7 @@ function useProvideAuth() {
         }
     }
 
+
     const signOut = () => {
         sessionStorage.removeItem('token');
         client.resetStore().then(() => {

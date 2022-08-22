@@ -75,7 +75,7 @@ export class AbstractResolver {
   @Mutation(() => Boolean)
   @UseMiddleware(isAuth)
   async deleteAbstract(
-    @Arg("streamId", () => ObjectIdScalar) abstractId: ObjectId,
+    @Arg("abstractId", () => ObjectIdScalar) abstractId: ObjectId,
     @Ctx() ctx: MyContext
   ): Promise<Boolean | undefined> {
     const deleted = await AbstractModel.findOneAndDelete({

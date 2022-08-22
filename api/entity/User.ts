@@ -11,8 +11,29 @@ export class User {
   @Property({ required: true })
   email: string;
 
+  @Field()
   @Property({ required: true })
   password: string;
+
+  @Field()
+  @Property()
+  nameFirst: string;
+
+  @Field()
+  @Property()
+  nameLast: string;
+
+  @Field()
+  @Property()
+  country: string;
+
+  @Field()
+  @Property()
+  university: string;
+
+  @Field()
+  @Property()
+  hasPaid: boolean;
 }
 
 export const UserModel = getModelForClass(User);

@@ -1,0 +1,10 @@
+mutation editUser($input: UserInput!){
+  editUser(input: $input){
+    _id
+    nameFirst
+ 		nameLast
+    country
+    university
+    hasPaid
+  }
+}

@@ -1,0 +1,3 @@
+mutation deleteAbstract($id: objectId!){
+  deleteAbstract(abstractId: $id)
+}

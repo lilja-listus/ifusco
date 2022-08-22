@@ -25,8 +25,9 @@ input AuthInput {
 
 type Mutation {
   addAbstract(input: AbstractInput!): Abstract!
-  deleteAbstract(streamId: objectId!): Boolean!
+  deleteAbstract(abstractId: objectId!): Boolean!
   editAbstract(input: AbstractInput!): Abstract!
+  editUser(input: UserInput!): User!
   login(input: AuthInput!): UserResponse!
   register(input: AuthInput!): UserResponse!
 }
@@ -40,7 +41,23 @@ type Query {
 
 type User {
   _id: objectId!
+  country: String!
   email: String!
+  hasPaid: Boolean!
+  nameFirst: String!
+  nameLast: String!
+  password: String!
+  university: String!
+}
+
+input UserInput {
+  country: String
+  hasPaid: Boolean
+  id: objectId
+  nameFirst: String
+  nameLast: String
+  password: String
+  university: String
 }
 
 type UserResponse {
