@@ -1,0 +1,8 @@
+mutation AddAbstract($input:AbstractInput!){
+  addAbstract(input: $input){
+    _id
+    title
+    text
+    language
+  }
+}

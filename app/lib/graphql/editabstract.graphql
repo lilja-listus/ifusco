@@ -1,0 +1,8 @@
+mutation editAbstract($input: AbstractInput!){
+  editAbstract(input: $input){
+    _id
+    title
+    text
+    language
+  }
+}
