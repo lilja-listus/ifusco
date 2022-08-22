@@ -61,7 +61,7 @@ export default function Header({ darkState, handleThemeChange }) {
                     {links}
                 </Toolbar>
 
-                <Typography variant="h7" className={classes.title} style={{ margin: "0px auto" }}>
+                <Typography variant="h6" className={classes.title} style={{ margin: "0px auto" }}>
                     {navigationLinks}
                 </Typography>
 

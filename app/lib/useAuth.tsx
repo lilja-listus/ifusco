@@ -37,12 +37,15 @@ function useProvideAuth() {
 
     const user = data && data.currentUser;
 
+
     const [signinMutation] = useSigninMutation();
     const [signupMutation] = useSignupMutation();
 
     const signIn = async (email, password) => {
+
         try {
             const { data } = await signinMutation({ variables: { email, password } })
+
             if (data.login.token && data.login.user) {
                 sessionStorage.setItem('token', data.login.token)
                 client.resetStore().then(() => {
