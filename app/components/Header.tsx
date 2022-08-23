@@ -31,13 +31,13 @@ export default function Header({ darkState, handleThemeChange }) {
         });
 
     const navigationLinks = [
-        { label: 'About Registration', href: '/registration' },
-        // { label: 'Abstracts', href: '/abstracts' },
-        // { label: 'Programme', href: '/programme' },
-        { label: 'About Turku', href: '/about-turku' },
-        { label: 'Accomodation', href: '/accomodation' },
-        { label: 'Contact', href: '/contact' },
-        { label: 'FAQ', href: '/faq' },
+        { label: 'About Registration', href: '/navigation/registration' },
+        // { label: 'Abstracts', href: '/navigation/abstracts' },
+        // { label: 'Programme', href: '/navigation/programme' },
+        { label: 'About Turku', href: '/navigation/about-turku' },
+        { label: 'Accomodation', href: '/navigation/accomodation' },
+        { label: 'Contact', href: '/navigation/contact' },
+        { label: 'FAQ', href: '/navigation/faq' },
     ].map(({ label, href }) => {
         return (
             <Link href={href} key={href}>
