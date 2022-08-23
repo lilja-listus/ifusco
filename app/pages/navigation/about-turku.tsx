@@ -37,10 +37,10 @@ export default function AboutTurku() {
         <Box my={4}>
             <Typography variant="h4" component="h1" gutterBottom>AboutTurku</Typography>
             {aboutInfo.map(({ label, info }) => (
-                <>
+                <div key={label}>
                     <Typography variant="h5" component="h1">{label}</Typography>
                     <p>{info}</p>
-                </>))}
+                </div>))}
 
         </Box>
     </Container >)

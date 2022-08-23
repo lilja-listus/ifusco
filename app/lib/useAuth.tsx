@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 
 import { useSigninMutation } from 'lib/graphql/signin.graphql'
 import { useSignupMutation } from 'lib/graphql/signup.graphql'
+import { useEditUserMutation } from 'lib/graphql/edituser.graphql'
 import { useCurrentUserQuery } from 'lib/graphql/currentUser.graphql'
 
 type AuthProps = {
@@ -12,7 +13,11 @@ type AuthProps = {
     signIn: (email: string, password: string) => Promise<void>
     signUp: (email: string, password: string, nameFirst: string) => Promise<void>
     signOut: () => void
+    editUser: (nameFirst: string, nameLast: string, university?: string,
+        country?: string,
+        hasPaid?: string, password?: string) => Promise<void>
 }
+
 
 const AuthContext = createContext<Partial<AuthProps>>({})
 
@@ -39,6 +44,7 @@ function useProvideAuth() {
 
     const [signinMutation] = useSigninMutation();
     const [signupMutation] = useSignupMutation();
+    const [editUserMutation] = useEditUserMutation();
 
     const signIn = async (email, password) => {
         try {
@@ -82,7 +88,30 @@ function useProvideAuth() {
         });
     }
 
+    const editUser = async (nameFirst, nameLast,
+        university,
+        country,
+        hasPaid, password) => {
+        try {
+            const data = await editUserMutation({
+                variables: {
+                    input: {
+                        id: user._id,
+                        password, nameFirst, nameLast,
+                        university,
+                        country,
+                        hasPaid,
+                    }
+                }
+            });
+
+            console.log(data)
+        } catch (err) {
+            setError(err.message);
+        }
+    }
+
     return {
-        user, error, signIn, signOut, signUp
+        user, error, signIn, signOut, signUp, editUser
     }
 }

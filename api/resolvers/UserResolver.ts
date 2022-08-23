@@ -35,6 +35,7 @@ export class UserResolver {
       },
       { new: true }
     );
+
     if (!updatedUser) {
       throw new Error("User not found");
     }
@@ -46,12 +47,20 @@ export class UserResolver {
     return await UserModel.findById(userId);
   }
 
-  @Query(() => User, { nullable: true })
+  @Query(() => User)
   @UseMiddleware(isAuth)
   async currentUser(
     @Ctx()
     ctx: MyContext
-  ): Promise<User | null> {
-    return await UserModel.findById(ctx.res.locals.userId);
+  ): Promise<Partial<User> | null> {
+    const user = await UserModel.findById(ctx.res.locals.userId);
+    console.log(
+      "============================================================================"
+    );
+    console.log(user);
+    console.log(
+      "============================================================================"
+    );
+    return user;
   }
 }

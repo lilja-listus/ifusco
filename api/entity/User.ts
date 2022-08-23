@@ -19,19 +19,19 @@ export class User {
   @Property()
   nameFirst: string;
 
-  @Field()
+  @Field({ nullable: true })
   @Property()
   nameLast: string;
 
-  @Field()
+  @Field({ nullable: true })
   @Property()
   country: string;
 
-  @Field()
+  @Field({ nullable: true })
   @Property()
   university: string;
 
-  @Field()
+  @Field({ nullable: true })
   @Property()
   hasPaid: boolean;
 }

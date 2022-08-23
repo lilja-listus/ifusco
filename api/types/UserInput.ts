@@ -11,17 +11,17 @@ export class UserInput implements Partial<User> {
   password?: string;
 
   @Field({ nullable: true })
-  nameFirst: string;
+  nameFirst?: string;
 
   @Field({ nullable: true })
-  nameLast: string;
+  nameLast?: string;
 
   @Field({ nullable: true })
-  country: string;
+  country?: string;
 
   @Field({ nullable: true })
-  university: string;
+  university?: string;
 
   @Field({ nullable: true })
-  hasPaid: boolean;
+  hasPaid?: boolean;
 }
