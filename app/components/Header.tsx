@@ -73,6 +73,7 @@ export default function Header({ darkState, handleThemeChange }) {
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
         flexGrow: 1,
+        marginBottom: 30
 
     },
     menuButton: {

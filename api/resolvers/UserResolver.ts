@@ -52,15 +52,7 @@ export class UserResolver {
   async currentUser(
     @Ctx()
     ctx: MyContext
-  ): Promise<Partial<User> | null> {
-    const user = await UserModel.findById(ctx.res.locals.userId);
-    console.log(
-      "============================================================================"
-    );
-    console.log(user);
-    console.log(
-      "============================================================================"
-    );
-    return user;
+  ): Promise<User | null> {
+    return await UserModel.findById(ctx.res.locals.userId);
   }
 }

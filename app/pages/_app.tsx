@@ -8,9 +8,14 @@ import { themeLight, themeDark } from 'lib/theme';
 import { AuthProvider } from 'lib/useAuth'
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import createEmotionCache from './createEmotionCache'
+import { CacheProvider } from '@emotion/react';
 
 
-export default function MyApp({ Component, pageProps }) {
+const clientSideEmotionCache = createEmotionCache();
+
+
+export default function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }) {
 
     const apolloClient = useApollo(pageProps.initialApolloState)
     const [darkState, setDarkState] = useState(false)
@@ -27,14 +32,16 @@ export default function MyApp({ Component, pageProps }) {
     }, []);
 
     return (
-        <ApolloProvider client={apolloClient}  >
-            <ThemeProvider theme={darkState ? themeDark : themeLight}>
-                <CssBaseline />
-                <AuthProvider>
-                    <Header darkState={darkState} handleThemeChange={handleThemeChange} />
-                    <Component {...pageProps} /></AuthProvider></ThemeProvider>
-            <Footer />
-        </ApolloProvider >)
+        <CacheProvider value={emotionCache}>
+            <ApolloProvider client={apolloClient}  >
+                <ThemeProvider theme={darkState ? themeDark : themeLight}>
+                    <CssBaseline />
+                    <AuthProvider>
+                        <Header darkState={darkState} handleThemeChange={handleThemeChange} />
+                        <Component {...pageProps} /></AuthProvider></ThemeProvider>
+                <Footer />
+            </ApolloProvider >
+        </CacheProvider>)
 }
 
 

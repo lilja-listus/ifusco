@@ -18,6 +18,8 @@ module.exports = {
       use: "yaml-loader",
     });
 
+
     return config;
   },
 };
+
