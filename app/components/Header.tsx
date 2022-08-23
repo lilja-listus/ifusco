@@ -47,7 +47,7 @@ export default function Header({ darkState, handleThemeChange }) {
     });
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root} >
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
@@ -73,9 +73,11 @@ export default function Header({ darkState, handleThemeChange }) {
 const useStyles = makeStyles((theme: Theme) => ({
     root: {
         flexGrow: 1,
+
     },
     menuButton: {
         marginRight: theme.spacing(2),
+
     },
     title: {
         flexGrow: 1,
