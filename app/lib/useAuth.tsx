@@ -10,7 +10,7 @@ type AuthProps = {
     user: any;
     error: string;
     signIn: (email: string, password: string) => Promise<void>
-    signUp: (email: string, password: string) => Promise<void>
+    signUp: (email: string, password: string, nameFirst: string) => Promise<void>
     signOut: () => void
 }
 
@@ -37,15 +37,12 @@ function useProvideAuth() {
 
     const user = data && data.currentUser;
 
-
     const [signinMutation] = useSigninMutation();
     const [signupMutation] = useSignupMutation();
 
     const signIn = async (email, password) => {
-
         try {
             const { data } = await signinMutation({ variables: { email, password } })
-
             if (data.login.token && data.login.user) {
                 sessionStorage.setItem('token', data.login.token)
                 client.resetStore().then(() => {
@@ -61,9 +58,9 @@ function useProvideAuth() {
     }
 
 
-    const signUp = async (email, password) => {
+    const signUp = async (email, password, nameFirst) => {
         try {
-            const { data } = await signupMutation({ variables: { email, password } })
+            const { data } = await signupMutation({ variables: { email, password, nameFirst } })
             if (data.register.token && data.register.user) {
                 sessionStorage.setItem('token', data.register.token)
                 client.resetStore().then(() => {
@@ -77,7 +74,6 @@ function useProvideAuth() {
             setError(err.message);
         }
     }
-
 
     const signOut = () => {
         sessionStorage.removeItem('token');

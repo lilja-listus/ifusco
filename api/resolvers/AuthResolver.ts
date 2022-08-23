@@ -3,14 +3,15 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 import { UserModel } from "../entity/User";
-import { AuthInput } from "../types/AuthInput";
+import { LoginInput } from "../types/LoginInput";
+import { SignUpInput } from "../types/SignUpInput";
 import { UserResponse } from "../types/UserResponse";
 
 @Resolver()
 export class AuthResolver {
   @Mutation(() => UserResponse)
   async register(
-    @Arg("input") { email, password }: AuthInput
+    @Arg("input") { email, password, nameFirst }: SignUpInput
   ): Promise<UserResponse> {
     const existingUser = await UserModel.findOne({ email });
 
@@ -20,7 +21,7 @@ export class AuthResolver {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new UserModel({ email, password: hashedPassword });
+    const user = new UserModel({ email, password: hashedPassword, nameFirst });
     await user.save();
 
     const payload = { id: user.id };
@@ -35,7 +36,7 @@ export class AuthResolver {
 
   @Mutation(() => UserResponse)
   async login(
-    @Arg("input") { email, password }: AuthInput
+    @Arg("input") { email, password }: LoginInput
   ): Promise<UserResponse> {
     const existingUser = await UserModel.findOne({ email });
 

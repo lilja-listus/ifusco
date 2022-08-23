@@ -1,5 +1,7 @@
 query CurrentUser{
 currentUser{
-_id,email, nameFirst, nameLast, email, country, university, hasPaid
+    _id
+    email
+    nameFirst
 }
 }

@@ -18,7 +18,7 @@ input AbstractInput {
   title: String!
 }
 
-input AuthInput {
+input LoginInput {
   email: String!
   password: String!
 }
@@ -28,8 +28,8 @@ type Mutation {
   deleteAbstract(abstractId: objectId!): Boolean!
   editAbstract(input: AbstractInput!): Abstract!
   editUser(input: UserInput!): User!
-  login(input: AuthInput!): UserResponse!
-  register(input: AuthInput!): UserResponse!
+  login(input: LoginInput!): UserResponse!
+  register(input: SignUpInput!): UserResponse!
 }
 
 type Query {
@@ -37,6 +37,12 @@ type Query {
   abstracts: [Abstract!]!
   currentUser: User
   user(userId: objectId!): User
+}
+
+input SignUpInput {
+  email: String!
+  nameFirst: String
+  password: String!
 }
 
 type User {
