@@ -1,18 +1,17 @@
 import React from 'react';
-import { makeStyles, Theme } from '@material-ui/core/styles';
 import {
     AppBar,
     Toolbar,
     Typography,
     Button,
     Link as LinkText,
-    Switch,
 } from '@material-ui/core';
 import Link from 'next/link';
 import { useAuth } from 'lib/useAuth';
+import { Switch } from '@mui/material';
+
 
 export default function Header({ darkState, handleThemeChange }) {
-    const classes = useStyles();
     const { user } = useAuth();
 
     const links = [
@@ -47,21 +46,31 @@ export default function Header({ darkState, handleThemeChange }) {
     });
 
     return (
-        <div className={classes.root} >
+        <div style={{
+            flexGrow: 1,
+            marginBottom: 30,
+
+        }}>
             <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
+                <Toolbar style={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                }}>
+                    <Typography variant="h5" component="h5">
                         <Link href="/">
                             <LinkText href="" color="inherit">
                                 IFUSCO 2023, Turku, Finland
                             </LinkText>
                         </Link>
                     </Typography>
-                    <Switch checked={darkState} onChange={handleThemeChange} />
-                    {links}
+                    <div>
+                        <Switch checked={darkState} onChange={handleThemeChange} />
+                        {links}
+                    </div>
+
                 </Toolbar>
 
-                <Typography variant="h6" className={classes.title} style={{ margin: "0px auto" }}>
+                <Typography variant="h5" style={{ margin: "0px auto", flexGrow: 1, }}>
                     {navigationLinks}
                 </Typography>
 
@@ -69,21 +78,3 @@ export default function Header({ darkState, handleThemeChange }) {
         </div>
     );
 }
-
-const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-        flexGrow: 1,
-        marginBottom: 30
-
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-
-    },
-    title: {
-        flexGrow: 1,
-    },
-    list: {
-        width: 250,
-    },
-}));

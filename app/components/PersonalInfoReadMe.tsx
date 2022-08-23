@@ -1,6 +1,4 @@
-import { Container, Typography, Box, Button, } from "@material-ui/core"
-import Link from 'next/link'
-import InfoField from "./InfoField"
+import { Typography, Button, } from "@material-ui/core"
 import React from 'react'
 
 
@@ -15,16 +13,13 @@ export default function PersonalInfoReadMe({ user, setReadme }) {
 
     return (
         <>
-            <Box my={5}>
-                <Typography variant="h5" component="h1" gutterBottom>About Me</Typography>
-                {user && userInfoObject.map(infoField => (
-                    <Typography variant="h6" component="h6" key={infoField.label} gutterBottom>{`${infoField.label}: ${infoField.value || 'N/A'}`}</Typography>
-                ))
-                }
-            </Box>
+            <Typography variant="h5" component="h1" gutterBottom>About Me</Typography>
+            {user && userInfoObject.map(infoField => (
+                <Typography variant={'body2'} component={'p'} key={infoField.label} gutterBottom>{`${infoField.label}: ${infoField.value || 'N/A'}`}</Typography>
+            ))
+            }
+
             <Button color="inherit" onClick={() => setReadme(false)}>Edit</Button>
-
-
         </>
     )
 }

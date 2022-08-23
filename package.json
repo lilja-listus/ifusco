@@ -1,21 +1,25 @@
 {
-    "name": "ifusco",
-    "engines": {
-      "node": "16.x"
-    },
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "private":true,
-    "scripts" : {
-      "build": "yarn workspace @ifusco/app run build",
-      "start": "yarn workspace @ifusco/api run start",
-      "dev": "yarn workspace @ifusco/api run dev"
-  
-    },
-    "workspaces":["api", "app"],
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
+  "name": "ifusco",
+  "engines": {
+    "node": "16.x"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "yarn workspace @ifusco/app run build",
+    "start": "yarn workspace @ifusco/api run start",
+    "dev": "yarn workspace @ifusco/api run dev"
+  },
+  "workspaces": [
+    "api",
+    "app"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@mui/styles": "^5.10.2"
   }
-  
+}
