@@ -1,7 +1,6 @@
 mutation EditParticipant($id: String!, $email: String!, $nameFirst: String!, $nameLast: String!, $university: String!, $country: String!){
    editParticipant(input: {id: $id,email: $email,nameFirst: $nameFirst,nameLast:$nameLast, university:$university, country:$country }){
-    _id  
-    email
+    _id 
       nameFirst
       nameLast
       university
