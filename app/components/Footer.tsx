@@ -15,9 +15,9 @@ export default function Footer() {
             width: '100%',
             position: 'fixed',
             bottom: 0,
-            width: '100%'
         }} component="footer" square variant="outlined">
             <Container maxWidth="lg">
+
                 <Box
                     sx={{
                         flexGrow: 1,
@@ -29,8 +29,16 @@ export default function Footer() {
                     <div>
                         <Image priority src={Logo} width={35} height={30} alt="Logo" />
                     </div>
-                </Box>
 
+                </Box>
+                <Typography variant="caption" color="initial" sx={{
+                    flexGrow: 1,
+                    justifyContent: "center",
+                    display: "flex",
+                    my: 1
+                }}>
+                    Sugri ry, UTU
+                </Typography>
                 <Box
                     sx={{
                         flexGrow: 1,
@@ -39,8 +47,9 @@ export default function Footer() {
                         mb: 2,
                     }}
                 >
+
                     <Typography variant="caption" color="initial">
-                        Copyright ©2023
+                        Lilja Lisztusz, Copyright ©2023
                     </Typography>
                 </Box>
             </Container>

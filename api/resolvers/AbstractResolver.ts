@@ -32,6 +32,12 @@ export class AbstractResolver {
     return await AbstractModel.find();
   }
 
+  @Query(() => Abstract)
+  @UseMiddleware(isAuth)
+  async abstractsByAuthor(@Ctx() ctx: MyContext) {
+    return await AbstractModel.findOne({ author: ctx.res.locals.userId });
+  }
+
   @Mutation(() => Abstract)
   @UseMiddleware(isAuth)
   async addAbstract(

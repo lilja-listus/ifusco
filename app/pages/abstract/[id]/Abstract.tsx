@@ -3,17 +3,20 @@
 
 import { Container, Typography, Box, Button } from "@material-ui/core"
 import Link from 'next/link'
-import { useAuth } from "../../../lib/useAuth"
-import React, { useState } from 'react'
+import React from 'react'
 import CreateAbstract from "../new";
+import { useFindAbstractByAuthorQuery } from '../../../lib/graphql/findAbstractByAuthor.graphql'
+import AbstractReadOnly from "../../../components/AbstractReadOnly";
 
 export default function Abstract() {
 
-    // const [readme, setReadme] = useState(true);
+
+    const { data } = useFindAbstractByAuthorQuery();
+
 
     return (
         <Box my={4}>
-            <CreateAbstract />
+            {data?.abstractsByAuthor?._id ? <AbstractReadOnly abstract={data.abstractsByAuthor} /> : <CreateAbstract />}
         </Box>
     )
 }

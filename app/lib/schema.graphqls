@@ -35,7 +35,8 @@ type Mutation {
 type Query {
   abstract(abstractId: objectId!): Abstract
   abstracts: [Abstract!]!
-  currentUser: User
+  abstractsByAuthor: Abstract!
+  currentUser: User!
   user(userId: objectId!): User
 }
 
@@ -47,13 +48,13 @@ input SignUpInput {
 
 type User {
   _id: objectId!
-  country: String!
+  country: String
   email: String!
-  hasPaid: Boolean!
+  hasPaid: Boolean
   nameFirst: String!
-  nameLast: String!
+  nameLast: String
   password: String!
-  university: String!
+  university: String
 }
 
 input UserInput {

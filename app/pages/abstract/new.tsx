@@ -16,7 +16,6 @@ export default function CreateAbstract() {
         event.preventDefault();
         try {
             const { data } = await addAbstractMutation({ variables: { input: { title, text, language } } })
-            console.log(data.addAbstract)
 
             if (data.addAbstract._id) {
                 router.push('/my-cabinet')

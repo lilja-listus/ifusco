@@ -1,0 +1,8 @@
+query FindAbstractByAuthor{
+  abstractsByAuthor{
+    _id
+    title
+    text
+    language
+  }
+}
