@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PersonalInfo from '../pages/user-info/PersonalInfo';
+import Abstract from '../pages/abstract/[id]/Abstract';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -58,7 +59,7 @@ export default function MyCabinetTabs() {
                 <PersonalInfo />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                My Abstract
+                <Abstract />
             </TabPanel>
             <TabPanel value={value} index={2}>
                 Item Three
