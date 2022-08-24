@@ -33,6 +33,7 @@ export default function PersonalInfoEdit({ user, setReadme }) {
                         <TextField size="small" id={infoField.label} value={infoField.value} variant="filled" helperText={infoField.label} onChange={e => infoField.updateValue(e.target.value)} />
                     </div>))}
             </Box>
+
             <Button color="inherit" onClick={updateUserInfo}>Save</Button>
         </>
     )

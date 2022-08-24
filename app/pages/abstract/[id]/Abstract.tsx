@@ -9,10 +9,7 @@ import { useFindAbstractByAuthorQuery } from '../../../lib/graphql/findAbstractB
 import AbstractReadOnly from "../../../components/AbstractReadOnly";
 
 export default function Abstract() {
-
-
     const { data } = useFindAbstractByAuthorQuery();
-
 
     return (
         <Box my={4}>

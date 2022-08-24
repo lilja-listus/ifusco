@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PersonalInfo from '../pages/user-info/PersonalInfo';
 import Abstract from '../pages/abstract/[id]/Abstract';
+import MySchedule from '../pages/my-schedule';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -50,20 +51,24 @@ export default function MyCabinetTabs() {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="fullWidth">
-                    <Tab label="My Info" {...a11yProps(0)} />
+                    <Tab label="My Schedule" {...a11yProps(0)} />
                     <Tab label="My Abstract" {...a11yProps(1)} />
-                    <Tab label="Item Thrse" {...a11yProps(2)} />
+                    <Tab label="My Info" {...a11yProps(2)} />
+
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <PersonalInfo />
+                <MySchedule />
             </TabPanel>
             <TabPanel value={value} index={1}>
                 <Abstract />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                <PersonalInfo />
             </TabPanel>
+
         </Box>
     );
 }
+
+// TODO: hide Abstract for not registered to the conference
