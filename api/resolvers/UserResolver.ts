@@ -18,8 +18,7 @@ export class UserResolver {
   @Mutation(() => User)
   @UseMiddleware(isAuth)
   async editUser(@Arg("input") userInput: UserInput): Promise<User> {
-    const { id, nameFirst, nameLast, country, university, password, hasPaid } =
-      userInput;
+    const { id, nameFirst } = userInput;
 
     const updatedUser = await UserModel.findOneAndUpdate(
       {
@@ -27,11 +26,6 @@ export class UserResolver {
       },
       {
         nameFirst,
-        nameLast,
-        country,
-        university,
-        password,
-        hasPaid,
       },
       { new: true }
     );

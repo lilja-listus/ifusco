@@ -14,10 +14,8 @@ export default function PersonalInfoEdit({ user, setReadme }) {
 
     const userInfoObject = [
         { label: "First Name", value: nameFirst, updateValue: setNameFirst },
-        { label: "Last Name", value: nameLast, updateValue: setNameLast },
-        { label: "University", value: university, updateValue: setUniversity },
-        { label: "Country", value: country, updateValue: setCountry },
     ]
+    // change password
 
     const updateUserInfo = async () => {
         await editUser(nameFirst, nameLast, university, country)

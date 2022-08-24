@@ -27,17 +27,48 @@ type Mutation {
   addAbstract(input: AbstractInput!): Abstract!
   deleteAbstract(abstractId: objectId!): Boolean!
   editAbstract(input: AbstractInput!): Abstract!
+  editParticipant(input: ParticipantInput!): Participant!
   editUser(input: UserInput!): User!
   login(input: LoginInput!): UserResponse!
   register(input: SignUpInput!): UserResponse!
+  registerParticipant(input: RegistrationInput!): Participant!
+}
+
+type Participant {
+  _id: objectId!
+  country: String
+  email: String!
+  hasPaid: Boolean
+  nameFirst: String!
+  nameLast: String
+  university: String
+}
+
+input ParticipantInput {
+  country: String
+  email: String
+  id: String
+  nameFirst: String
+  nameLast: String
+  university: String
 }
 
 type Query {
+  Participant(participantId: objectId!): Participant
   abstract(abstractId: objectId!): Abstract
   abstracts: [Abstract!]!
   abstractsByAuthor: Abstract!
   currentUser: User!
   user(userId: objectId!): User
+}
+
+input RegistrationInput {
+  country: String
+  email: String!
+  hasPaid: Boolean
+  nameFirst: String!
+  nameLast: String
+  university: String
 }
 
 input SignUpInput {
@@ -48,23 +79,15 @@ input SignUpInput {
 
 type User {
   _id: objectId!
-  country: String
   email: String!
-  hasPaid: Boolean
   nameFirst: String!
-  nameLast: String
   password: String!
-  university: String
 }
 
 input UserInput {
-  country: String
-  hasPaid: Boolean
   id: objectId
   nameFirst: String
-  nameLast: String
   password: String
-  university: String
 }
 
 type UserResponse {

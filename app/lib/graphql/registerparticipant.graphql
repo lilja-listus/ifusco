@@ -1,0 +1,10 @@
+mutation RegisterParticipant($email: String!, $nameFirst: String!, $nameLast: String!, $university: String!, $country: String!){
+   registerParticipant(input: {email: $email,nameFirst: $nameFirst,nameLast:$nameLast, university:$university, country:$country }){
+      _id
+      email
+      nameFirst
+      nameLast
+      university
+      country     
+  }
+}

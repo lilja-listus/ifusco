@@ -12,16 +12,4 @@ export class UserInput implements Partial<User> {
 
   @Field({ nullable: true })
   nameFirst?: string;
-
-  @Field({ nullable: true })
-  nameLast?: string;
-
-  @Field({ nullable: true })
-  country?: string;
-
-  @Field({ nullable: true })
-  university?: string;
-
-  @Field({ nullable: true })
-  hasPaid?: boolean;
 }
