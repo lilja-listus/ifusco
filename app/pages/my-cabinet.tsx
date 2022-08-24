@@ -8,9 +8,7 @@ export default function MyCabinet() {
 
     return (<Container >
         <Box my={5} >
-            <Typography variant="h4" component="h1" gutterBottom style={{ margin: "0 auto" }}>MyCabinet</Typography>
-            {user && <p>{`Hello, ${user.nameFirst}!`}</p>}
-
+            {user && <Typography variant="h4" component="h1" gutterBottom style={{ margin: "0 auto" }}>{`Hello, ${user.nameFirst}!`}</Typography>}
             <div style={{ width: "80rem", marginTop: "30px" }}>
                 <MyCabinetTabs />
             </div>
