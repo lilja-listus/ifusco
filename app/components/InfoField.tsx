@@ -1,5 +1,4 @@
-import { Container, Typography, Box } from "@material-ui/core"
-import Link from 'next/link'
+import { Typography } from "@material-ui/core"
 
 export default function InfoField({ label, value }) {
     return (

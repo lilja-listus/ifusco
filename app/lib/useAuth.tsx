@@ -13,7 +13,7 @@ type AuthProps = {
     signIn: (email: string, password: string) => Promise<void>
     signUp: (email: string, password: string, nameFirst: string) => Promise<void>
     signOut: () => void
-    editUser: (nameFirst: string, nameLast: string, university?: string,
+    editUser: (nameFirst: string, nameLast?: string, university?: string,
         country?: string,
         hasPaid?: string, password?: string) => Promise<void>
 }

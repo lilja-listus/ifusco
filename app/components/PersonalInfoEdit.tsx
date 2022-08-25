@@ -8,9 +8,7 @@ export default function PersonalInfoEdit({ user, setReadme }) {
     const { editUser } = useAuth()
 
     const [nameFirst, setNameFirst] = useState(user.nameFirst || "")
-    const [nameLast, setNameLast] = useState(user.nameLast || "")
-    const [university, setUniversity] = useState(user.university || "")
-    const [country, setCountry] = useState(user.country || "")
+
 
     const userInfoObject = [
         { label: "First Name", value: nameFirst, updateValue: setNameFirst },
@@ -18,7 +16,7 @@ export default function PersonalInfoEdit({ user, setReadme }) {
     ]
 
     const updateUserInfo = async () => {
-        await editUser(nameFirst, nameLast, university, country)
+        await editUser(nameFirst)
         setReadme(true)
     }
 

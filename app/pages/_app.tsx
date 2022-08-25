@@ -11,9 +11,7 @@ import Footer from 'components/Footer';
 import createEmotionCache from './createEmotionCache'
 import { CacheProvider } from '@emotion/react';
 
-
 const clientSideEmotionCache = createEmotionCache();
-
 
 export default function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }) {
 

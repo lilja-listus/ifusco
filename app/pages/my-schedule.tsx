@@ -1,7 +1,5 @@
-import { Container, Typography, Box, Checkbox, Button, } from "@material-ui/core"
+import { Container, Box, Checkbox, Button, } from "@material-ui/core"
 import { useAuth } from "lib/useAuth";
-import Link from 'next/link'
-import MyCabinetTabs from '../components/MyCabinetTabs'
 
 export default function MySchedule() {
     const { user } = useAuth();

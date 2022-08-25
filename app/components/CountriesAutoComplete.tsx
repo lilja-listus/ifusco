@@ -10,7 +10,6 @@ export default function CountriesAutoComplete({ updateValue }) {
         <Autocomplete
             id="country-select"
             options={countries}
-            // autoHighlight
             fullWidth
             getOptionLabel={(option) => option}
             renderOption={(props, option) => (

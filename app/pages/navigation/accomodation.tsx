@@ -1,5 +1,4 @@
-import { Container, Typography, Box, Button } from "@material-ui/core"
-import Link from 'next/link'
+import { Container, Typography, Box } from "@material-ui/core"
 
 export default function Accomodation() {
     return (<Container maxWidth="sm">

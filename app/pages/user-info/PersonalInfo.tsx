@@ -1,5 +1,4 @@
-import { Container, Typography, Box, Button } from "@material-ui/core"
-import Link from 'next/link'
+import { Box } from "@material-ui/core"
 import { useAuth } from "../../lib/useAuth"
 import React, { useState } from 'react'
 import PersonalInfoReadMe from "../../components/PersonalInfoReadMe";

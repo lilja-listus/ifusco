@@ -1,8 +1,4 @@
-
-
-
-import { Container, Typography, Box, Button } from "@material-ui/core"
-import Link from 'next/link'
+import { Box } from "@material-ui/core"
 import React from 'react'
 import CreateAbstract from "../new";
 import { useFindAbstractByAuthorQuery } from '../../../lib/graphql/findAbstractByAuthor.graphql'
