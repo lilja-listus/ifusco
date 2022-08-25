@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import { useAddAbstractMutation } from 'lib/graphql/addabstract.graphql'
-import { Container, TextField, Typography, Box, Button } from '@material-ui/core'
+import { Container, TextField, Box, Button } from '@material-ui/core'
 
 export default function CreateAbstract() {
     const [title, setTitle] = useState('')

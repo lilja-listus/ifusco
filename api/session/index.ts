@@ -5,11 +5,6 @@ export default async function createSession() {
   if (!MONGO_URL) {
     throw new Error("Missing MONGO_URL");
   }
-  const options = {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  };
-  await connect(MONGO_URL, options);
+
+  await connect(MONGO_URL);
 }

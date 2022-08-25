@@ -43,3 +43,4 @@ Stage 1.
 - Chat?
 - Streaming access
 - search
+- add nametag
