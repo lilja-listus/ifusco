@@ -15,11 +15,11 @@ export default function RegisterNewParticipant() {
     const [country, setCountry] = useState("")
 
     const userInfoObject = [
-        { label: "Email", value: email, updateValue: setEmail },
-        { label: "First Name", value: nameFirst, updateValue: setNameFirst },
-        { label: "Last Name", value: nameLast, updateValue: setNameLast },
-        { label: "University", value: university, updateValue: setUniversity },
-        { label: "Country", value: country, updateValue: setCountry },
+        { label: "First Name", value: nameFirst, updateValue: setNameFirst, helperText: 'eg. Pekka' },
+        { label: "Last Name", value: nameLast, updateValue: setNameLast, helperText: 'eg. Kaljanen' },
+        { label: "Email", value: email, updateValue: setEmail, helperText: 'eg. pekka.kaljanen@poro.com' },
+        { label: "University", value: university, updateValue: setUniversity, helperText: 'eg. University of Poro' },
+        { label: "Country", value: country, updateValue: setCountry, helperText: 'eg. Porola' },
     ]
 
     const updateUserInfo = async () => {
@@ -28,16 +28,17 @@ export default function RegisterNewParticipant() {
     }
 
     return (
-        <Container>
-            <Box my={4}>
-                <Typography variant="h5" component="h1" gutterBottom>Register me for the conference</Typography>
+        <Container maxWidth="sm">
+            <Box my={3} align="center">
+                <Typography variant="h5" component="h1" style={{ marginBottom: '20px' }} gutterBottom>Register me for the conference</Typography>
                 {userInfoObject.map(infoField => (
                     <div key={infoField.label}>
-                        <TextField required size="small" id={infoField.label} value={infoField.value} variant="filled" helperText={infoField.label} onChange={e => infoField.updateValue(e.target.value)} />
+                        <TextField required size="small" id={infoField.label} helperText={infoField.helperText} value={infoField.value} variant="outlined" label={infoField.label} onChange={e => infoField.updateValue(e.target.value)} fullWidth style={{ marginBottom: '10px' }} />
                     </div>))}
+                <Button color="inherit" onClick={updateUserInfo}>Submit</Button>
+
             </Box>
 
-            <Button color="inherit" onClick={updateUserInfo}>Submit</Button>
         </Container>
     )
 }
