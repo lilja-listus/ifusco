@@ -4,13 +4,16 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { countries } from './countries'
 
-export default function CountriesAutoComplete({ updateValue }) {
+interface IProps {
+    readonly updateValue: (value: any) => void;
+}
+
+export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }) => {
 
     return (
         <Autocomplete
             id="country-select"
             options={countries}
-            fullWidth
             getOptionLabel={(option) => option}
             renderOption={(props, option) => (
                 <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props} >
@@ -22,6 +25,7 @@ export default function CountriesAutoComplete({ updateValue }) {
             }}
             renderInput={(params) => (
                 <TextField
+                    id="country-select"
                     required size="small"
                     helperText="eg. Porola"
                     {...params}
@@ -30,7 +34,6 @@ export default function CountriesAutoComplete({ updateValue }) {
                         ...params.inputProps,
                         autoComplete: 'new-password',
                     }}
-
                 />
             )}
         />

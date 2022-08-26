@@ -13,6 +13,7 @@ Achitecture to implement:
 next.js
 TS
 Material UI
+Formik
 
 ### Functionalities
 

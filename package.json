@@ -21,6 +21,7 @@
   "license": "ISC",
   "dependencies": {
     "@mui/styles": "^5.10.2",
-    "emailjs-com": "^3.2.0"
+    "emailjs-com": "^3.2.0",
+    "formik": "^2.2.9"
   }
 }

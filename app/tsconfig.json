@@ -4,7 +4,7 @@
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext","es2015", "es2016",
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -18,7 +18,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "."
+    "baseUrl": ".",  "types": ["node"]
   },
   "include": [
     "next-env.d.ts",
@@ -29,3 +29,4 @@
     "node_modules"
   ]
 }
+
