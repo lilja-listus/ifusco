@@ -9,7 +9,6 @@ interface IProps {
 }
 
 export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }) => {
-
     return (
         <Autocomplete
             id="country-select"
@@ -25,6 +24,7 @@ export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }) => {
             }}
             renderInput={(params) => (
                 <TextField
+                    style={{ width: '300px' }}
                     id="country-select"
                     required size="small"
                     helperText="eg. Porola"
