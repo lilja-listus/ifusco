@@ -63,3 +63,4 @@ TODO:
 - in My info change the button to => edit my name
 - explore material ui for refactoring
 - extract strings into variables
+- send registration confirmation

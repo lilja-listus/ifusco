@@ -80,6 +80,7 @@ input SignUpInput {
 type User {
   _id: objectId!
   email: String!
+  isParticipant: Boolean
   nameFirst: String!
   password: String!
 }

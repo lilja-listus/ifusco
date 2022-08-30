@@ -6,6 +6,7 @@ import { Participant, ParticipantModel } from "../entity/Participant";
 import { ParticipantInput } from "../types/ParticipantInput";
 import { RegistrationInput } from "../types/RegistrationInput";
 import { sendConfirmationEmail } from "../middleware/sendMail";
+import { UserModel } from "../entity/User";
 
 @Resolver(() => Participant)
 export class ParticipantResolver {
@@ -31,6 +32,21 @@ export class ParticipantResolver {
     });
 
     await participant.save();
+
+    const updatedUser = await UserModel.findOneAndUpdate(
+      {
+        email,
+      },
+      {
+        isParticipant: true,
+      },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      console.error("The registered participant is not a user");
+    }
+
     await sendConfirmationEmail(email, nameFirst);
 
     return participant;
@@ -59,6 +75,7 @@ export class ParticipantResolver {
     if (!updatedParticipant) {
       throw new Error("Participant not found");
     }
+
     return updatedParticipant;
   }
 

@@ -6,6 +6,7 @@ import { UserModel } from "../entity/User";
 import { LoginInput } from "../types/LoginInput";
 import { SignUpInput } from "../types/SignUpInput";
 import { UserResponse } from "../types/UserResponse";
+import { ParticipantModel } from "../entity/Participant";
 
 @Resolver()
 export class AuthResolver {
@@ -21,7 +22,23 @@ export class AuthResolver {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new UserModel({ email, password: hashedPassword, nameFirst });
+    let isParticipant: boolean = false;
+
+    const userIsParticipant = await ParticipantModel.find({
+      email,
+    });
+
+    if (userIsParticipant) {
+      isParticipant = true;
+    }
+
+    const user = new UserModel({
+      email,
+      password: hashedPassword,
+      nameFirst,
+      isParticipant,
+    });
+
     await user.save();
 
     const payload = { id: user.id };

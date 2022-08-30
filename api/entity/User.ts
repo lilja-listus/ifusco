@@ -18,6 +18,10 @@ export class User {
   @Field()
   @Property({ required: true })
   nameFirst: string;
+
+  @Field({ nullable: true })
+  @Property()
+  isParticipant?: boolean;
 }
 
 export const UserModel = getModelForClass(User);
