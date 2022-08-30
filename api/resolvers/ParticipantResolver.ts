@@ -5,6 +5,7 @@ import { ObjectIdScalar } from "../schema/object-id.scalar";
 import { Participant, ParticipantModel } from "../entity/Participant";
 import { ParticipantInput } from "../types/ParticipantInput";
 import { RegistrationInput } from "../types/RegistrationInput";
+import { sendConfirmationEmail } from "../middleware/sendMail";
 
 @Resolver(() => Participant)
 export class ParticipantResolver {
@@ -30,6 +31,7 @@ export class ParticipantResolver {
     });
 
     await participant.save();
+    await sendConfirmationEmail(email, nameFirst);
 
     return participant;
   }

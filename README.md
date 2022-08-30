@@ -54,7 +54,7 @@ Stage 1.
 
 
 TODO: 
-- add formik for registration and signup
+- add formik for signup
 - add to user isParticipant: 
     - new field in the user 
     - call editUser when registering for conference
