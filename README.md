@@ -7,6 +7,7 @@ Achitecture to implement:
 - graphQL
 - apollo server
 - mongoDB
+- nodemailer 
 
 ## APP
 
@@ -61,5 +62,4 @@ TODO:
     - check if participant => if yes, check in my schedule
 - in My info change the button to => edit my name
 - explore material ui for refactoring
-- create notification service to send emails 
 - extract strings into variables
