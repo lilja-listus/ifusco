@@ -5,7 +5,6 @@ export default function MySchedule() {
     const { user } = useAuth();
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-    console.log(user)
     return (<Container >
         {user ? <Box my={5} >
             <div style={{ display: 'flex' }}>

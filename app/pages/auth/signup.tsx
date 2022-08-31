@@ -1,61 +1,137 @@
-import { useState } from 'react'
-import { Typography, Container, TextField, Box, Button } from '@material-ui/core'
+import React, { useState } from 'react';
+import { Form, Formik, FieldProps, Field, ErrorMessage } from 'formik'
 import { useAuth } from 'lib/useAuth'
+import * as Yup from "yup";
+import { TextField, Typography, Button, Container } from "@material-ui/core"
+import { useRouter } from 'next/router';
 
-export default function SignUp() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [passwordConfirm, setPasswordConfirm] = useState('')
-    const [nameFirst, setNameFirst] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
+interface IFormValues {
+    email: string;
+    nameFirst: string;
+    password: string;
+    passwordConfirm: string;
+}
+
+interface IFormField {
+    readonly value: string;
+    readonly label: string;
+    readonly type?: string;
+}
+
+const participationFieldsObject: IFormField[] = [
+    {
+        value: 'email',
+        label: 'Email',
+        type: 'email'
+    },
+    {
+        value: 'nameFirst',
+        label: 'First Name',
+
+    },
+    {
+        value: 'password',
+        label: 'Password',
+        type: 'password'
+
+    },
+    {
+        value: 'passwordConfirm',
+        label: 'Confirm Password',
+        type: 'password'
+
+    },
+]
+
+const RegisterNewUser: React.FC = (): JSX.Element => {
     const { error, signUp } = useAuth()
 
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        if (passwordConfirm !== password) {
-            setErrorMessage('Passwords do not match')
-        } else if (!email.includes('@')) {
-            setErrorMessage('Please enter valid email')
-        } else if (!email || !password || !nameFirst) {
-            setErrorMessage('Please fill in all fields')
-        } else {
-            signUp(email, password, nameFirst)
-        }
-    }
+    const router = useRouter();
+
 
     return (
-        <Container maxWidth="sm">
-            <Box my={4}>
-                <form onSubmit={onSubmit}>{error && <p>{error}</p>}
-                    <Typography variant="h5">SignUp</Typography>
-                    <Box pb={2.5} />
-                    <TextField value={email} onChange={(e) => setEmail(e.target.value)} label="Email" required />
+        <Formik<IFormValues>
+            initialValues={{
+                email: "",
+                nameFirst: "",
+                password: "",
+                passwordConfirm: "",
+            }}
+            onSubmit={async (values): Promise<void> => {
+                try {
+                    const { data } = await signUp(values.email, values.password, values.nameFirst)
+                    if (data.user._id) {
+                        router.push('/my-cabinet')
+                    }
+                } catch (e) {
+                    console.log(e)
+                }
+            }
+            }
+            validationSchema={Yup.object().shape({
+                email: Yup.string()
+                    .email("Email not valid")
+                    .required("Email is required"),
+                password: Yup.string().required('Password is required').min(8, 'Password is too short - should be 8 chars minimum.'),
+                passwordConfirm: Yup.string()
+                    .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+                nameFirst: Yup.string().required("Name is required"),
+            })}
+        >
+            {(formikProps): JSX.Element => {
+                return (
+                    <Container align="center" >
+                        <div style={{ width: '400px', backgroundColor: '#F0F8FF', padding: '10px 60px 30px 50px', borderRadius: '25px', marginBottom: '150px' }}>
+                            <Typography variant="h5" component="h1" style={{ marginBottom: '10px' }} gutterBottom>Register me for the conference</Typography>
+
+                            <Form>
+                                <div style={{ display: 'flex', flexDirection: 'column', marginBottom: '10px' }}>
+                                    {participationFieldsObject.map(({ value, label, type }) => (
+                                        <Field name={value}>
+                                            {({ field, form: { touched, errors, isSubmitting } }: FieldProps): JSX.Element => {
+                                                return (<>
+                                                    <TextField
+                                                        label={label}
+                                                        id={field.name}
+                                                        name={field.name}
+                                                        type={type}
+                                                        onChange={formikProps.handleChange}
+                                                        onBlur={formikProps.handleBlur}
+                                                        value={formikProps.values[value]} size="small" style={{ width: '300px' }} />
+                                                    {errors[value] && touched[value] ? (
+                                                        <div style={{ color: 'red', alignSelf: 'left' }}>{errors[value]}</div>
+                                                    ) : null}
+
+                                                </>)
+
+                                            }}
+                                        </Field>
+                                        // 
+                                    ))}
 
 
-                </form>
-            </Box>
-            <Box my={4}>
-                <form onSubmit={onSubmit}>{error && <p>{error}</p>}
-                    <Typography variant="h5">First Name</Typography>
-                    <Box pb={2.5} />
-                    <TextField value={nameFirst} onChange={(e) => setNameFirst(e.target.value)} label="nameFirst" required />
+                                </div>
 
-                </form>
-            </Box>
-            <Box my={4}>
-                <form onSubmit={onSubmit}>{error && <p>{error}</p>}
-                    <Typography variant="h5">Password</Typography>
-                    <Box pb={2.5} />
-                    <TextField value={password} onChange={(e) => setPassword(e.target.value)} label="Password" type="password" required />
-                    <Box pb={2.5} />
-                    <Typography variant="h5">Confirm Password</Typography>
-                    <Box pb={2.5} />
-                    <TextField value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} label="PasswordConfirm" type="password" required />
-                    <Box pb={2.5} />
-                    <Button variant="contained" color="primary" size='large' type='submit'>SignUp</Button>
-                </form>
-            </Box>
-            {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        </Container>
+                                <Button
+                                    type="submit"
+                                    disabled={
+                                        formikProps.isSubmitting ||
+                                        (!!(formikProps.errors.email && formikProps.touched.email)
+                                            || !!(formikProps.errors.nameFirst && formikProps.touched.nameFirst)
+                                            || !!(formikProps.errors.password && formikProps.touched.password))
+                                    }
+                                >
+                                    Register
+                                </Button>
+                                {console.log(formikProps.errors)}
+                            </Form>
+                        </div>
+                    </Container >
+                )
+            }}
+        </Formik >
+
     )
 }
+
+export default RegisterNewUser;

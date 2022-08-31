@@ -7,6 +7,7 @@ import { ParticipantInput } from "../types/ParticipantInput";
 import { RegistrationInput } from "../types/RegistrationInput";
 import { sendConfirmationEmail } from "../middleware/sendMail";
 import { UserModel } from "../entity/User";
+import { Actions } from "../types/Actions";
 
 @Resolver(() => Participant)
 export class ParticipantResolver {
@@ -47,7 +48,7 @@ export class ParticipantResolver {
       console.error("The registered participant is not a user");
     }
 
-    await sendConfirmationEmail(email, nameFirst);
+    await sendConfirmationEmail(email, nameFirst, Actions.NEW_PARTICIPANT);
 
     return participant;
   }

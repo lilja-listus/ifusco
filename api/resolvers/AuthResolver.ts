@@ -1,12 +1,13 @@
 import { Arg, Mutation, Resolver } from "type-graphql";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-
 import { UserModel } from "../entity/User";
 import { LoginInput } from "../types/LoginInput";
 import { SignUpInput } from "../types/SignUpInput";
 import { UserResponse } from "../types/UserResponse";
-import { ParticipantModel } from "../entity/Participant";
+import { Participant, ParticipantModel } from "../entity/Participant";
+import { sendConfirmationEmail } from "../middleware/sendMail";
+import { Actions } from "../types/Actions";
 
 @Resolver()
 export class AuthResolver {
@@ -24,11 +25,12 @@ export class AuthResolver {
 
     let isParticipant: boolean = false;
 
-    const userIsParticipant = await ParticipantModel.find({
-      email,
-    });
+    const userIsParticipant: Participant | null =
+      await ParticipantModel.findOne({
+        email,
+      });
 
-    if (userIsParticipant) {
+    if (userIsParticipant?._id) {
       isParticipant = true;
     }
 
@@ -40,6 +42,8 @@ export class AuthResolver {
     });
 
     await user.save();
+
+    await sendConfirmationEmail(email, nameFirst, Actions.NEW_USER);
 
     const payload = { id: user.id };
 

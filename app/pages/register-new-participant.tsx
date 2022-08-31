@@ -74,7 +74,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                 try {
                     const { data } = await registerParticipantMutation({ variables: { email: values.email, nameFirst: values.nameFirst, nameLast: values.nameLast, university: values.university, country: values.country } })
                     if (data.registerParticipant._id) {
-                        router.push('/my-cabinet')
+                        router.push('/congrats-you-are-registered')
                     }
 
                 } catch (e) {
