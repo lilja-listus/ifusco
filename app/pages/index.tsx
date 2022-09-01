@@ -1,19 +1,17 @@
-import { Container, Typography, Box } from "@material-ui/core"
+import { Container, Typography, Box, makeStyles } from "@material-ui/core"
 import Image from 'next/image'
 import perse from '../img/perse.jpg'
 import React from 'react'
 
 export default function Index() {
+    const classes = useStyles()
+
     return (
         <Container maxWidth="md">
             <Box my={4}>
                 <Typography variant="h5" component="h5" align="center" >Welcome to the official website of XXXVII IFUSCO!</Typography>
                 <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        margin: "20px"
-                    }}
+                    className={classes.image}
                 >
                     <Image priority src={perse} width={250} height={200} alt="perse" />
                 </div>
@@ -31,3 +29,10 @@ export default function Index() {
         </Container >)
 }
 
+const useStyles = makeStyles(() => ({
+    image: {
+        display: "flex",
+        justifyContent: "center",
+        margin: "20px"
+    }
+})) 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import { useAddAbstractMutation } from 'lib/graphql/addabstract.graphql'
-import { Container, TextField, Box, Button } from '@material-ui/core'
+import { Container, TextField, Box, Button, makeStyles } from '@material-ui/core'
 
 export default function CreateAbstract() {
     const [title, setTitle] = useState('')
@@ -11,6 +11,8 @@ export default function CreateAbstract() {
     const router = useRouter()
 
     const [addAbstractMutation] = useAddAbstractMutation()
+
+    const classes = useStyles()
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -26,14 +28,11 @@ export default function CreateAbstract() {
 
     return (
         <Container >
-            <Box style={{ height: '500px' }}>
+            <Box className={classes.cotainerBox}>
                 <form onSubmit={onSubmit} >
-                    <Box style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <TextField variant="outlined" multiline autoFocus label="title" value={title} onChange={(e) => setTitle(e.target.value)} required size="small" style={{
-                            width: '70%'
-                        }} />
+                    <Box className={classes.formBox}>
+                        <TextField variant="outlined" multiline autoFocus label="title" value={title} onChange={(e) => setTitle(e.target.value)} required size="small" className={classes.titleText} />
                         <TextField variant="outlined" label="language" value={language} onChange={(e) => setLanguage(e.target.value)} required size="small" />
-
                     </Box>
                     <TextField
                         id="filled-multiline-flexible"
@@ -57,3 +56,11 @@ export default function CreateAbstract() {
         </Container >
     )
 }
+
+const useStyles = makeStyles(() => ({
+    cotainerBox: {
+        height: '500px'
+    },
+    formBox: { display: 'flex', justifyContent: 'space-between' },
+    titleText: { width: '70%' }
+})) 

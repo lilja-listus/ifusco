@@ -1,9 +1,11 @@
-import { Container, Box, Checkbox, Button, CircularProgress, FormControlLabel } from "@material-ui/core"
+import { Container, Box, Checkbox, Button, CircularProgress, FormControlLabel, makeStyles } from "@material-ui/core"
 import { useAuth } from "lib/useAuth";
 import { IScheduleCheckboxes } from '../../interfaces/IScheduleCheckboxes'
 
 export default function MySchedule() {
     const { user } = useAuth();
+
+    const classes = useStyles();
 
     const mySchedulecheckboxes: IScheduleCheckboxes[] = [
         {
@@ -25,7 +27,7 @@ export default function MySchedule() {
         <Container >
             {user ?
                 <Box my={5} >
-                    <div style={{ display: 'flex', flexDirection: "column" }}>
+                    <div className={classes.boxesContainer} >
                         {mySchedulecheckboxes.map(({ checkbox, label, button }) =>
                             <>
                                 <FormControlLabel control={checkbox} label={label} />
@@ -38,3 +40,7 @@ export default function MySchedule() {
         </Container >
     )
 }
+
+const useStyles = makeStyles(() => ({
+    boxesContainer: { display: 'flex', flexDirection: "column" }
+})) 
