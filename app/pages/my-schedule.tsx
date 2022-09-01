@@ -1,26 +1,40 @@
-import { Container, Box, Checkbox, Button, CircularProgress } from "@material-ui/core"
+import { Container, Box, Checkbox, Button, CircularProgress, FormControlLabel } from "@material-ui/core"
 import { useAuth } from "lib/useAuth";
+import { IScheduleCheckboxes } from '../../interfaces/IScheduleCheckboxes'
 
 export default function MySchedule() {
     const { user } = useAuth();
-    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-    return (<Container >
-        {user ? <Box my={5} >
-            <div style={{ display: 'flex' }}>
-                <Checkbox {...label} color="secondary" checked={user.isParticipant} disabled />
-                <p>Register to the conference by July 5, 2023</p>
-            </div>
-            {!user.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>}
-            <div style={{ display: 'flex' }}>
-                <Checkbox {...label} color="secondary" disabled />
-                <p>Submit abstract by July 10, 2023 (only for registered to the conference)</p>
-            </div>
-            <div style={{ display: 'flex' }}>
-                <Checkbox {...label} color="secondary" disabled />
-                <p>Come to Turku for May 15-18</p>
-            </div>
-        </Box> : <CircularProgress />
-        } </Container >)
+    const mySchedulecheckboxes: IScheduleCheckboxes[] = [
+        {
+            checkbox: <Checkbox inputProps={{ 'aria-label': 'Register to conference' }} color="secondary" checked={user?.isParticipant} />,
+            label: "Register to the conference by July 5, 2023",
+            button: (!user.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>)
+        },
+        {
+            checkbox: <Checkbox inputProps={{ 'aria-label': 'Submit abstract' }} color="secondary" />,
+            label: "Submit abstract by July 10, 2023 (only for registered to the conference)"
+        },
+        {
+            checkbox: <Checkbox inputProps={{ 'aria-label': 'Come to Turku' }} color="secondary" />,
+            label: "Come to Turku for May 15-18"
+        },
+    ]
+
+    return (
+        <Container >
+            {user ?
+                <Box my={5} >
+                    <div style={{ display: 'flex', flexDirection: "column" }}>
+                        {mySchedulecheckboxes.map(({ checkbox, label, button }) =>
+                            <>
+                                <FormControlLabel control={checkbox} label={label} />
+                                {button}
+                            </>
+                        )}
+                    </div>
+                </Box> : <CircularProgress />
+            }
+        </Container >
+    )
 }
-
