@@ -13,6 +13,7 @@ export default function Footer() {
         <Paper sx={{
             marginTop: 'calc(10% + 60px)',
             width: '100%',
+            height: '100px',
             position: 'fixed',
             bottom: 0,
         }} component="footer" square variant="outlined">
@@ -47,7 +48,6 @@ export default function Footer() {
                         mb: 2,
                     }}
                 >
-
                     <Typography variant="caption" color="initial">
                         Lilja Lisztusz, Copyright ©2023
                     </Typography>

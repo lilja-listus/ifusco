@@ -34,7 +34,7 @@ Stage 1.
 
 #### MVP:
 
-- My cabinet: - Info - My abstracts - Paid participation fee
+- My dashboard: - Info - My abstracts - Paid participation fee
 - About the conference
 - The FU test
 - mobile version

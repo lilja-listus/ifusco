@@ -61,7 +61,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                 try {
                     const { data } = await signUp(values.email, values.password, values.nameFirst)
                     if (data.user._id) {
-                        router.push('/my-cabinet')
+                        router.push('/my-dashboard')
                     }
                 } catch (e) {
                     console.log(e)

@@ -20,7 +20,7 @@ export default function Header({ darkState, handleThemeChange }) {
     const links = [
         !user && { label: 'Sign Up', href: '/auth/signup' },
         !user && { label: 'Sign In', href: '/auth/signin' },
-        user && { label: 'MyCabinet', href: '/my-cabinet' },
+        user && { label: 'My Dashboard', href: '/my-dashboard' },
         user && { label: 'Sign Out', href: '/auth/signout' },
     ]
         .filter((link) => link)

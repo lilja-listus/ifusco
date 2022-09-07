@@ -20,7 +20,7 @@ export default function CreateAbstract() {
             const { data } = await addAbstractMutation({ variables: { input: { title, text, language } } })
 
             if (data.addAbstract._id) {
-                router.push('/my-cabinet')
+                router.push('/my-dashboard')
             }
 
         } catch (err) { console.log(err) }
