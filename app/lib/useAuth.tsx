@@ -59,6 +59,7 @@ function useProvideAuth() {
             }
 
         } catch (err) {
+
             setError(err.message);
         }
     }

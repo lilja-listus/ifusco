@@ -55,7 +55,7 @@ export default function Header({ darkState, handleThemeChange }) {
                     <Typography variant="h5" component="h5">
                         <Link href="/">
                             <LinkText href="" color="inherit">
-                                IFUSCO 2023, Turku, Finland
+                                IFUSCO XXXVIII
                             </LinkText>
                         </Link>
                     </Typography>
