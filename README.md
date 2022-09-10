@@ -60,6 +60,7 @@ TODO:
     - call editUser when registering for conference
     - check if participant => if yes, check in my schedule
 - in My info change the button to => edit my name
-- explore material ui for refactoring
 - extract strings into variables
-- send registration confirmation
+- configure the dashboard (abstract check)
+- connect FU test
+- responsiveness
