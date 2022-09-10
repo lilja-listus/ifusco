@@ -1,7 +1,8 @@
+import styles from '../../styles/Home.module.scss'
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import { useAddAbstractMutation } from 'lib/graphql/addabstract.graphql'
-import { Container, TextField, Box, Button, makeStyles } from '@material-ui/core'
+import { Container, TextField, Box, Button } from '@material-ui/core'
 
 export default function CreateAbstract() {
     const [title, setTitle] = useState('')
@@ -12,7 +13,6 @@ export default function CreateAbstract() {
 
     const [addAbstractMutation] = useAddAbstractMutation()
 
-    const classes = useStyles()
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -28,10 +28,10 @@ export default function CreateAbstract() {
 
     return (
         <Container >
-            <Box className={classes.cotainerBox}>
+            <Box className={styles.abstractContainer}>
                 <form onSubmit={onSubmit} >
-                    <Box className={classes.formBox}>
-                        <TextField variant="outlined" multiline autoFocus label="title" value={title} onChange={(e) => setTitle(e.target.value)} required size="small" className={classes.titleText} />
+                    <Box className={styles.abstractContainer__formBox}>
+                        <TextField variant="outlined" multiline autoFocus label="title" value={title} onChange={(e) => setTitle(e.target.value)} required size="small" className={styles.abstractContainer__titleText} />
                         <TextField variant="outlined" label="language" value={language} onChange={(e) => setLanguage(e.target.value)} required size="small" />
                     </Box>
                     <TextField
@@ -56,11 +56,3 @@ export default function CreateAbstract() {
         </Container >
     )
 }
-
-const useStyles = makeStyles(() => ({
-    cotainerBox: {
-        height: '500px'
-    },
-    formBox: { display: 'flex', justifyContent: 'space-between' },
-    titleText: { width: '70%' }
-})) 

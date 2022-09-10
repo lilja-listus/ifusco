@@ -1,3 +1,4 @@
+import styles from '../styles/Home.module.scss'
 import React from 'react';
 import {
     AppBar,
@@ -5,7 +6,6 @@ import {
     Typography,
     Button,
     Link as LinkText,
-    makeStyles,
 } from '@material-ui/core';
 import Link from 'next/link';
 import { useAuth } from 'lib/useAuth';
@@ -14,8 +14,6 @@ import { Switch } from '@mui/material';
 
 export default function Header({ darkState, handleThemeChange }) {
     const { user } = useAuth();
-
-    const classes = useStyles()
 
     const links = [
         !user && { label: 'Sign Up', href: '/auth/signup' },
@@ -49,9 +47,9 @@ export default function Header({ darkState, handleThemeChange }) {
     });
 
     return (
-        <div className={classes.container}>
+        <div className={styles.headerContainer}>
             <AppBar position="static">
-                <Toolbar className={classes.toolbar}>
+                <Toolbar className={styles.headerContainer__toolbar} >
                     <Typography variant="h5" component="h5">
                         <Link href="/">
                             <LinkText href="" color="inherit">
@@ -66,24 +64,12 @@ export default function Header({ darkState, handleThemeChange }) {
 
                 </Toolbar>
 
-                <Typography variant="h5" className={classes.navigationLinks}>
+                <Typography variant="h5" className={styles.headerContainer__navigationLinks}>
                     {navigationLinks}
                 </Typography>
 
             </AppBar>
-        </div>
+        </div >
     );
 }
 
-
-const useStyles = makeStyles(() => ({
-    container: {
-        flexGrow: 1,
-        marginBottom: 30,
-    },
-    toolbar: {
-        display: "flex",
-        justifyContent: "space-between"
-    },
-    navigationLinks: { margin: "0px auto", flexGrow: 1, }
-})) 

@@ -1,0 +1,113 @@
+@use './mixins.scss';
+
+.headerContainer{
+    flex-grow: 1;
+    margin-bottom: 30px;
+    
+    &__toolbar{
+        @include mixins.flex-display-space-between;
+    }
+
+    &__navigationLinks{
+        @include mixins.flex-display-justify-center;
+        
+        margin: 0px auto;
+        flex-grow: 1;
+    }
+}
+
+.textField{
+    width: 300px
+}
+
+.image{
+    @include mixins.flex-display-justify-center;
+
+    margin: 20px;
+}
+
+.myDashboardContainer{
+    &__helloText{
+        margin: 0 auto;
+    }
+
+    &__tabsContainer{
+        width: 80rem;
+        margin-top: 30px;
+    }
+}
+
+.boxesContainer{
+    @include mixins.flex-display-column;
+
+}
+
+.registerNewParticipant{
+    &__container{
+        width: 400px;
+        background-color: #F0F8FF;
+        padding: 10px 60px 30px 50px;
+        border-radius: 25px;
+         margin-bottom: 150px;
+    }
+
+    &__title{
+        margin-bottom: 10px;
+    }
+
+    &__participationFieldsContainer{
+        @include mixins.flex-display-column;
+
+        margin-bottom: 10px;
+    }
+
+    &__errorMessage{
+        color: red;
+    }
+
+    &__textFieldValue{
+        width: 300px;
+    }
+
+}
+
+.abstractContainer{
+    height: '500px';
+    
+    &__formBox{     
+        @include mixins.flex-display-space-between;
+        
+    }
+    &__titleText{
+        width: '70%'
+    }
+}
+
+.signupPage{
+    &__container{
+        width: 400px;
+         background-color: #F0F8FF;
+         padding: 10px 60px 30px 50px;
+         border-radius: 25px;
+         margin-bottom: 150px
+    }
+
+    &__headerText{
+        margin-bottom: 10px
+    }
+
+    &__participationFieldsContainer{
+        @include mixins.flex-display-column;
+
+         margin-bottom: 10px
+    }
+
+    &__fieldValue{
+        width: 300px
+    }
+
+    &__errorMessage{
+        color: red;
+         align-self: left
+    }
+}

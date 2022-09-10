@@ -1,4 +1,4 @@
-import { Container, Typography, Box, Link, Button } from "@material-ui/core"
+import { Container, Typography, Box, Button } from "@material-ui/core"
 
 export default function Registration() {
     return (

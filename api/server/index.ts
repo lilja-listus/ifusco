@@ -3,6 +3,7 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import cors from "cors";
+// import styles from "../styles/Home.module.scss";
 
 import nextApp from "@ifusco/app";
 
@@ -39,7 +40,7 @@ async function createServer() {
 
     await nextApp.prepare();
 
-    app.get("*", (req, res) => handle(req, res)); 
+    app.get("*", (req, res) => handle(req, res));
 
     app.listen({ port }, () => {
       console.log(

@@ -1,16 +1,15 @@
+import styles from '../styles/Home.module.scss'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { countries } from './countries'
-import { makeStyles } from '@material-ui/core';
 
 interface IProps {
     readonly updateValue: (value: any) => void;
 }
 
 export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }) => {
-    const classes = useStyles()
 
     return (
         <Autocomplete
@@ -27,7 +26,7 @@ export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }) => {
             }}
             renderInput={(params) => (
                 <TextField
-                    className={classes.textField}
+                    className={styles.textField}
                     id="country-select"
                     required size="small"
                     helperText="eg. Porola"
@@ -42,9 +41,3 @@ export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }) => {
         />
     );
 }
-
-const useStyles = makeStyles(() => ({
-    textField: {
-        width: '300px'
-    }
-})) 

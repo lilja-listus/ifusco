@@ -1,8 +1,9 @@
+import styles from '../styles/Home.module.scss'
 import React, { useState } from 'react';
 import { Form, Formik, FieldProps, Field, FormikProps } from 'formik'
 import { useRegisterParticipantMutation } from "../lib/graphql/registerparticipant.graphql"
 import * as Yup from "yup";
-import { TextField, Box, Typography, Button, Container, FormControl, makeStyles } from "@material-ui/core"
+import { TextField, Typography, Button, Container } from "@material-ui/core"
 import { useRouter } from 'next/router';
 import { CountriesAutoComplete } from '../components/CountriesAutoComplete';
 import { useAuth } from "../lib/useAuth"
@@ -54,8 +55,6 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
     const router = useRouter();
     const { user } = useAuth()
 
-    const classes = useStyles();
-
     const updatedValue = (formikProps: FormikProps<IFormValues>): ((value: string) => void) => {
         return (value: string): void => {
             formikProps.setFieldTouched('country')
@@ -98,12 +97,12 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
             {(formikProps): JSX.Element => {
                 return (
                     <Container align="center" >
-                        <div className={classes.cotainerBox}>
-                            <Typography variant="h5" component="h1" className={classes.title} gutterBottom>Register me for the conference</Typography>
+                        <div className={styles.registerNewParticipant__container}>
+                            <Typography variant="h5" component="h1" className={styles.registerNewParticipant__title} gutterBottom>Register me for the conference</Typography>
                             <Form>
-                                <div className={classes.participationFieldsContainer}>
+                                <div className={styles.registerNewParticipant__participationFieldsContainer}>
                                     {participationFieldsObject.map(({ value, label, helperText }) => (
-                                        <Field name={value}>
+                                        <Field name={value} key={label}>
                                             {({ field, form: { touched, errors, isSubmitting } }: FieldProps): JSX.Element => {
                                                 return (
                                                     <TextField
@@ -113,7 +112,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                                                         type={field.name === 'email' && 'email'}
                                                         onChange={formikProps.handleChange}
                                                         onBlur={formikProps.handleBlur}
-                                                        value={formikProps.values[value]} size="small" helperText={helperText} className={classes.textFieldValue} />)
+                                                        value={formikProps.values[value]} size="small" helperText={helperText} className={styles.registerNewParticipant__textFieldValue} />)
                                             }}
                                         </Field>
                                     ))}
@@ -140,7 +139,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                                 >
                                     Register
                                 </Button>
-                                {errorMessage && <Typography variant="h5" className={classes.errorMessage}>{errorMessage}</Typography>}
+                                {errorMessage && <Typography variant="h5" className={styles.registerNewParticipant__errorMessage}>{errorMessage}</Typography>}
                             </Form>
                         </div>
                     </Container>
@@ -153,12 +152,3 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
 
 export default RegisterNewParticipant;
 
-const useStyles = makeStyles(() => ({
-    cotainerBox: {
-        width: '400px', backgroundColor: '#F0F8FF', padding: '10px 60px 30px 50px', borderRadius: '25px', marginBottom: '150px',
-    },
-    title: { marginBottom: '10px' },
-    participationFieldsContainer: { display: 'flex', flexDirection: 'column', marginBottom: '10px' },
-    errorMessage: { color: 'red' },
-    textFieldValue: { width: '300px' }
-})) 

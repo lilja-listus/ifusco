@@ -1,17 +1,16 @@
-import { Container, Box, Checkbox, Button, CircularProgress, FormControlLabel, makeStyles } from "@material-ui/core"
+import styles from '../styles/Home.module.scss'
+import { Container, Box, Checkbox, Button, CircularProgress, FormControlLabel } from "@material-ui/core"
 import { useAuth } from "lib/useAuth";
 import { IScheduleCheckboxes } from '../../interfaces/IScheduleCheckboxes'
 
 export default function MySchedule() {
     const { user } = useAuth();
 
-    const classes = useStyles();
-
     const mySchedulecheckboxes: IScheduleCheckboxes[] = [
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Register to conference' }} color="secondary" checked={user?.isParticipant} />,
             label: "Register to the conference by July 5, 2023",
-            button: (!user.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>)
+            button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>)
         },
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Submit abstract' }} color="secondary" />,
@@ -27,12 +26,12 @@ export default function MySchedule() {
         <Container >
             {user ?
                 <Box my={5} >
-                    <div className={classes.boxesContainer} >
+                    <div className={styles.boxesContainer} >
                         {mySchedulecheckboxes.map(({ checkbox, label, button }) =>
-                            <>
+                            <div key={label}>
                                 <FormControlLabel control={checkbox} label={label} />
                                 {button}
-                            </>
+                            </div>
                         )}
                     </div>
                 </Box> : <CircularProgress />
@@ -41,6 +40,3 @@ export default function MySchedule() {
     )
 }
 
-const useStyles = makeStyles(() => ({
-    boxesContainer: { display: 'flex', flexDirection: "column" }
-})) 
