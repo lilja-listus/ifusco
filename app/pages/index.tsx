@@ -7,11 +7,11 @@ import React from 'react'
 export default function Index() {
 
     return (
-        <Container maxWidth="md">
+        <Container maxWidth="md" className={styles.indexPageContainer}>
             <Box my={4}>
                 <Typography variant="h5" component="h5" align="center" >Welcome to the official website of XXXVII IFUSCO!</Typography>
                 <div
-                    className={styles.image}>
+                    className={styles.indexPageContainer__image}>
                     <Image priority src={perse} width={250} height={200} alt="perse" />
                 </div>
 

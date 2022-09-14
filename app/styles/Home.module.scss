@@ -3,28 +3,49 @@
 .headerContainer{
     flex-grow: 1;
     margin-bottom: 30px;
-    
+
     &__toolbar{
-        @include mixins.flex-display-space-between;
+        @media (max-width: 768px) {
+            padding-top: 5%;
+        }
+    }
+  }
+
+  .indexPageContainer{
+
+    @media (max-width: 768px) {
+        margin-bottom: 120px;
+    }
+    
+    &__image{
+        @include mixins.flex-display-justify-center;
+    
+        margin: 20px;
     }
 
-    &__navigationLinks{
-        @include mixins.flex-display-justify-center;
-        
-        margin: 0px auto;
-        flex-grow: 1;
-    }
-}
+
+  }
 
 .textField{
     width: 300px
 }
 
-.image{
-    @include mixins.flex-display-justify-center;
+.hamburgerMenuContainer{
+    &__navigationLinks{
+        @include mixins.flex-display-column;
 
-    margin: 20px;
+        align-items:flex-start;
+    }
+
+    &__navigationLink{
+        margin-top: 10px;
+
+    }
+
+
 }
+
+
 
 .myDashboardContainer{
     &__helloText{
