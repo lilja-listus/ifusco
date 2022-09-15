@@ -1,8 +1,9 @@
 import { Container, Typography, Box, Button } from "@material-ui/core"
+import styles from '../../styles/Home.module.scss'
 
 export default function Registration() {
     return (
-        <Container maxWidth="md" >
+        <Container maxWidth="md" className={styles.pageContainer}>
             <Box my={4}>
                 <Typography variant="h4" component="h1" gutterBottom>Registration to the conference</Typography>
                 <Typography variant="body1" component="p" gutterBottom>Registration is open from January 15th to March 20th, 2022.

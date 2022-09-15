@@ -11,19 +11,17 @@
     }
   }
 
-  .indexPageContainer{
-
-    @media (max-width: 768px) {
-        margin-bottom: 120px;
-    }
-    
+  .indexPage{
     &__image{
         @include mixins.flex-display-justify-center;
-    
         margin: 20px;
     }
+  }
 
-
+  .pageContainer{
+        @media (max-width: 768px) {
+            margin-bottom: 120px;
+        }
   }
 
 .textField{
@@ -41,11 +39,7 @@
         margin-top: 10px;
 
     }
-
-
 }
-
-
 
 .myDashboardContainer{
     &__helloText{
@@ -110,7 +104,12 @@
          background-color: #F0F8FF;
          padding: 10px 60px 30px 50px;
          border-radius: 25px;
-         margin-bottom: 150px
+         margin-bottom: 150px;
+
+
+         @media (max-width: 768px) {
+           width: 290px;
+        }  
     }
 
     &__headerText{
@@ -124,7 +123,11 @@
     }
 
     &__fieldValue{
-        width: 300px
+        width: 300px;
+       
+        @media (max-width: 768px) {
+            width: 190px;
+         }
     }
 
     &__errorMessage{

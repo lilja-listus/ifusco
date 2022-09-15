@@ -1,8 +1,9 @@
 import { Container, Typography, Box } from "@material-ui/core"
+import styles from '../../styles/Home.module.scss'
 
 export default function Contact() {
     return (
-        <Container maxWidth="md">
+        <Container maxWidth="md" className={styles.pageContainer}>
             <Box my={4}>
                 <Typography variant="h4" component="h1" gutterBottom>Contact</Typography>
                 <p>Feel free to contact us via e-mail at ifusco2022@gmail.com
