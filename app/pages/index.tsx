@@ -5,7 +5,6 @@ import perse from '../img/perse.jpg'
 import React from 'react'
 
 export default function Index() {
-
     return (
         <Container maxWidth="md" className={`${styles.indexPage} ${styles.pageContainer}`}>
             <Box my={4}>

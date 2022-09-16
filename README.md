@@ -64,3 +64,6 @@ TODO:
 - configure the dashboard (abstract check)
 - connect FU test
 - responsiveness
+
+
+ source ~/.bash_profile    

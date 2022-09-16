@@ -1,4 +1,4 @@
-import { Container, Typography, Box, Button } from "@material-ui/core"
+import { Container, Typography, Box } from "@material-ui/core"
 import styles from '../../styles/Home.module.scss'
 
 export default function Abstracts() {

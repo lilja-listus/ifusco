@@ -56,6 +56,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                 password: "",
                 passwordConfirm: "",
             }}
+
             onSubmit={async (values): Promise<void> => {
                 try {
                     const { data } = await signUp(values.email, values.password, values.nameFirst)
@@ -67,6 +68,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                 }
             }
             }
+
             validationSchema={Yup.object().shape({
                 email: Yup.string()
                     .email("Email not valid")

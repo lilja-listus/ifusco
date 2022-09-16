@@ -47,13 +47,22 @@
     }
 
     &__tabsContainer{
-        width: 80rem;
         margin-top: 30px;
+        width: 90%;
+
+            @media (max-width: 768px) {
+            margin-bottom: 60px;
+            
+        }
+    
+
     }
 }
 
 .boxesContainer{
     @include mixins.flex-display-column;
+
+    width: 100%;
 
 }
 
