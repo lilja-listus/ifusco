@@ -3,14 +3,14 @@ import { useAuth } from 'lib/useAuth';
 import Link from 'next/link';
 
 
-export const Links = () => {
+export const Links = (): JSX.Element[] => {
     const { user } = useAuth();
 
     return [
-        !user && { label: 'Sign Up', href: '/auth/signup' },
-        !user && { label: 'Sign In', href: '/auth/signin' },
-        user && { label: 'My Dashboard', href: '/my-dashboard' },
-        user && { label: 'Sign Out', href: '/auth/signout' },
+        !user && { href: '/auth/signup', label: 'Sign Up' },
+        !user && { href: '/auth/signin', label: 'Sign In' },
+        user && { href: '/my-dashboard', label: 'My Dashboard' },
+        user && { href: '/auth/signout', label: 'Sign Out' },
     ]
         .filter((link) => link)
         .map(({ label, href }) => {

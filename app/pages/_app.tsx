@@ -1,29 +1,36 @@
-import { useEffect, useState } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { ApolloProvider } from '@apollo/client';
+import { ApolloClient, ApolloProvider, NormalizedCacheObject } from '@apollo/client';
 import { useApollo } from 'lib/apollo';
 import { themeDark, themeLight } from 'lib/theme';
 import { AuthProvider } from 'lib/useAuth';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import createEmotionCache from './createEmotionCache';
-import { CacheProvider } from '@emotion/react';
+import { CacheProvider, EmotionCache } from '@emotion/react';
 
-const clientSideEmotionCache = createEmotionCache();
+interface IProps {
+    readonly Component: any;
+    readonly emotionCache: EmotionCache;
+    readonly pageProps: any;
+}
 
-export default function MyApp({ Component, emotionCache = clientSideEmotionCache, pageProps }) {
+const clientSideEmotionCache: EmotionCache = createEmotionCache();
 
-    const apolloClient = useApollo(pageProps.initialApolloState);
+const MyApp: React.FC<IProps> = ({ Component, emotionCache = clientSideEmotionCache, pageProps }): JSX.Element => {
+
+    const apolloClient: ApolloClient<NormalizedCacheObject> = useApollo(pageProps.initialApolloState);
+
     const [darkState, setDarkState] = useState(false);
 
-    const handleThemeChange = () => {
+    const handleThemeChange = (): void => {
         setDarkState(!darkState);
     };
 
     useEffect(() => {
-        const jssStyles = document.querySelector('#jss-server-side');
+        const jssStyles: Element = document.querySelector('#jss-server-side');
+
         if (jssStyles && jssStyles.parentNode) {
             jssStyles.parentNode.removeChild(jssStyles);
         }
@@ -40,6 +47,6 @@ export default function MyApp({ Component, emotionCache = clientSideEmotionCache
                 <Footer />
             </ApolloProvider >
         </CacheProvider>);
-}
+};
 
-
+export default MyApp;

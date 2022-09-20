@@ -9,22 +9,22 @@ interface IProps {
     readonly updateValue: (value: any) => void;
 }
 
-export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }) => {
+export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }): JSX.Element => {
 
     return (
         <Autocomplete
             id="country-select"
             options={countries}
-            getOptionLabel={(option) => option}
-            renderOption={(props, option) => (
-                <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props} >
+            getOptionLabel={(option): string => option}
+            renderOption={(props, option): JSX.Element => (
+                <Box component="li" sx={{ '& > img': { flexShrink: 0, mr: 2 } }} {...props} >
                     {option}
                 </Box>
             )}
-            onChange={(event: any, newValue: string | null) => {
+            onChange={(__event: unknown, newValue: string | null): void => {
                 updateValue(newValue);
             }}
-            renderInput={(params) => (
+            renderInput={(params): JSX.Element => (
                 <TextField
                     className={styles.textField}
                     id="country-select"

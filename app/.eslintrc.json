@@ -29,7 +29,6 @@
         "semi": "off",
         "@typescript-eslint/semi": ["error"],
       "default-case": ["error"],
-      "comma-dangle": ["error", "always-multiline"],
 
       "@typescript-eslint/no-inferrable-types": "off",
       "@typescript-eslint/no-non-null-assertion": "off", // allows us to use the "!" symbols

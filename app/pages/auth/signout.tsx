@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAuth } from 'lib/useAuth';
 
-export default function SignOut() {
+const SignOut: React.FC = (): JSX.Element => {
     const { signOut } = useAuth();
 
     useEffect(() => {
@@ -9,4 +9,6 @@ export default function SignOut() {
     }, []);
 
     return <div>Signout</div>;
-}
+};
+
+export default SignOut;

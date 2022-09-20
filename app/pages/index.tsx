@@ -4,7 +4,7 @@ import Image from 'next/image';
 import perse from '../img/perse.jpg';
 import React from 'react';
 
-export default function Index() {
+const Index: React.FC = (): JSX.Element => {
     return (
         <Container maxWidth="md" className={`${styles.indexPage} ${styles.pageContainer}`}>
             <Box my={4}>
@@ -25,5 +25,6 @@ export default function Index() {
                     Thank you and thank you for attending IFUSCO!</Typography>
             </Box>
         </Container >);
-}
+};
 
+export default Index; 

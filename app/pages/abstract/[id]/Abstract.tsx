@@ -3,14 +3,18 @@ import React from 'react';
 import CreateAbstract from "../new";
 import { useFindAbstractByAuthorQuery } from '../../../lib/graphql/findAbstractByAuthor.graphql';
 import AbstractReadOnly from "../../../components/AbstractReadOnly";
+import { IAbstract } from "../../../../interfaces/IAbstract";
 
-export default function Abstract() {
+const Abstract: React.FC = (): JSX.Element => {
     const { data } = useFindAbstractByAuthorQuery();
+
+    const existingAbstract: IAbstract = data?.abstractsByAuthor;
 
     return (
         <Box my={4}>
-            {data?.abstractsByAuthor?._id ? <AbstractReadOnly abstract={data.abstractsByAuthor} /> : <CreateAbstract />}
+            {existingAbstract?._id ? <AbstractReadOnly abstract={existingAbstract} /> : <CreateAbstract />}
         </Box>
     );
-}
+};
 
+export default Abstract;

@@ -1,8 +1,13 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import dynamic from "next/dynamic";
+import { ComponentType } from "react";
 import styles from '../styles/Home.module.scss';
 
-const PDFViewer = dynamic(() => import("../components/PDFViewer"), {
+interface IProps {
+    readonly file: string;
+}
+
+const PDFViewer: ComponentType<IProps> = dynamic(() => import("../components/PDFViewer"), {
     ssr: false,
 });
 

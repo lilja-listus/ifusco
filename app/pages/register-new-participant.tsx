@@ -4,9 +4,10 @@ import { Field, FieldProps, Form, Formik, FormikProps } from 'formik';
 import { useRegisterParticipantMutation } from "../lib/graphql/registerparticipant.graphql";
 import * as Yup from "yup";
 import { Button, Container, TextField, Typography } from "@material-ui/core";
-import { useRouter } from 'next/router';
+import { useRouter, NextRouter } from 'next/router';
 import { CountriesAutoComplete } from '../components/CountriesAutoComplete';
 import { useAuth } from "../lib/useAuth";
+import { participationFieldsList } from './participationFieldsList';
 
 interface IFormValues {
     email: string;
@@ -16,43 +17,12 @@ interface IFormValues {
     country: string;
 }
 
-interface IFormField {
-    readonly value: string;
-    readonly label: string;
-    readonly helperText: string;
-}
-
-const participationFieldsObject: IFormField[] = [
-    {
-        value: 'email',
-        label: 'Email',
-        helperText: 'eg. pekka.kaljanen@poro.com',
-    },
-    {
-        value: 'nameFirst',
-        label: 'First Name',
-        helperText: 'eg. Pekka',
-
-    },
-    {
-        value: 'nameLast',
-        label: 'Last Name',
-        helperText: 'eg. Kaljanen',
-
-    },
-    {
-        value: 'university',
-        label: 'University',
-        helperText: 'eg. University of Poro',
-
-    },
-];
 
 const RegisterNewParticipant: React.FC = (): JSX.Element => {
     const [registerParticipantMutation] = useRegisterParticipantMutation();
     const [errorMessage, setErrorMessage] = useState('');
 
-    const router = useRouter();
+    const router: NextRouter = useRouter();
     const { user } = useAuth();
 
     const updatedValue = (formikProps: FormikProps<IFormValues>): ((value: string) => void) => {
@@ -61,19 +31,19 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
             formikProps.setFieldValue('country', value);
         };
     };
-    const e;
+
     return (
         <Formik<IFormValues>
             initialValues={{
+                country: "",
                 email: user?.email || "",
                 nameFirst: "",
                 nameLast: "",
                 university: "",
-                country: "",
             }}
             onSubmit={async (values): Promise<void> => {
                 try {
-                    const { data } = await registerParticipantMutation({ variables: { email: values.email, nameFirst: values.nameFirst, nameLast: values.nameLast, university: values.university, country: values.country } });
+                    const { data } = await registerParticipantMutation({ variables: { country: values.country, email: values.email, nameFirst: values.nameFirst, nameLast: values.nameLast, university: values.university } });
                     if (data.registerParticipant._id) {
                         router.push('/congrats-you-are-registered');
                     }
@@ -85,12 +55,12 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
             }
             }
             validationSchema={Yup.object().shape({
+                country: Yup.string().required("Country is required"),
                 email: Yup.string()
                     .email("Email not valid")
                     .required("Email is required"),
                 nameFirst: Yup.string().required("First name is required"),
                 nameLast: Yup.string().required("Last name is required"),
-                country: Yup.string().required("Country is required"),
                 university: Yup.string().required("University is required"),
             })}
         >
@@ -101,7 +71,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                             <Typography variant="h5" component="h1" className={styles.registerNewParticipant__title} gutterBottom>Register me for the conference</Typography>
                             <Form>
                                 <div className={styles.registerNewParticipant__participationFieldsContainer}>
-                                    {participationFieldsObject.map(({ value, label, helperText }) => (
+                                    {participationFieldsList.map(({ value, label, helperText }) => (
                                         <Field name={value} key={label}>
                                             {({ field, form: { touched, errors, isSubmitting } }: FieldProps): JSX.Element => {
                                                 return (

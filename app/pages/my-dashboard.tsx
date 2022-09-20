@@ -3,7 +3,7 @@ import { Box, Container, Typography } from "@material-ui/core";
 import { useAuth } from "lib/useAuth";
 import MyDashboardTabs from '../components/MyDashboardTabs';
 
-export default function MyDashboard() {
+const MyDashboard: React.FC = (): JSX.Element => {
     const { user } = useAuth();
 
     return (
@@ -15,5 +15,6 @@ export default function MyDashboard() {
                 </div>
             </Box>
         </Container >);
-}
+};
 
+export default MyDashboard;

@@ -1,4 +1,6 @@
 @use './mixins.scss';
+@use "@material/card";
+@include card.core-styles;
 
 .headerContainer{
     flex-grow: 1;
@@ -19,6 +21,8 @@
   }
 
   .pageContainer{
+    text-align: justify;
+    margin-bottom: 150px;
         @media (max-width: 768px) {
             margin-bottom: 120px;
         }
@@ -143,4 +147,10 @@
         color: red;
          align-self: left
     }
+}
+
+.Pdf {
+    // @media (max-width: 768px){
+        max-width: 100% !important;
+    //   }
 }

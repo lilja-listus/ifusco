@@ -9,29 +9,29 @@ import {
     Typography,
 } from '@material-ui/core';
 import Link from 'next/link';
-import { useAuth } from 'lib/useAuth';
 import { Switch } from '@mui/material';
 import HamburgerMenu from './HamburgerMenu';
 import { INavigationLinks } from '../../interfaces/INavigationLinks';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Links } from './links';
+import { Links } from './Links';
 
+interface IProps {
+    darkState: boolean;
+    handleThemeChange: () => void;
+}
 
-export default function Header({ darkState, handleThemeChange }) {
-    const { user } = useAuth();
+const navigationLinks: INavigationLinks[] = [
+    { href: '/navigation/registration', label: 'About Registration' },
+    // { label: 'Abstracts', href: '/navigation/abstracts' },
+    // { label: 'Programme', href: '/navigation/programme' },
+    { href: '/navigation/about-turku', label: 'About Turku' },
+    { href: '/navigation/accomodation', label: 'Accomodation' },
+    { href: '/navigation/contact', label: 'Contact' },
+    { href: '/navigation/resources', label: 'Resources' },
+];
 
-    const isDesktopView = useMediaQuery('(min-width:600px)');
-
-
-    const navigationLinks: INavigationLinks[] = [
-        { label: 'About Registration', href: '/navigation/registration' },
-        // { label: 'Abstracts', href: '/navigation/abstracts' },
-        // { label: 'Programme', href: '/navigation/programme' },
-        { label: 'About Turku', href: '/navigation/about-turku' },
-        { label: 'Accomodation', href: '/navigation/accomodation' },
-        { label: 'Contact', href: '/navigation/contact' },
-        { label: 'FAQ', href: '/navigation/faq' },
-    ];
+const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element => {
+    const isDesktopView: boolean = useMediaQuery('(min-width:600px)');
 
     return (
         <div className={styles.headerContainer}>
@@ -53,8 +53,6 @@ export default function Header({ darkState, handleThemeChange }) {
                             </Typography>
 
                         </Grid>
-
-
                         {isDesktopView ? <> <Grid item>
                             {navigationLinks.map(({ label, href }) => {
                                 return (
@@ -75,15 +73,12 @@ export default function Header({ darkState, handleThemeChange }) {
                             </Grid>
 
                         }
-
-
                     </Grid>
-
-
                 </Toolbar>
 
             </AppBar>
-        </div >);
+        </div >
+    );
+};
 
-}
-
+export default Header;

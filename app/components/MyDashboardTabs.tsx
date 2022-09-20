@@ -6,14 +6,20 @@ import PersonalInfo from '../pages/user-info/PersonalInfo';
 import Abstract from '../pages/abstract/[id]/Abstract';
 import MySchedule from '../pages/my-schedule';
 
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: number;
-    value: number;
+interface ITabPanelProps {
+    readonly children?: React.ReactNode;
+    readonly index: number;
+    readonly value: number;
 }
 
-function TabPanel(props: TabPanelProps) {
+interface IAllProps {
+    readonly [key: string]: string;
+    readonly id: string
+}
+
+function TabPanel(props: ITabPanelProps): JSX.Element {
     const { children, value, index, ...other } = props;
+
 
     return (
         <div
@@ -32,24 +38,24 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-function a11yProps(index: number) {
+function a11yProps(index: number): IAllProps {
     return {
-        id: `simple-tab-${index}`,
         'aria-controls': `simple-tabpanel-${index}`,
+        id: `simple-tab-${index}`,
     };
 }
 
-export default function MyDashboardTabs() {
+const MyDashboardTabs: React.FC = () => {
     const [value, setValue] = React.useState(0);
 
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    const handleChange = (newValue: number): void => {
         setValue(newValue);
     };
 
     return (
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="fullWidth">
+                <Tabs value={value} onChange={(_event: React.SyntheticEvent<Element, Event>, value: any): void => handleChange(value)} aria-label="basic tabs example" variant="fullWidth">
                     <Tab label="My Schedule" {...a11yProps(0)} />
                     <Tab label="My Abstract" {...a11yProps(1)} />
                     <Tab label="My Info" {...a11yProps(2)} />
@@ -65,9 +71,10 @@ export default function MyDashboardTabs() {
             <TabPanel value={value} index={2}>
                 <PersonalInfo />
             </TabPanel>
-
         </Box>
     );
-}
+};
 
 // TODO: hide Abstract for not registered to the conference
+
+export default MyDashboardTabs;

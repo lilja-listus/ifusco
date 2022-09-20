@@ -1,5 +1,4 @@
-0;
-import * as React from "react";
+
 import Container from "@mui/material/Container";
 import Image from "next/image";
 import Box from "@mui/material/Box";
@@ -7,23 +6,21 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Logo from 'img/sielulintu.png';
 
-export default function Footer() {
-
+const Footer: React.FC = (): JSX.Element => {
     return (
         <Paper sx={{
-            marginTop: 'calc(10% + 60px)',
-            width: '100%',
-            height: '100px',
-            position: 'fixed',
             bottom: 0,
+            height: '100px',
+            marginTop: 'calc(10% + 60px)',
+            position: 'fixed',
+            width: '100%',
         }} component="footer" square variant="outlined">
             <Container maxWidth="lg">
-
                 <Box
                     sx={{
+                        display: "flex",
                         flexGrow: 1,
                         justifyContent: "center",
-                        display: "flex",
                         my: 1,
                     }}
                 >
@@ -33,18 +30,18 @@ export default function Footer() {
 
                 </Box>
                 <Typography variant="caption" color="initial" sx={{
+                    display: "flex",
                     flexGrow: 1,
                     justifyContent: "center",
-                    display: "flex",
                     my: 1,
                 }}>
                     Sugri ry, UTU
                 </Typography>
                 <Box
                     sx={{
+                        display: "flex",
                         flexGrow: 1,
                         justifyContent: "center",
-                        display: "flex",
                         mb: 2,
                     }}
                 >
@@ -55,5 +52,6 @@ export default function Footer() {
             </Container>
         </Paper>
     );
+};
 
-}
+export default Footer;

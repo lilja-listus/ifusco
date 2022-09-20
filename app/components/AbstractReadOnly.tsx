@@ -1,13 +1,11 @@
 import { TextField, Typography } from "@material-ui/core";
 import React from 'react';
+import { IAbstract } from '../../interfaces/IAbstract';
 
-
-export default function AbstractReadOnly({ abstract }) {
-
+const AbstractReadOnly: React.FC<IAbstract> = (abstract): JSX.Element => {
     return (
         <>
             <Typography variant="h5" component="h1" gutterBottom>{`${abstract.title} (${abstract.language})`}</Typography>
-
             <TextField
                 id="filled-multiline-flexible"
                 label="Your text"
@@ -23,5 +21,6 @@ export default function AbstractReadOnly({ abstract }) {
             />
         </>
     );
-}
+};
 
+export default AbstractReadOnly;

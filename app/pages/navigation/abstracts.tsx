@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import styles from '../../styles/Home.module.scss';
 
-export default function Abstracts() {
+export default function Abstracts(): JSX.Element {
     return (
         <Container maxWidth="md" className={styles.pageContainer}>
             <Box my={4}>

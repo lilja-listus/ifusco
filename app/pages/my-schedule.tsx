@@ -3,14 +3,14 @@ import { Box, Button, Checkbox, CircularProgress, Container, FormControlLabel } 
 import { useAuth } from "lib/useAuth";
 import { IScheduleCheckboxes } from '../../interfaces/IScheduleCheckboxes';
 
-export default function MySchedule() {
+const MySchedule: React.FC = (): JSX.Element => {
     const { user } = useAuth();
 
     const mySchedulecheckboxes: IScheduleCheckboxes[] = [
         {
+            button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>),
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Register to conference' }} color="secondary" checked={user?.isParticipant} />,
             label: "Register to the conference by July 5, 2023",
-            button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>),
         },
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Submit abstract' }} color="secondary" />,
@@ -38,5 +38,6 @@ export default function MySchedule() {
             }
         </Container >
     );
-}
+};
 
+export default MySchedule;

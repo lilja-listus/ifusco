@@ -2,7 +2,7 @@ import { Box, Button, Container, Typography } from "@material-ui/core";
 import Link from 'next/link';
 import styles from '../../styles/Home.module.scss';
 
-export default function About() {
+export default function About(): JSX.Element {
     return (
         <Container maxWidth="md" className={styles.pageContainer}>
             <Box my={4}>

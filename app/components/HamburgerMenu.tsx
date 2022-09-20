@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.scss';
 
-import { Box, Drawer, Link, ListItemIcon } from '@material-ui/core';
+import { Box, Drawer, Link } from '@material-ui/core';
 import { ListItemButton } from '@mui/material';
 import React, { useState } from 'react';
 import IconButton from "@mui/material/IconButton";
@@ -9,18 +9,15 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { INavigationLinks } from '../../interfaces/INavigationLinks';
-import { Links } from './links';
+import { Links } from './Links';
 
 
 interface IProps {
     navigationLinks: INavigationLinks[]
 }
 
-const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }) => {
-
+const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
     const [open, setState] = useState(false);
-
-    //function that is being called every time the drawer should open or close, the keys tab and shift are excluded so the user can focus between the elements with the keys
     const toggleDrawer = (open) => (event) => {
         if (
             event.type === "keydown" &&

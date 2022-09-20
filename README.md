@@ -16,9 +16,6 @@ TS
 Material UI
 Formik
 
-### Functionalities
-
-Stage 1.
 
 ### Initial setup
 
@@ -64,8 +61,7 @@ TODO:
 - configure the dashboard (abstract check)
 - connect FU test
 - responsiveness
-- link to the greenbook
-
+- add abstract (option uploading)
 
  source ~/.bash_profile    
  nvm use 16  

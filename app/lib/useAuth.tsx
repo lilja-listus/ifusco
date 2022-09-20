@@ -1,14 +1,14 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { useApolloClient } from '@apollo/client';
-import { useRouter } from 'next/router';
-
+import { createContext, ReactNode, useContext, useState } from 'react';
+import { ApolloClient, useApolloClient } from '@apollo/client';
+import { NextRouter, useRouter } from 'next/router';
 import { useSigninMutation } from 'lib/graphql/signin.graphql';
 import { useSignupMutation } from 'lib/graphql/signup.graphql';
 import { useEditUserMutation } from 'lib/graphql/edituser.graphql';
 import { useCurrentUserQuery } from 'lib/graphql/currentUser.graphql';
+import { IUser } from '../../interfaces/IUser';
 
 type AuthProps = {
-    user: any;
+    user: IUser;
     error: string;
     signIn: (email: string, password: string) => Promise<void>
     signUp: (email: string, password: string, nameFirst: string) => Promise<void>
@@ -18,35 +18,38 @@ type AuthProps = {
         hasPaid?: string, password?: string) => Promise<void>
 };
 
-
-const AuthContext = createContext<Partial<AuthProps>>({});
-
-export function AuthProvider({ children }) {
-    const auth = useProvideAuth();
-    return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+export interface IAuthProviderProps {
+    children?: ReactNode
 }
 
-export const useAuth = () => {
+const AuthContext: React.Context<Partial<AuthProps>> = createContext<Partial<AuthProps>>({});
+
+export const AuthProvider = ({ children }: IAuthProviderProps): JSX.Element => {
+    const auth: unknown = useProvideAuth();
+    return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
+};
+
+export const useAuth = (): Partial<AuthProps> => {
     return useContext(AuthContext);
 };
 
-function useProvideAuth() {
-    const client = useApolloClient();
-    const router = useRouter();
+function useProvideAuth(): unknown {
+    const client: ApolloClient<object> = useApolloClient();
+    const router: NextRouter = useRouter();
 
     const [error, setError] = useState('');
     const { data } = useCurrentUserQuery({
-        fetchPolicy: 'network-only',
         errorPolicy: 'ignore',
+        fetchPolicy: 'network-only',
     });
 
-    const user = data && data.currentUser;
+    const user: IUser = data && data.currentUser;
 
     const [signinMutation] = useSigninMutation();
     const [signupMutation] = useSignupMutation();
     const [editUserMutation] = useEditUserMutation();
 
-    const signIn = async (email, password) => {
+    const signIn = async (email: string, password: string): Promise<void> => {
         try {
             const { data } = await signinMutation({ variables: { email, password } });
             if (data.login.token && data.login.user) {
@@ -59,19 +62,19 @@ function useProvideAuth() {
             }
 
         } catch (err) {
-
             setError(err.message);
         }
     };
 
 
-    const signUp = async (email, password, nameFirst) => {
+    const signUp = async (email: string, password: string, nameFirst: string): Promise<void> => {
         try {
-            const { data } = await signupMutation({ variables: { email, password, nameFirst } });
+            const { data } = await signupMutation({ variables: { email, nameFirst, password } });
+
             if (data.register.token && data.register.user) {
                 sessionStorage.setItem('token', data.register.token);
                 client.resetStore().then(() => {
-                    router.push('/');
+                    router.push('/my-dashboard');
                 });
             } else {
                 setError('Invalid login');
@@ -82,7 +85,7 @@ function useProvideAuth() {
         }
     };
 
-    const signOut = () => {
+    const signOut = (): void => {
         sessionStorage.removeItem('token');
         client.resetStore().then(() => {
             router.push('/');
@@ -92,27 +95,26 @@ function useProvideAuth() {
     const editUser = async (nameFirst, nameLast,
         university,
         country,
-        hasPaid, password) => {
+        hasPaid, password): Promise<void> => {
         try {
-            const data = await editUserMutation({
+            await editUserMutation({
                 variables: {
                     input: {
-                        id: user._id,
-                        password, nameFirst, nameLast,
-                        university,
                         country,
                         hasPaid,
+                        id: user._id,
+                        nameFirst, nameLast, password,
+                        university,
                     },
                 },
             });
 
-            console.log(data);
         } catch (err) {
             setError(err.message);
         }
     };
 
     return {
-        user, error, signIn, signOut, signUp, editUser,
+        editUser, error, signIn, signOut, signUp, user,
     };
 }
