@@ -64,6 +64,8 @@ TODO:
 - configure the dashboard (abstract check)
 - connect FU test
 - responsiveness
+- link to the greenbook
 
 
  source ~/.bash_profile    
+ nvm use 16  
