@@ -1,30 +1,32 @@
-import styles from '../../styles/Home.module.scss'
+import styles from '../../styles/Home.module.scss';
 import { useState } from "react";
 import { useRouter } from 'next/router';
-import { useAddAbstractMutation } from 'lib/graphql/addabstract.graphql'
-import { Container, TextField, Box, Button } from '@material-ui/core'
+import { useAddAbstractMutation } from 'lib/graphql/addabstract.graphql';
+import { Box, Button, Container, TextField } from '@material-ui/core';
 
 export default function CreateAbstract() {
-    const [title, setTitle] = useState('')
-    const [text, setText] = useState('')
-    const [language, setLanguage] = useState('')
+    const [title, setTitle] = useState('');
+    const [text, setText] = useState('');
+    const [language, setLanguage] = useState('');
 
-    const router = useRouter()
+    const router = useRouter();
 
-    const [addAbstractMutation] = useAddAbstractMutation()
+    const [addAbstractMutation] = useAddAbstractMutation();
 
 
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            const { data } = await addAbstractMutation({ variables: { input: { title, text, language } } })
+            const { data } = await addAbstractMutation({ variables: { input: { title, text, language } } });
 
             if (data.addAbstract._id) {
-                router.push('/my-dashboard')
+                router.push('/my-dashboard');
             }
 
-        } catch (err) { console.log(err) }
-    }
+        } catch (err) {
+ console.log(err); 
+}
+    };
 
     return (
         <Container >
@@ -54,5 +56,5 @@ export default function CreateAbstract() {
                 </form>
             </Box>
         </Container >
-    )
+    );
 }

@@ -1,5 +1,5 @@
-import { Container, Typography, Box } from "@material-ui/core"
-import styles from '../../styles/Home.module.scss'
+import { Box, Container, Typography } from "@material-ui/core";
+import styles from '../../styles/Home.module.scss';
 
 export default function Contact() {
     return (
@@ -13,6 +13,6 @@ export default function Contact() {
                     The main organizers of IFUSCO XXXVIII are: turun Sugrit
 
                     IFUSCO XXXVIII is being organized by pretty awesome peeps.</p>
-            </Box> </Container >)
+            </Box> </Container >);
 }
 

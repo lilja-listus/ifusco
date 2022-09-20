@@ -1,5 +1,5 @@
-import { Container, Typography, Box } from "@material-ui/core"
-import styles from '../../styles/Home.module.scss'
+import { Box, Container, Typography } from "@material-ui/core";
+import styles from '../../styles/Home.module.scss';
 
 export default function Faq() {
     return (
@@ -8,6 +8,6 @@ export default function Faq() {
                 <Typography variant="h4" component="h1" gutterBottom>Faq</Typography>
                 <p>More info to come :D </p>
             </Box>
-        </Container >)
+        </Container >);
 }
 

@@ -1,8 +1,8 @@
-import styles from '../styles/Home.module.scss'
-import { Container, Typography, Box } from "@material-ui/core"
-import Image from 'next/image'
-import perse from '../img/perse.jpg'
-import React from 'react'
+import styles from '../styles/Home.module.scss';
+import { Box, Container, Typography } from "@material-ui/core";
+import Image from 'next/image';
+import perse from '../img/perse.jpg';
+import React from 'react';
 
 export default function Index() {
     return (
@@ -24,6 +24,6 @@ export default function Index() {
                     For all participants: we would appreciate it if you could find some time to fill in this evaluation form.
                     Thank you and thank you for attending IFUSCO!</Typography>
             </Box>
-        </Container >)
+        </Container >);
 }
 

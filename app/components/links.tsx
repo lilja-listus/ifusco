@@ -20,4 +20,4 @@ export const Links = () => {
                 </Link>
             );
         });
-}
+};

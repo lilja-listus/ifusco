@@ -1,24 +1,24 @@
-import { TextField, Box, Typography, Button } from "@material-ui/core"
-import { useAuth } from "../lib/useAuth"
-import React, { useState } from 'react'
+import { Box, Button, TextField, Typography } from "@material-ui/core";
+import { useAuth } from "../lib/useAuth";
+import React, { useState } from 'react';
 
 export default function PersonalInfoEdit({ user, setReadme }) {
 
 
-    const { editUser } = useAuth()
+    const { editUser } = useAuth();
 
-    const [nameFirst, setNameFirst] = useState(user.nameFirst || "")
+    const [nameFirst, setNameFirst] = useState(user.nameFirst || "");
 
 
     const userInfoObject = [
         { label: "First Name", value: nameFirst, updateValue: setNameFirst },
 
-    ]
+    ];
 
     const updateUserInfo = async () => {
-        await editUser(nameFirst)
-        setReadme(true)
-    }
+        await editUser(nameFirst);
+        setReadme(true);
+    };
 
     return (
         <>
@@ -32,6 +32,6 @@ export default function PersonalInfoEdit({ user, setReadme }) {
 
             <Button color="inherit" onClick={updateUserInfo}>Save</Button>
         </>
-    )
+    );
 }
 

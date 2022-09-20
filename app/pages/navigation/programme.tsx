@@ -1,5 +1,5 @@
-import { Container, Typography, Box } from "@material-ui/core"
-import styles from '../../styles/Home.module.scss'
+import { Box, Container, Typography } from "@material-ui/core";
+import styles from '../../styles/Home.module.scss';
 
 export default function Ptogramme() {
     return (
@@ -7,6 +7,6 @@ export default function Ptogramme() {
             <Box my={4}>
                 <Typography variant="h4" component="h1" gutterBottom>Programme</Typography>
             </Box>
-        </Container >)
+        </Container >);
 }
 

@@ -1,12 +1,12 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import dynamic from "next/dynamic";
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss';
 
 const PDFViewer = dynamic(() => import("../components/PDFViewer"), {
-    ssr: false
+    ssr: false,
 });
 
-export default function PDF() {
+export default function PDF(): JSX.Element {
     return (
         <Container maxWidth="md" className={styles.pageContainer}>
             <Box my={4}>
@@ -14,6 +14,6 @@ export default function PDF() {
                 <PDFViewer file="/GreenBook.pdf" />
             </Box>
         </Container >
-    )
+    );
 }
 

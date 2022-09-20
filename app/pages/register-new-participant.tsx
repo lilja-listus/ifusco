@@ -1,12 +1,12 @@
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss';
 import React, { useState } from 'react';
-import { Form, Formik, FieldProps, Field, FormikProps } from 'formik'
-import { useRegisterParticipantMutation } from "../lib/graphql/registerparticipant.graphql"
+import { Field, FieldProps, Form, Formik, FormikProps } from 'formik';
+import { useRegisterParticipantMutation } from "../lib/graphql/registerparticipant.graphql";
 import * as Yup from "yup";
-import { TextField, Typography, Button, Container } from "@material-ui/core"
+import { Button, Container, TextField, Typography } from "@material-ui/core";
 import { useRouter } from 'next/router';
 import { CountriesAutoComplete } from '../components/CountriesAutoComplete';
-import { useAuth } from "../lib/useAuth"
+import { useAuth } from "../lib/useAuth";
 
 interface IFormValues {
     email: string;
@@ -26,42 +26,42 @@ const participationFieldsObject: IFormField[] = [
     {
         value: 'email',
         label: 'Email',
-        helperText: 'eg. pekka.kaljanen@poro.com'
+        helperText: 'eg. pekka.kaljanen@poro.com',
     },
     {
         value: 'nameFirst',
         label: 'First Name',
-        helperText: 'eg. Pekka'
+        helperText: 'eg. Pekka',
 
     },
     {
         value: 'nameLast',
         label: 'Last Name',
-        helperText: 'eg. Kaljanen'
+        helperText: 'eg. Kaljanen',
 
     },
     {
         value: 'university',
         label: 'University',
-        helperText: 'eg. University of Poro'
+        helperText: 'eg. University of Poro',
 
     },
-]
+];
 
 const RegisterNewParticipant: React.FC = (): JSX.Element => {
-    const [registerParticipantMutation] = useRegisterParticipantMutation()
-    const [errorMessage, setErrorMessage] = useState('')
+    const [registerParticipantMutation] = useRegisterParticipantMutation();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const router = useRouter();
-    const { user } = useAuth()
+    const { user } = useAuth();
 
     const updatedValue = (formikProps: FormikProps<IFormValues>): ((value: string) => void) => {
         return (value: string): void => {
-            formikProps.setFieldTouched('country')
-            formikProps.setFieldValue('country', value)
-        }
+            formikProps.setFieldTouched('country');
+            formikProps.setFieldValue('country', value);
+        };
     };
-
+    const e;
     return (
         <Formik<IFormValues>
             initialValues={{
@@ -73,14 +73,14 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
             }}
             onSubmit={async (values): Promise<void> => {
                 try {
-                    const { data } = await registerParticipantMutation({ variables: { email: values.email, nameFirst: values.nameFirst, nameLast: values.nameLast, university: values.university, country: values.country } })
+                    const { data } = await registerParticipantMutation({ variables: { email: values.email, nameFirst: values.nameFirst, nameLast: values.nameLast, university: values.university, country: values.country } });
                     if (data.registerParticipant._id) {
-                        router.push('/congrats-you-are-registered')
+                        router.push('/congrats-you-are-registered');
                     }
 
                 } catch (e) {
-                    console.log(e)
-                    setErrorMessage(e.message)
+                    console.log(e);
+                    setErrorMessage(e.message);
                 }
             }
             }
@@ -112,7 +112,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                                                         type={field.name === 'email' && 'email'}
                                                         onChange={formikProps.handleChange}
                                                         onBlur={formikProps.handleBlur}
-                                                        value={formikProps.values[value]} size="small" helperText={helperText} className={styles.registerNewParticipant__textFieldValue} />)
+                                                        value={formikProps.values[value]} size="small" helperText={helperText} className={styles.registerNewParticipant__textFieldValue} />);
                                             }}
                                         </Field>
                                     ))}
@@ -123,7 +123,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                                     {({ field, form: { touched, errors, isSubmitting } }: FieldProps): JSX.Element => {
                                         return (
                                             <CountriesAutoComplete updateValue={updatedValue(formikProps)} />
-                                        )
+                                        );
                                     }}
                                 </Field>
                                 <Button
@@ -143,12 +143,12 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                             </Form>
                         </div>
                     </Container>
-                )
+                );
             }}
         </Formik>
 
-    )
-}
+    );
+};
 
 export default RegisterNewParticipant;
 

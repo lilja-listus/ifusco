@@ -1,27 +1,26 @@
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss';
 import React from 'react';
 import {
     AppBar,
+    Button,
+    Grid,
+    Link as LinkText,
     Toolbar,
     Typography,
-    Button,
-    Link as LinkText,
-    Grid,
 } from '@material-ui/core';
 import Link from 'next/link';
 import { useAuth } from 'lib/useAuth';
 import { Switch } from '@mui/material';
 import HamburgerMenu from './HamburgerMenu';
-import { INavigationLinks } from '../../interfaces/INavigationLinks'
+import { INavigationLinks } from '../../interfaces/INavigationLinks';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Links } from './links'
+import { Links } from './links';
 
 
 export default function Header({ darkState, handleThemeChange }) {
     const { user } = useAuth();
 
     const isDesktopView = useMediaQuery('(min-width:600px)');
-
 
 
     const navigationLinks: INavigationLinks[] = [
@@ -32,7 +31,7 @@ export default function Header({ darkState, handleThemeChange }) {
         { label: 'Accomodation', href: '/navigation/accomodation' },
         { label: 'Contact', href: '/navigation/contact' },
         { label: 'FAQ', href: '/navigation/faq' },
-    ]
+    ];
 
     return (
         <div className={styles.headerContainer}>
@@ -79,7 +78,6 @@ export default function Header({ darkState, handleThemeChange }) {
 
 
                     </Grid>
-
 
 
                 </Toolbar>

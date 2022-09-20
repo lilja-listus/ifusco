@@ -1,6 +1,6 @@
-import { Container, Typography, Box, Button } from "@material-ui/core"
-import Link from 'next/link'
-import styles from '../../styles/Home.module.scss'
+import { Box, Button, Container, Typography } from "@material-ui/core";
+import Link from 'next/link';
+import styles from '../../styles/Home.module.scss';
 
 export default function About() {
     return (
@@ -11,6 +11,6 @@ export default function About() {
                     <Button variant="contained" color="primary">Go to index page</Button>
                 </Link>
             </Box>
-        </Container >)
+        </Container >);
 }
 

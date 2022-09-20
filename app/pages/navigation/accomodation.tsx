@@ -1,5 +1,5 @@
-import { Container, Typography, Box } from "@material-ui/core"
-import styles from '../../styles/Home.module.scss'
+import { Box, Container, Typography } from "@material-ui/core";
+import styles from '../../styles/Home.module.scss';
 
 export default function Accomodation() {
     return (
@@ -8,6 +8,6 @@ export default function Accomodation() {
                 <Typography variant="h4" component="h1" gutterBottom>Accomodation</Typography>
                 <p>There is no info on accomodation yet</p>
             </Box>
-        </Container >)
+        </Container >);
 }
 

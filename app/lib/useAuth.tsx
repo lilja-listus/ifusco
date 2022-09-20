@@ -1,11 +1,11 @@
-import { useState, useContext, createContext, useEffect } from 'react'
-import { useApolloClient } from '@apollo/client'
-import { useRouter } from 'next/router'
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useApolloClient } from '@apollo/client';
+import { useRouter } from 'next/router';
 
-import { useSigninMutation } from 'lib/graphql/signin.graphql'
-import { useSignupMutation } from 'lib/graphql/signup.graphql'
-import { useEditUserMutation } from 'lib/graphql/edituser.graphql'
-import { useCurrentUserQuery } from 'lib/graphql/currentUser.graphql'
+import { useSigninMutation } from 'lib/graphql/signin.graphql';
+import { useSignupMutation } from 'lib/graphql/signup.graphql';
+import { useEditUserMutation } from 'lib/graphql/edituser.graphql';
+import { useCurrentUserQuery } from 'lib/graphql/currentUser.graphql';
 
 type AuthProps = {
     user: any;
@@ -16,19 +16,19 @@ type AuthProps = {
     editUser: (nameFirst: string, nameLast?: string, university?: string,
         country?: string,
         hasPaid?: string, password?: string) => Promise<void>
-}
+};
 
 
-const AuthContext = createContext<Partial<AuthProps>>({})
+const AuthContext = createContext<Partial<AuthProps>>({});
 
 export function AuthProvider({ children }) {
-    const auth = useProvideAuth()
-    return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>
+    const auth = useProvideAuth();
+    return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
 export const useAuth = () => {
-    return useContext(AuthContext)
-}
+    return useContext(AuthContext);
+};
 
 function useProvideAuth() {
     const client = useApolloClient();
@@ -37,8 +37,8 @@ function useProvideAuth() {
     const [error, setError] = useState('');
     const { data } = useCurrentUserQuery({
         fetchPolicy: 'network-only',
-        errorPolicy: 'ignore'
-    })
+        errorPolicy: 'ignore',
+    });
 
     const user = data && data.currentUser;
 
@@ -48,46 +48,46 @@ function useProvideAuth() {
 
     const signIn = async (email, password) => {
         try {
-            const { data } = await signinMutation({ variables: { email, password } })
+            const { data } = await signinMutation({ variables: { email, password } });
             if (data.login.token && data.login.user) {
-                sessionStorage.setItem('token', data.login.token)
+                sessionStorage.setItem('token', data.login.token);
                 client.resetStore().then(() => {
-                    router.push('/')
-                })
+                    router.push('/');
+                });
             } else {
-                setError('Invalid login')
+                setError('Invalid login');
             }
 
         } catch (err) {
 
             setError(err.message);
         }
-    }
+    };
 
 
     const signUp = async (email, password, nameFirst) => {
         try {
-            const { data } = await signupMutation({ variables: { email, password, nameFirst } })
+            const { data } = await signupMutation({ variables: { email, password, nameFirst } });
             if (data.register.token && data.register.user) {
-                sessionStorage.setItem('token', data.register.token)
+                sessionStorage.setItem('token', data.register.token);
                 client.resetStore().then(() => {
-                    router.push('/')
-                })
+                    router.push('/');
+                });
             } else {
-                setError('Invalid login')
+                setError('Invalid login');
             }
 
         } catch (err) {
             setError(err.message);
         }
-    }
+    };
 
     const signOut = () => {
         sessionStorage.removeItem('token');
         client.resetStore().then(() => {
             router.push('/');
         });
-    }
+    };
 
     const editUser = async (nameFirst, nameLast,
         university,
@@ -102,17 +102,17 @@ function useProvideAuth() {
                         university,
                         country,
                         hasPaid,
-                    }
-                }
+                    },
+                },
             });
 
-            console.log(data)
+            console.log(data);
         } catch (err) {
             setError(err.message);
         }
-    }
+    };
 
     return {
-        user, error, signIn, signOut, signUp, editUser
-    }
+        user, error, signIn, signOut, signUp, editUser,
+    };
 }

@@ -1,15 +1,15 @@
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss';
 
-import { Box, Drawer, Link, ListItemIcon } from '@material-ui/core'
-import { ListItemButton } from '@mui/material'
-import React, { useState } from 'react'
+import { Box, Drawer, Link, ListItemIcon } from '@material-ui/core';
+import { ListItemButton } from '@mui/material';
+import React, { useState } from 'react';
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import { INavigationLinks } from '../../interfaces/INavigationLinks'
-import { Links } from './links'
+import { INavigationLinks } from '../../interfaces/INavigationLinks';
+import { Links } from './links';
 
 
 interface IProps {
@@ -42,8 +42,8 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }) => {
                     mr: 2,
                     display: {
                         xs: "block",
-                        sm: "none"
-                    }
+                        sm: "none",
+                    },
                 }}
             >
                 <MenuIcon />
@@ -75,7 +75,7 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }) => {
                                     </Link>
                                 </ListItemButton>
 
-                            )
+                            ),
                             )}
 
                         <Divider />
@@ -83,11 +83,10 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }) => {
                     </Box>
 
 
-
                 </Box>
             </Drawer>
         </div>
-    )
-}
+    );
+};
 
-export default HamburgerMenu
+export default HamburgerMenu;

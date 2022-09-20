@@ -1,7 +1,7 @@
-import { Box } from "@material-ui/core"
-import React from 'react'
+import { Box } from "@material-ui/core";
+import React from 'react';
 import CreateAbstract from "../new";
-import { useFindAbstractByAuthorQuery } from '../../../lib/graphql/findAbstractByAuthor.graphql'
+import { useFindAbstractByAuthorQuery } from '../../../lib/graphql/findAbstractByAuthor.graphql';
 import AbstractReadOnly from "../../../components/AbstractReadOnly";
 
 export default function Abstract() {
@@ -11,6 +11,6 @@ export default function Abstract() {
         <Box my={4}>
             {data?.abstractsByAuthor?._id ? <AbstractReadOnly abstract={data.abstractsByAuthor} /> : <CreateAbstract />}
         </Box>
-    )
+    );
 }
 

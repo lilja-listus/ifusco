@@ -1,5 +1,5 @@
-import { Typography } from "@material-ui/core"
-import React from 'react'
+import { Typography } from "@material-ui/core";
+import React from 'react';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -7,7 +7,7 @@ export default function PersonalInfoReadMe({ user, setReadme }) {
     const userInfoObject = [
         { label: "First Name", value: user.nameFirst },
         { label: "Email", value: user.email },
-    ]
+    ];
 
     return (
         <>
@@ -21,6 +21,6 @@ export default function PersonalInfoReadMe({ user, setReadme }) {
             </Fab>
 
         </>
-    )
+    );
 }
 

@@ -3,7 +3,7 @@ import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, Next
 class MyDocument extends Document {
     static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
         const getInitialProps = await Document.getInitialProps(ctx);
-        return { ...getInitialProps }
+        return { ...getInitialProps };
     }
 
     render(): JSX.Element {
@@ -13,7 +13,7 @@ class MyDocument extends Document {
                 <Main />
                 <NextScript />
             </body>
-        </Html>)
+        </Html>);
     }
 }
 

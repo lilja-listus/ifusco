@@ -1,0 +1,71 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      },
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      
+      "rules": {
+        "eol-last": ["warn", "always"], // every file has to end with new line
+        "no-multiple-empty-lines": "warn",
+        "no-duplicate-case": "error",
+        "no-var": "error",
+        "sort-keys": "warn",
+        "brace-style": "warn", // braces on the same line as the statement
+        "space-before-blocks": "warn",
+        "keyword-spacing": ["warn", { "before": true, "after": true }],
+        "semi": "off",
+        "@typescript-eslint/semi": ["error"],
+      "default-case": ["error"],
+      "comma-dangle": ["error", "always-multiline"],
+
+      "@typescript-eslint/no-inferrable-types": "off",
+      "@typescript-eslint/no-non-null-assertion": "off", // allows us to use the "!" symbols
+      "@typescript-eslint/array-type": [2, {
+        "default": "array"
+    }],
+    "@typescript-eslint/no-unused-expressions": ["error", {
+      "allowShortCircuit": true,
+      "allowTernary": true
+  }],
+  "@typescript-eslint/naming-convention": [
+    "error",
+    {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+            "regex": "^I[A-Z]",
+            "match": true
+        }
+    }
+],
+"no-duplicate-imports": "off",
+"@typescript-eslint/no-duplicate-imports": ["error"],
+"@typescript-eslint/typedef": ["error", {
+    "memberVariableDeclaration": true,
+    "arrow-parameter": true,
+    "parameter": true,
+    "propertyDeclaration": true,
+    "variableDeclaration": true,
+    "variableDeclarationIgnoreFunction": true
+}], "@typescript-eslint/explicit-function-return-type": ["error"],
+
+"@typescript-eslint/no-unused-vars": ["warn", {
+  "argsIgnorePattern": "reject",
+  "ignoreRestSiblings": true,
+  "args": "none"
+}]
+      }
+    }

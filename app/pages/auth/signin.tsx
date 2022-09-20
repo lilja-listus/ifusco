@@ -1,16 +1,16 @@
-import { useState } from 'react'
-import { Typography, Container, TextField, Box, Button } from '@material-ui/core'
-import { useAuth } from 'lib/useAuth'
+import { useState } from 'react';
+import { Box, Button, Container, TextField, Typography } from '@material-ui/core';
+import { useAuth } from 'lib/useAuth';
 
 export default function SignIn() {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const { error, signIn } = useAuth()
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const { error, signIn } = useAuth();
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        signIn(email, password)
-    }
+        signIn(email, password);
+    };
 
     return (
         <Container maxWidth="sm">
@@ -33,5 +33,5 @@ export default function SignIn() {
                 </form>
             </Box>
         </Container>
-    )
+    );
 }

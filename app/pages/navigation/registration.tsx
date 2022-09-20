@@ -1,5 +1,5 @@
-import { Container, Typography, Box, Button } from "@material-ui/core"
-import styles from '../../styles/Home.module.scss'
+import { Box, Button, Container, Typography } from "@material-ui/core";
+import styles from '../../styles/Home.module.scss';
 
 export default function Registration() {
     return (
@@ -14,6 +14,6 @@ export default function Registration() {
                     It is also possible to participate as a volunteer (during the week of the conference, i.e. May 23-27). In this case we can offer cooperation in a friendly team and within a highly inspiring community of Finno-Ugric enthusiasts.</Typography>
             </Box>
             <Button href='/register-new-participant' color="inherit">Registration Form</Button>
-        </Container >)
+        </Container >);
 }
 

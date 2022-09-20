@@ -1,7 +1,7 @@
-import styles from '../styles/Home.module.scss'
-import { Container, Typography, Box, } from "@material-ui/core"
+import styles from '../styles/Home.module.scss';
+import { Box, Container, Typography } from "@material-ui/core";
 import { useAuth } from "lib/useAuth";
-import MyDashboardTabs from '../components/MyDashboardTabs'
+import MyDashboardTabs from '../components/MyDashboardTabs';
 
 export default function MyDashboard() {
     const { user } = useAuth();
@@ -14,6 +14,6 @@ export default function MyDashboard() {
                     <MyDashboardTabs />
                 </div>
             </Box>
-        </Container >)
+        </Container >);
 }
 

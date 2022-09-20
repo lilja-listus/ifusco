@@ -1,11 +1,11 @@
-0
+0;
 import * as React from "react";
 import Container from "@mui/material/Container";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import Logo from 'img/sielulintu.png'
+import Logo from 'img/sielulintu.png';
 
 export default function Footer() {
 
@@ -24,7 +24,7 @@ export default function Footer() {
                         flexGrow: 1,
                         justifyContent: "center",
                         display: "flex",
-                        my: 1
+                        my: 1,
                     }}
                 >
                     <div>
@@ -36,7 +36,7 @@ export default function Footer() {
                     flexGrow: 1,
                     justifyContent: "center",
                     display: "flex",
-                    my: 1
+                    my: 1,
                 }}>
                     Sugri ry, UTU
                 </Typography>

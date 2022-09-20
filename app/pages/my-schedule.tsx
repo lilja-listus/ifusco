@@ -1,7 +1,7 @@
-import styles from '../styles/Home.module.scss'
-import { Container, Box, Checkbox, Button, CircularProgress, FormControlLabel } from "@material-ui/core"
+import styles from '../styles/Home.module.scss';
+import { Box, Button, Checkbox, CircularProgress, Container, FormControlLabel } from "@material-ui/core";
 import { useAuth } from "lib/useAuth";
-import { IScheduleCheckboxes } from '../../interfaces/IScheduleCheckboxes'
+import { IScheduleCheckboxes } from '../../interfaces/IScheduleCheckboxes';
 
 export default function MySchedule() {
     const { user } = useAuth();
@@ -10,17 +10,17 @@ export default function MySchedule() {
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Register to conference' }} color="secondary" checked={user?.isParticipant} />,
             label: "Register to the conference by July 5, 2023",
-            button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>)
+            button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>),
         },
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Submit abstract' }} color="secondary" />,
-            label: "Submit abstract by July 10, 2023 (only for registered to the conference)"
+            label: "Submit abstract by July 10, 2023 (only for registered to the conference)",
         },
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Come to Turku' }} color="secondary" />,
-            label: "Come to Turku for May 15-18"
+            label: "Come to Turku for May 15-18",
         },
-    ]
+    ];
 
     return (
         <Container >
@@ -31,12 +31,12 @@ export default function MySchedule() {
                             <div key={label}>
                                 <FormControlLabel control={checkbox} label={label} />
                                 {button}
-                            </div>
+                            </div>,
                         )}
                     </div>
                 </Box> : <CircularProgress />
             }
         </Container >
-    )
+    );
 }
 

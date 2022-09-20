@@ -1,9 +1,9 @@
-import styles from '../../styles/Home.module.scss'
+import styles from '../../styles/Home.module.scss';
 import React from 'react';
-import { Form, Formik, FieldProps, Field } from 'formik'
-import { useAuth } from 'lib/useAuth'
+import { Field, FieldProps, Form, Formik } from 'formik';
+import { useAuth } from 'lib/useAuth';
 import * as Yup from "yup";
-import { TextField, Typography, Button, Container } from "@material-ui/core"
+import { Button, Container, TextField, Typography } from "@material-ui/core";
 import { useRouter } from 'next/router';
 
 interface IFormValues {
@@ -23,7 +23,7 @@ const participationFieldsObject: IFormField[] = [
     {
         value: 'email',
         label: 'Email',
-        type: 'email'
+        type: 'email',
     },
     {
         value: 'nameFirst',
@@ -33,18 +33,18 @@ const participationFieldsObject: IFormField[] = [
     {
         value: 'password',
         label: 'Password',
-        type: 'password'
+        type: 'password',
 
     },
     {
         value: 'passwordConfirm',
         label: 'Confirm Password',
-        type: 'password'
+        type: 'password',
     },
-]
+];
 
 const RegisterNewUser: React.FC = (): JSX.Element => {
-    const { error, signUp } = useAuth()
+    const { error, signUp } = useAuth();
 
     const router = useRouter();
 
@@ -59,12 +59,12 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
 
             onSubmit={async (values): Promise<void> => {
                 try {
-                    const { data } = await signUp(values.email, values.password, values.nameFirst)
+                    const { data } = await signUp(values.email, values.password, values.nameFirst);
                     if (data.user._id) {
-                        router.push('/my-dashboard')
+                        router.push('/my-dashboard');
                     }
                 } catch (e) {
-                    console.log(e)
+                    console.log(e);
                 }
             }
             }
@@ -103,7 +103,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                                         <div className={styles.signupPage__errorMessage}>{errors[value]}</div>
                                                     ) : null}
 
-                                                </>)
+                                                </>);
 
                                             }}
                                         </Field>
@@ -128,11 +128,11 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                             </Form >
                         </div >
                     </Container >
-                )
+                );
             }}
         </Formik >
 
-    )
-}
+    );
+};
 
 export default RegisterNewUser;

@@ -16,23 +16,23 @@ const PDFViewer: React.FC<IProps> = ({ file }) => {
     const onDocumentLoadSuccess = ({ numPages }): void => {
         setNumPages(numPages);
         setPageNumber(1);
-    }
+    };
 
     const changePage = (offSet): void => {
         setPageNumber(prevPageNumber => prevPageNumber + offSet);
-    }
+    };
 
     const changePageBack = (): void => {
-        changePage(-1)
-    }
+        changePage(-1);
+    };
 
     const changePageNext = (): void => {
-        changePage(+1)
-    }
+        changePage(+1);
+    };
 
-    const handleChange = (value): void => setPageNumber(value)
+    const handleChange = (value): void => setPageNumber(value);
 
-    const dropDownValues = Array.from(Array(numPages + 1).keys())
+    const dropDownValues = Array.from(Array(numPages + 1).keys());
 
     return (
         <div align="center" style={{ marginBottom: "150px" }}>
@@ -65,6 +65,6 @@ const PDFViewer: React.FC<IProps> = ({ file }) => {
 
         </div >
     );
-}
+};
 
 export default PDFViewer;

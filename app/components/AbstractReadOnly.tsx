@@ -1,5 +1,5 @@
-import { Typography, TextField } from "@material-ui/core"
-import React from 'react'
+import { TextField, Typography } from "@material-ui/core";
+import React from 'react';
 
 
 export default function AbstractReadOnly({ abstract }) {
@@ -22,6 +22,6 @@ export default function AbstractReadOnly({ abstract }) {
                 disabled
             />
         </>
-    )
+    );
 }
 
