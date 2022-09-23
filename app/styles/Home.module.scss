@@ -1,5 +1,6 @@
 @use './mixins.scss';
 @use "@material/card";
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 @include card.core-styles;
 
 .headerContainer{
@@ -154,3 +155,150 @@
         max-width: 100% !important;
     //   }
 }
+
+.flag{
+    &__container{
+        width: 300px;
+        height: 180px;
+        background-color: white;
+        margin: -10% auto;
+        position: relative;
+        animation: moveDown 2s ease-in-out 2s;
+        animation-fill-mode: forwards;  
+        
+        @media (max-width: 768px) {
+            animation: moveDownMobile 2s ease-in-out 2s;
+            animation-fill-mode: forwards;  
+        }
+    }
+
+    &__lineHorisontal{
+        background-color:blue;
+        height:20px;
+        position: relative;
+        top: 71px;
+        animation:glideHorisontal 2s ease-in alternate;
+    }
+
+    &__lineVertical{
+        background-color:blue;
+        height:180px;
+        width: 20px;
+        position: relative;
+        left: 67px;
+        margin: 0 !important;
+        top: -20px;
+        animation:glideVertical 1s ease-in alternate;
+    } 
+
+    @keyframes glideHorisontal  {
+        from {
+           left:-1600px;
+        } 
+        to {
+           left:0px;
+        }
+    }
+
+    @keyframes glideVertical  {
+        from {
+           top:-180px;
+        }
+        
+        to {
+           top:0px;
+        }
+    }
+
+    @keyframes moveDown  {
+                from {
+                   top: 0px;
+                }      
+                to {
+                   top:150px;
+                }
+            }
+
+            @keyframes moveDownMobile  {
+                from {
+                   top: 0px;
+                }
+                to {
+                   top:80px;
+                }
+            }
+    }
+
+.test{
+display: flex; 
+justify-content: center;
+    &__img1{
+        position: relative;
+        border: 5px solid black;
+        animation:img1 13s ease-in-out;
+
+    };
+
+    &__img2{
+        position: relative;
+        border: 5px solid black;
+        animation:img2 10s ease-in-out;
+    };
+
+    &__img3{
+        position: relative;
+        border: 5px solid black;
+        animation:img3 7s ease-in-out;
+    };
+
+    @keyframes img3  {
+        from {
+            left: -700px;
+        }      
+        to {
+            left:0px;
+        }
+    }
+
+    @keyframes img2  {
+        from {
+            left: -1100px;
+        }
+        
+        to {
+           right:50px;
+        }
+    }
+
+    @keyframes img1  {
+        from {
+            left: -1500px;
+        }       
+        to {
+           left:0px;
+        }
+    }
+
+    &__ifusco{
+        margin-top: 20px;
+        text-align: center;
+        animation:opacity 14s ease-in-out;
+        cursor: pointer; 
+
+        @media (max-width: 768px) {
+            margin-top: 80px;
+        } 
+    }
+
+    @keyframes opacity  {
+        from {
+            opacity: 0
+        }
+        
+        to {
+            opacity: 100
+        }
+    }
+}
+
+

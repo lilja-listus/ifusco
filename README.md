@@ -65,3 +65,5 @@ TODO:
 
  source ~/.bash_profile    
  nvm use 16  
+
+ role: admin | mng | user

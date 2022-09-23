@@ -21,7 +21,8 @@ interface IProps {
 }
 
 const navigationLinks: INavigationLinks[] = [
-    { href: '/navigation/registration', label: 'About Registration' },
+    { href: '/navigation/about', label: 'About' },
+    { href: '/navigation/registration', label: 'Registration' },
     // { label: 'Abstracts', href: '/navigation/abstracts' },
     // { label: 'Programme', href: '/navigation/programme' },
     { href: '/navigation/about-turku', label: 'About Turku' },
