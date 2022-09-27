@@ -1,5 +1,4 @@
 import styles from '../styles/Home.module.scss';
-
 import { Box, Drawer, Link } from '@material-ui/core';
 import { ListItemButton } from '@mui/material';
 import React, { useState } from 'react';
@@ -10,7 +9,6 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { INavigationLinks } from '../../interfaces/INavigationLinks';
 import { Links } from './Links';
-
 
 interface IProps {
     navigationLinks: INavigationLinks[]
@@ -36,11 +34,11 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
                 aria-label="open drawer"
                 onClick={toggleDrawer(true)}
                 sx={{
-                    mr: 2,
                     display: {
-                        xs: "block",
                         sm: "none",
+                        xs: "block",
                     },
+                    mr: 2
                 }}
             >
                 <MenuIcon />
@@ -50,16 +48,13 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
                 anchor="right"
                 open={open}
                 onClose={toggleDrawer(false)}
-                onOpen={toggleDrawer(true)}
             >
                 <Box
                     sx={{
-                        p: 2,
                         height: 1,
-                    }}
-                >
-                    <IconButton sx={{ mb: 2 }} onClick={toggleDrawer(false)} edge="end"
-                    >
+                        p: 2,
+                    }}>
+                    <IconButton sx={{ mb: 2 }} onClick={toggleDrawer(false)} edge="end">
                         <CloseIcon />
                     </IconButton>
 
@@ -70,16 +65,11 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
                                     <Link href={href} key={href}>
                                         <ListItemText primary={label} />
                                     </Link>
-                                </ListItemButton>
-
-                            ),
+                                </ListItemButton>),
                             )}
-
                         <Divider />
                         <Links />
                     </Box>
-
-
                 </Box>
             </Drawer>
         </div>

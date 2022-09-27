@@ -1,45 +1,55 @@
+/* eslint-disable @typescript-eslint/typedef */
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
+import { images } from './data/images';
+import { IImage } from '../../interfaces/IImage';
 
-interface IImage {
-    url: string;
-    title: string;
-    width: string;
-    href?: string;
-}
+const ResourcesButtons: React.FC = (): JSX.Element => {
+    return (
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+            {images.map((image: IImage) => (
+                <Link href={image.href} key={image.title} target="_blank">
+                    <ImageButton
+                        focusRipple
 
-const images: IImage[] = [
-    {
-        href: '/the-green-book',
-        title: 'The green book',
-        url: '/green-book.jpeg',
-        width: '40%',
-    },
-    {
-        title: 'Something',
-        url: '/static/images/buttons/burgers.jpg',
-        width: '30%',
-    },
-    {
-        title: 'Something else',
-        url: '/static/images/buttons/camera.jpg',
-        width: '30%',
-    },
-];
+                        style={{
+                            width: image.width,
+                        }}
+                    >
+                        <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+                        <ImageBackdrop className="MuiImageBackdrop-root" />
+                        <Image>
+                            <Typography
+                                component="span"
+                                variant="subtitle1"
+                                color="inherit"
+                                sx={{
+                                    p: 4,
+                                    pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                                    position: 'relative',
+                                    pt: 2,
+                                }}
+                            >
+                                {image.title}
+                                <ImageMarked className="MuiImageMarked-root" />
+                            </Typography>
+                        </Image>
+                    </ImageButton>
+                </Link>
+            ))
+            }
+        </Box >
+    );
+};
 
+export default ResourcesButtons;
 
-const ImageButton: unknown = styled(ButtonBase)(({ theme }) => ({
-    height: 200,
-    position: 'relative',
-    [theme.breakpoints.down('sm')]: {
-        width: '100% !important', // Overrides inline-style
-        height: 100,
-    },
+const ImageButton = styled(ButtonBase)(({ theme }) => ({
     '&:hover, &.Mui-focusVisible': {
-        zIndex: 1,
         '& .MuiImageBackdrop-root': {
             opacity: 0.15,
         },
@@ -49,86 +59,56 @@ const ImageButton: unknown = styled(ButtonBase)(({ theme }) => ({
         '& .MuiTypography-root': {
             border: '4px solid currentColor',
         },
+        zIndex: 1,
     },
+    [theme.breakpoints.down('sm')]: {
+        height: 100,
+        width: '100% !important', // Overrides inline-style
+    },
+    height: 200,
+    position: 'relative',
+
 }));
 
-const ImageSrc: unknown = styled('span')({
-    position: 'absolute',
+const ImageSrc = styled('span')({
+    backgroundPosition: 'center 40%',
+    backgroundSize: 'cover',
+    bottom: 0,
     left: 0,
+    position: 'absolute',
     right: 0,
     top: 0,
-    bottom: 0,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center 40%',
 });
 
-const Image: unknown = styled('span')(({ theme }) => ({
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    display: 'flex',
+const Image = styled('span')(({ theme }) => ({
     alignItems: 'center',
-    justifyContent: 'center',
+    bottom: 0,
     color: theme.palette.common.white,
-}));
-
-const ImageBackdrop: unknown = styled('span')(({ theme }) => ({
-    position: 'absolute',
+    display: 'flex',
+    justfyContent: 'center',
     left: 0,
+    position: 'absolute',
     right: 0,
     top: 0,
-    bottom: 0,
+}));
+
+const ImageBackdrop = styled('span')(({ theme }) => ({
     backgroundColor: theme.palette.common.black,
+    bottom: 0,
+    left: 0,
     opacity: 0.4,
-    transition: theme.transitions.create('opacity'),
-}));
-
-const ImageMarked: unknown = styled('span')(({ theme }) => ({
-    height: 3,
-    width: 18,
-    backgroundColor: theme.palette.common.white,
     position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
+    right: 0,
+    top: 0,
     transition: theme.transitions.create('opacity'),
 }));
 
-export default function ButtonBases(): JSX.Element {
-    return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-            {images.map((image) => (
-                <ImageButton
-                    href={image.href}
-                    focusRipple
-                    key={image.title}
-                    style={{
-                        width: image.width,
-                    }}
-                >
-                    <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-                    <ImageBackdrop className="MuiImageBackdrop-root" />
-                    <Image>
-                        <Typography
-                            component="span"
-                            variant="subtitle1"
-                            color="inherit"
-                            sx={{
-                                position: 'relative',
-                                p: 4,
-                                pt: 2,
-                                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                            }}
-                        >
-                            {image.title}
-                            <ImageMarked className="MuiImageMarked-root" />
-                        </Typography>
-                    </Image>
-                </ImageButton>
-
-            ))
-            }
-        </Box >
-    );
-}
+const ImageMarked = styled('span')(({ theme }) => ({
+    backgroundColor: theme.palette.common.white,
+    bottom: -2,
+    height: 3,
+    left: 'calc(50% - 9px)',
+    position: 'absolute',
+    transition: theme.transitions.create('opacity'),
+    width: 18,
+}));

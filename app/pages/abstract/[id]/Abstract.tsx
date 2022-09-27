@@ -8,11 +8,11 @@ import { IAbstract } from "../../../../interfaces/IAbstract";
 const Abstract: React.FC = (): JSX.Element => {
     const { data } = useFindAbstractByAuthorQuery();
 
-    const existingAbstract: IAbstract = data?.abstractsByAuthor;
+    const existingAbstract: IAbstract = data?.abstractsByAuthor as IAbstract;
 
     return (
         <Box my={4}>
-            {existingAbstract?._id ? <AbstractReadOnly abstract={existingAbstract} /> : <CreateAbstract />}
+            {existingAbstract && existingAbstract._id ? <AbstractReadOnly abstract={existingAbstract} /> : <CreateAbstract />}
         </Box>
     );
 };

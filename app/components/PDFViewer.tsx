@@ -39,7 +39,7 @@ const PDFViewer: React.FC<IProps> = ({ file }): JSX.Element => {
     const pageWidth: string = isMobile ? "300" : "600";
 
     return (
-        <div align="center">
+        <div style={{ alignContent: "center" }} >
             <div >
                 <span>   {pageNumber > 1 &&
                     <Button onClick={changePageBack}>Previous Page</Button>

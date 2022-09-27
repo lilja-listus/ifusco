@@ -1,4 +1,5 @@
 @use './mixins.scss';
+@use './keyframes.scss';
 @use "@material/card";
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 @include card.core-styles;
@@ -74,10 +75,11 @@
 .registerNewParticipant{
     &__container{
         width: 400px;
-        background-color: #F0F8FF;
+        background-color: white;
         padding: 10px 60px 30px 50px;
         border-radius: 25px;
-         margin-bottom: 150px;
+        margin-bottom: 150px;
+        animation: 1s createBox forwards;
     }
 
     &__title{
@@ -115,11 +117,11 @@
 .signupPage{
     &__container{
         width: 400px;
-         background-color: #F0F8FF;
-         padding: 10px 60px 30px 50px;
-         border-radius: 25px;
-         margin-bottom: 150px;
-
+        background-color: white;
+        padding: 10px 60px 30px 50px;
+        border-radius: 25px;
+        margin-bottom: 150px;
+        animation: 1s createBox forwards;
 
          @media (max-width: 768px) {
            width: 290px;
@@ -150,6 +152,10 @@
     }
 }
 
+.loginPage {        
+    animation: 1s createBox forwards;
+}
+
 .Pdf {
     // @media (max-width: 768px){
         max-width: 100% !important;
@@ -163,11 +169,11 @@
         background-color: white;
         margin: -10% auto;
         position: relative;
-        animation: moveDown 2s ease-in-out 2s;
+        animation: moveDown 1s ease-in-out 1s;
         animation-fill-mode: forwards;  
         
         @media (max-width: 768px) {
-            animation: moveDownMobile 2s ease-in-out 2s;
+            animation: moveDownMobile 1s ease-in-out 2s;
             animation-fill-mode: forwards;  
         }
     }
@@ -177,7 +183,7 @@
         height:20px;
         position: relative;
         top: 71px;
-        animation:glideHorisontal 2s ease-in alternate;
+        animation:glideHorisontal 1s ease-in alternate;
     }
 
     &__lineVertical{
@@ -229,60 +235,38 @@
             }
     }
 
-.test{
+.index{
 display: flex; 
 justify-content: center;
+    &__container{
+    margin: 0 auto;
+    height: 1300px;
+   
+}
     &__img1{
         position: relative;
         border: 5px solid black;
-        animation:img1 13s ease-in-out;
+        animation:img1 5s ease-in-out;
 
     };
 
     &__img2{
         position: relative;
         border: 5px solid black;
-        animation:img2 10s ease-in-out;
+        animation:img2 3s ease-in-out;
     };
 
     &__img3{
         position: relative;
         border: 5px solid black;
-        animation:img3 7s ease-in-out;
+        animation:img3 2s ease-in-out;
     };
 
-    @keyframes img3  {
-        from {
-            left: -700px;
-        }      
-        to {
-            left:0px;
-        }
-    }
-
-    @keyframes img2  {
-        from {
-            left: -1100px;
-        }
-        
-        to {
-           right:50px;
-        }
-    }
-
-    @keyframes img1  {
-        from {
-            left: -1500px;
-        }       
-        to {
-           left:0px;
-        }
-    }
 
     &__ifusco{
         margin-top: 20px;
         text-align: center;
-        animation:opacity 14s ease-in-out;
+        animation:opacity 10s ease-in-out;
         cursor: pointer; 
 
         @media (max-width: 768px) {
@@ -290,15 +274,6 @@ justify-content: center;
         } 
     }
 
-    @keyframes opacity  {
-        from {
-            opacity: 0
-        }
-        
-        to {
-            opacity: 100
-        }
-    }
 }
 
 

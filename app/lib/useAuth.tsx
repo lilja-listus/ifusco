@@ -100,11 +100,13 @@ function useProvideAuth(): unknown {
             await editUserMutation({
                 variables: {
                     input: {
-                        country,
-                        hasPaid,
+                        // country,
+                        // hasPaid,
                         id: user._id,
-                        nameFirst, nameLast, password,
-                        university,
+                        nameFirst,
+                        // nameLast, 
+                        password,
+                        // university,
                     },
                 },
             });

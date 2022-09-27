@@ -30,7 +30,7 @@ const PersonalInfoEdit: React.FC<IProps> = ({ user, setReadme }): JSX.Element =>
     return (
         <>
             <Box my={4}>
-                <Typography variant="h5" component="h1" gutterBottom>Edit About Me</Typography>
+                <Typography variant="h5" component="h1" gutterBottom>Edit my name</Typography>
                 {userInfoObject.map(infoField => (
                     <div key={infoField.label}>
                         <TextField size="small" id={infoField.label} value={infoField.value} variant="filled" helperText={infoField.label} onChange={(e: React.ChangeEvent<HTMLInputElement>): void => infoField.updateValue(e.target.value)} />

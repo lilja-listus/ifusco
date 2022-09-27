@@ -9,7 +9,7 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 interface ITimeLine {
     readonly dates: string;
-    readonly color: string;
+    readonly color: 'inherit' | 'grey' | 'primary' | 'secondary' | 'error' | 'info' | 'success' | 'warning';
     readonly label: string;
 }
 

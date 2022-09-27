@@ -50,18 +50,15 @@ Formik
 - add nametag
 - library of abstracts?
 
-
 TODO: 
 - add to user isParticipant: 
     - new field in the user 
     - call editUser when registering for conference
     - check if participant => if yes, check in my schedule
-- in My info change the button to => edit my name
 - extract strings into variables
 - configure the dashboard (abstract check)
-- connect FU test
-- responsiveness
 - add abstract (option uploading)
+- add news for admin (and send email notification)
 
  source ~/.bash_profile    
  nvm use 16  

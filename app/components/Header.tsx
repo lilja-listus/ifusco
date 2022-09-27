@@ -21,7 +21,6 @@ interface IProps {
 }
 
 const navigationLinks: INavigationLinks[] = [
-    { href: '/navigation/about', label: 'About' },
     { href: '/navigation/registration', label: 'Registration' },
     // { label: 'Abstracts', href: '/navigation/abstracts' },
     // { label: 'Programme', href: '/navigation/programme' },
@@ -64,7 +63,8 @@ const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element
 
                             })}
                         </Grid>
-                            <Grid item align="right" >
+
+                            <Grid item>
                                 <Switch checked={darkState} onChange={handleThemeChange} />
                                 <Links />
                             </Grid>

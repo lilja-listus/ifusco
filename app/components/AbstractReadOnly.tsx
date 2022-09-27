@@ -2,7 +2,11 @@ import { TextField, Typography } from "@material-ui/core";
 import React from 'react';
 import { IAbstract } from '../../interfaces/IAbstract';
 
-const AbstractReadOnly: React.FC<IAbstract> = (abstract): JSX.Element => {
+interface IProps {
+    readonly abstract: IAbstract
+}
+
+const AbstractReadOnly: React.FC<IProps> = ({ abstract }): JSX.Element => {
     return (
         <>
             <Typography variant="h5" component="h1" gutterBottom>{`${abstract.title} (${abstract.language})`}</Typography>

@@ -1,0 +1,46 @@
+@keyframes createBox {
+    from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+}
+
+@keyframes img3  {
+  from {
+      left: -700px;
+  }      
+  to {
+      left:0px;
+  }
+}
+
+@keyframes img2  {
+  from {
+      left: -1100px;
+  }
+  
+  to {
+     right:50px;
+  }
+}
+
+@keyframes img1  {
+  from {
+      left: -1500px;
+  }       
+  to {
+     left:0px;
+  }
+}
+
+@keyframes opacity  {
+  from {
+      opacity: 0
+  }
+  
+  to {
+      opacity: 100
+  }
+}
