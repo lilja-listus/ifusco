@@ -55,7 +55,7 @@ function useProvideAuth(): unknown {
             if (data.login.token && data.login.user) {
                 sessionStorage.setItem('token', data.login.token);
                 client.resetStore().then(() => {
-                    router.push('/');
+                    router.push('/my-dashboard');
                 });
             } else {
                 setError('Invalid login');

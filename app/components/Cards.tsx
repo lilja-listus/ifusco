@@ -12,10 +12,9 @@ const ResourcesButtons: React.FC = (): JSX.Element => {
     return (
         <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
             {images.map((image: IImage) => (
-                <Link href={image.href} key={image.title} target="_blank">
+                <Link href={image.href} key={image.title} target='_blank'>
                     <ImageButton
                         focusRipple
-
                         style={{
                             width: image.width,
                         }}

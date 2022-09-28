@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import styles from '../../styles/Home.module.scss';
 import Image from 'next/image';
-import Valo from '../../img/valo.jpg'
+import Valo from '../../img/valo.jpg';
 
 export default function Accomodation(): JSX.Element {
     return (

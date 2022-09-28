@@ -60,8 +60,6 @@
             margin-bottom: 60px;
             
         }
-    
-
     }
 }
 
@@ -73,6 +71,11 @@
 }
 
 .registerNewParticipant{
+    display: flex; 
+    align-items: start;
+    width: 70%;
+    margin: 0 auto;
+
     &__container{
         width: 400px;
         background-color: white;
@@ -115,6 +118,11 @@
 }
 
 .signupPage{
+    display: flex;
+    align-items: center;
+    width: 90%; 
+    margin: 0 auto;
+
     &__container{
         width: 400px;
         background-color: white;
@@ -122,6 +130,7 @@
         border-radius: 25px;
         margin-bottom: 150px;
         animation: 1s createBox forwards;
+        margin: 10px auto;
 
          @media (max-width: 768px) {
            width: 290px;
@@ -154,6 +163,14 @@
 
 .loginPage {        
     animation: 1s createBox forwards;
+    margin:0 auto; 
+    width: 250px !important;
+    margin-top: 100px;
+    background-color: white;
+
+    &__button{
+       margin: 30px auto !important;
+    }
 }
 
 .Pdf {
@@ -197,42 +214,7 @@
         animation:glideVertical 1s ease-in alternate;
     } 
 
-    @keyframes glideHorisontal  {
-        from {
-           left:-1600px;
-        } 
-        to {
-           left:0px;
-        }
-    }
-
-    @keyframes glideVertical  {
-        from {
-           top:-180px;
-        }
-        
-        to {
-           top:0px;
-        }
-    }
-
-    @keyframes moveDown  {
-                from {
-                   top: 0px;
-                }      
-                to {
-                   top:150px;
-                }
-            }
-
-            @keyframes moveDownMobile  {
-                from {
-                   top: 0px;
-                }
-                to {
-                   top:80px;
-                }
-            }
+    
     }
 
 .index{
@@ -272,6 +254,17 @@ justify-content: center;
         @media (max-width: 768px) {
             margin-top: 80px;
         } 
+    }
+
+    &__box{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__firstBox{
+        margin-top: 300px;
+        margin-bottom: 30px;
+        text-align: center;
     }
 
 }

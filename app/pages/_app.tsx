@@ -7,7 +7,7 @@ import { themeDark, themeLight } from 'lib/theme';
 import { AuthProvider } from 'lib/useAuth';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import createEmotionCache from './createEmotionCache';
+import createEmotionCache from '../components/data/createEmotionCache';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 
 interface IProps {

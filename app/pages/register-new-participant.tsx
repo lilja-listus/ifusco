@@ -3,13 +3,11 @@ import React, { useState } from 'react';
 import { Field, FieldProps, Form, Formik, FormikProps } from 'formik';
 import { useRegisterParticipantMutation } from "../lib/graphql/registerparticipant.graphql";
 import * as Yup from "yup";
-import { Box, Button, Container, TextField, Typography } from "@material-ui/core";
+import { Box, Button, CardMedia, Container, TextField, Typography } from "@material-ui/core";
 import { useRouter, NextRouter } from 'next/router';
 import { CountriesAutoComplete } from '../components/CountriesAutoComplete';
 import { useAuth } from "../lib/useAuth";
-import { participationFieldsList } from './participationFieldsList';
-import Registration from '../img/registration.jpg'
-import Image from 'next/image';
+import { participationFieldsList } from '../components/data/participationFieldsList';
 
 interface IFormValues {
     email: string;
@@ -18,7 +16,6 @@ interface IFormValues {
     university: string;
     country: string;
 }
-
 
 const RegisterNewParticipant: React.FC = (): JSX.Element => {
     const [registerParticipantMutation] = useRegisterParticipantMutation();
@@ -35,7 +32,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
     };
 
     return (
-        <div style={{ display: 'flex', alignItems: 'start' }}>
+        <div className={styles.registerNewParticipant}>
             <Formik<IFormValues>
                 initialValues={{
                     country: "",
@@ -121,11 +118,14 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                     );
                 }}
             </Formik>
-            <span style={{ height: '50% !important' }}>
-                <Image priority src={Registration} />
-            </span>
 
-        </div>
+            <CardMedia
+                height="510"
+                image='/dom.jpg'
+                title="Paella dish"
+                component="img"
+            />
+        </div >
 
     );
 };

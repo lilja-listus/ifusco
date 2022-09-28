@@ -3,9 +3,7 @@ import React from 'react';
 import { Field, FieldProps, Form, Formik } from 'formik';
 import { useAuth } from 'lib/useAuth';
 import * as Yup from "yup";
-import { Button, Container, TextField, Typography } from "@material-ui/core";
-import Image from 'next/image';
-import Perse from '../../img/perse.jpg';
+import { Button, CardMedia, Container, TextField, Typography } from "@material-ui/core";
 
 interface IFormValues {
     email: string;
@@ -46,7 +44,13 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
     const { signUp } = useAuth();
 
     return (
-        <div style={{ display: 'flex', alignItems: 'start' }}>
+        <div className={styles.signupPage}>
+            <CardMedia
+                height="510"
+                image='/registration.jpg'
+                title="Paella dish"
+                component="img"
+            />
             <Formik<IFormValues>
                 initialValues={{
                     email: "",
@@ -78,7 +82,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
             >
                 {(formikProps): JSX.Element => {
                     return (
-                        <Container >
+                        <Container>
                             <div className={styles.signupPage__container} >
                                 <Typography variant="h5" component="h1" className={styles.signupPage__headerText} gutterBottom>Register</Typography>
                                 <Form>
@@ -87,19 +91,20 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                             {participationFieldsObject.map(({ value, label, type }) => (
                                                 <Field name={value} key={value}>
                                                     {({ field, form: { touched, errors, isSubmitting } }: FieldProps): JSX.Element => {
-                                                        return (<>
-                                                            <TextField
-                                                                label={label}
-                                                                id={field.name}
-                                                                name={field.name}
-                                                                type={type}
-                                                                onChange={formikProps.handleChange}
-                                                                onBlur={formikProps.handleBlur}
-                                                                value={formikProps.values[value]} size="small" className={styles.signupPage__fieldValue} />
-                                                            {errors[value] && touched[value] ? (
-                                                                <div className={styles.signupPage__errorMessage}>{errors[value]}</div>
-                                                            ) : null}
-                                                        </>);
+                                                        return (
+                                                            <>
+                                                                <TextField
+                                                                    label={label}
+                                                                    id={field.name}
+                                                                    name={field.name}
+                                                                    type={type}
+                                                                    onChange={formikProps.handleChange}
+                                                                    onBlur={formikProps.handleBlur}
+                                                                    value={formikProps.values[value]} size="small" className={styles.signupPage__fieldValue} />
+                                                                {errors[value] && touched[value] ? (
+                                                                    errors[value]
+                                                                ) : null}
+                                                            </>);
                                                     }}
                                                 </Field>
                                             ))}
@@ -123,8 +128,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                     );
                 }}
             </Formik >
-            <Image src={Perse} />
-        </div>
+        </div >
 
     );
 };

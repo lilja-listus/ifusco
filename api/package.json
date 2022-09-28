@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node --transpile-onlu server/index.ts",
-    "dev": "nodemon server/index.ts"
+    "dev": "nodemon server/index.ts",
+    "lint": "eslint.js"
   },
   "keywords": [],
   "author": "",

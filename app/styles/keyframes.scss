@@ -44,3 +44,39 @@
       opacity: 100
   }
 }
+@keyframes glideHorisontal  {
+  from {
+     left:-1600px;
+  } 
+  to {
+     left:0px;
+  }
+}
+
+@keyframes glideVertical  {
+  from {
+     top:-180px;
+  }
+  
+  to {
+     top:0px;
+  }
+}
+
+@keyframes moveDown  {
+    from {
+      top: 0px;
+    }      
+    to {
+      top:130px;
+    }
+  }
+
+@keyframes moveDownMobile  {
+          from {
+             top: 0px;
+          }
+          to {
+             top:80px;
+          }
+      }
