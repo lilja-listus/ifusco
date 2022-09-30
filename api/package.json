@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node --transpile-only server/index.ts",
+    "start": "ts-node --transpile-only server/index.ts NODE_OPTIONS=--max-old-space-size=1536",
     "dev": "nodemon server/index.ts",
     "lint": "eslint.js"
   },
