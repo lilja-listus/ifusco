@@ -67,12 +67,10 @@
     @include mixins.flex-display-column;
 
     width: 100%;
-
 }
-
 .registerNewParticipant{
     display: flex; 
-    align-items: start;
+    align-items: flex-start;
     width: 70%;
     margin: 0 auto;
 
