@@ -7,7 +7,7 @@ interface ILink {
     readonly label: string;
 }
 
-export const Links: React.FC = (): JSX.Element => {
+const Links: React.FC = (): JSX.Element => {
     const { user } = useAuth();
 
     const links: ILink[] = [
@@ -17,13 +17,16 @@ export const Links: React.FC = (): JSX.Element => {
         user && { href: '/auth/signout', label: 'Sign Out' },
     ].filter((link) => link);
 
-    return (<>
-        {links.map(({ label, href }) => (
-            <Link href={href} key={href}>
-                <Button color="inherit">{label}</Button>
-            </Link>
-        ))
-        }
-    </>
+    return (
+        <>
+            {links.map(({ label, href }) => (
+                <Link href={href} key={href}>
+                    <Button color="inherit">{label}</Button>
+                </Link>
+            ))
+            }
+        </>
     );
 };
+
+export default Links;

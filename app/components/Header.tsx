@@ -13,7 +13,7 @@ import { Switch } from '@mui/material';
 import HamburgerMenu from './HamburgerMenu';
 import { INavigationLinks } from '../../interfaces/INavigationLinks';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { Links } from './Links';
+// import Links from './Links';
 
 interface IProps {
     darkState: boolean;
@@ -53,20 +53,21 @@ const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element
                             </Typography>
 
                         </Grid>
-                        {isDesktopView ? <> <Grid item>
-                            {navigationLinks.map(({ label, href }) => {
-                                return (
-                                    <Link href={href} key={href}>
-                                        <Button color="inherit">{label}</Button>
-                                    </Link>
-                                );
+                        {isDesktopView ? <>
+                            <Grid item>
+                                {navigationLinks.map(({ label, href }) => {
+                                    return (
+                                        <Link href={href} key={href}>
+                                            <Button color="inherit">{label}</Button>
+                                        </Link>
+                                    );
 
-                            })}
-                        </Grid>
+                                })}
+                            </Grid>
 
                             <Grid item>
                                 <Switch checked={darkState} onChange={handleThemeChange} />
-                                <Links />
+                                {/* <Links /> */}
                             </Grid>
                         </>
                             : <Grid item>

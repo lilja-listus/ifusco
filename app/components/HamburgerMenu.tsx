@@ -8,7 +8,7 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { INavigationLinks } from '../../interfaces/INavigationLinks';
-import { Links } from './Links';
+// import Links from './Links';
 
 interface IProps {
     navigationLinks: INavigationLinks[]
@@ -68,7 +68,7 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
                                 </ListItemButton>),
                             )}
                         <Divider />
-                        <Links />
+                        {/* <Links /> */}
                     </Box>
                 </Box>
             </Drawer>
