@@ -31,7 +31,7 @@ export default function TimeLine(): JSX.Element {
         <>
             <Timeline position="alternate">
                 {timeLineObject.map(timelineItem => (
-                    <TimelineItem>
+                    <TimelineItem key={timelineItem.label}>
                         <TimelineOppositeContent color="text.secondary">
                             {timelineItem.dates}
                         </TimelineOppositeContent>

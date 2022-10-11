@@ -57,7 +57,7 @@ const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element
                             <Grid item>
                                 {navigationLinks.map(({ label, href }) => {
                                     return (
-                                        <Link href={href} key={href}>
+                                        <Link href={href} key={href} >
                                             <Button color="inherit">{label}</Button>
                                         </Link>
                                     );

@@ -1,18 +1,18 @@
-import grey from "@material-ui/core/colors/grey";
+import blue from "@material-ui/core/colors/blue";
 import { createTheme, Theme } from "@material-ui/core/styles";
 
 const themeDark: Theme = createTheme({
   palette: {
-    primary: { main: grey[200] },
-    secondary: { main: grey[400] },
+    primary: { main: blue[200] },
+    secondary: { main: blue[400] },
     type: "dark",
   },
 });
 
 const themeLight: Theme = createTheme({
   palette: {
-    primary: { main: grey[800] },
-    secondary: { main: grey[900] },
+    primary: { main: blue[800] },
+    secondary: { main: blue[900] },
     type: "light",
   },
 });

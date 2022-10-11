@@ -43,7 +43,9 @@ const MyApp: React.FC<IProps> = ({ Component, emotionCache = clientSideEmotionCa
                     <CssBaseline />
                     <AuthProvider>
                         <Header darkState={darkState} handleThemeChange={handleThemeChange} />
-                        <Component {...pageProps} /></AuthProvider></ThemeProvider>
+                        <Component {...pageProps} />
+                    </AuthProvider>
+                </ThemeProvider>
                 <Footer />
             </ApolloProvider >
         </CacheProvider>);

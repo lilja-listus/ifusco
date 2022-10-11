@@ -56,7 +56,7 @@ const PDFViewer: React.FC<IProps> = ({ file }): JSX.Element => {
                     label="Age"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>): void => handleChange(event.target.value)}
                 >
-                    {dropDownValues.map(value => <MenuItem value={value + 1}>{value + 1}</MenuItem>)}
+                    {dropDownValues.map(value => <MenuItem value={value + 1} key={value}>{value + 1}</MenuItem>)}
                 </Select>
             </div>
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess}  >
