@@ -6,3 +6,4 @@ mode_modules
 *.graphqls.d.ts
 __generated__
 
+.vercel
