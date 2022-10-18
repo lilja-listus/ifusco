@@ -13,7 +13,8 @@ import { Switch } from '@mui/material';
 import HamburgerMenu from './HamburgerMenu';
 import { INavigationLinks } from '../../interfaces/INavigationLinks';
 import useMediaQuery from '@mui/material/useMediaQuery';
-// import Links from './Links';
+import { ILink } from '../../interfaces/ILink';
+import { useAuth } from '../lib/useAuth';
 
 interface IProps {
     darkState: boolean;
@@ -32,6 +33,15 @@ const navigationLinks: INavigationLinks[] = [
 
 const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element => {
     const isDesktopView: boolean = useMediaQuery('(min-width:600px)');
+
+    const { user } = useAuth();
+
+    const links: ILink[] = [
+        !user && { href: '/auth/signup', label: 'Sign Up' },
+        !user && { href: '/auth/login', label: 'Log In' },
+        user && { href: '/my-dashboard', label: 'My Dashboard' },
+        user && { href: '/auth/signout', label: 'Sign Out' },
+    ].filter((link) => link);
 
     return (
         <div className={styles.headerContainer}>
@@ -67,7 +77,11 @@ const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element
 
                             <Grid item>
                                 <Switch checked={darkState} onChange={handleThemeChange} />
-                                {/* <Links /> */}
+                                {links.map(({ label, href }) => (
+                                    <Link href={href} key={href}>
+                                        <Button color="inherit">{label}</Button>
+                                    </Link>
+                                ))}
                             </Grid>
                         </>
                             : <Grid item>
@@ -84,3 +98,4 @@ const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element
 };
 
 export default Header;
+

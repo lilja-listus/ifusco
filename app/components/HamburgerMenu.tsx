@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.scss';
-import { Box, Drawer, Link } from '@material-ui/core';
+import { Box, Button, Drawer, Link } from '@material-ui/core';
 import { ListItemButton } from '@mui/material';
 import React, { useState } from 'react';
 import IconButton from "@mui/material/IconButton";
@@ -8,7 +8,8 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import { INavigationLinks } from '../../interfaces/INavigationLinks';
-// import Links from './Links';
+import { ILink } from '../../interfaces/ILink';
+import { useAuth } from '../lib/useAuth';
 
 interface IProps {
     navigationLinks: INavigationLinks[]
@@ -25,6 +26,15 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
         }
         setState(open);
     };
+
+    const { user } = useAuth();
+
+    const links: ILink[] = [
+        !user && { href: '/auth/signup', label: 'Sign Up' },
+        !user && { href: '/auth/login', label: 'Log In' },
+        user && { href: '/my-dashboard', label: 'My Dashboard' },
+        user && { href: '/auth/signout', label: 'Sign Out' },
+    ].filter((link) => link);
 
     return (
         <div>
@@ -68,7 +78,11 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
                                 </ListItemButton>),
                             )}
                         <Divider />
-                        {/* <Links /> */}
+                        {links.map(({ label, href }) => (
+                            <Link href={href} key={href}>
+                                <Button color="inherit">{label}</Button>
+                            </Link>
+                        ))}
                     </Box>
                 </Box>
             </Drawer>
