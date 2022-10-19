@@ -19,7 +19,9 @@ async function createServer() {
     const app = express();
     const corsOptions = {
       credentials: true,
+      origin: true,
     };
+
     app.use(cors(corsOptions));
     app.use(express.json());
     const schema = await createSchema();
