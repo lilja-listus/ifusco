@@ -3,10 +3,7 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import cors from "cors";
-// import styles from "../styles/Home.module.scss";
-
 import nextApp from "@ifusco/app";
-
 import createSchema from "../schema/";
 import createSession from "../session/";
 

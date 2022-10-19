@@ -23,7 +23,7 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 
   const httpLink: HttpLink = new HttpLink({
     credentials: "include",
-    uri: "/graphql",
+    uri: process.env.NEXT_PUBLIC_URI,
   });
 
   return new ApolloClient({
