@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import {
   ApolloClient,
   ApolloLink,
+  createHttpLink,
   HttpLink,
   InMemoryCache,
   NormalizedCacheObject,
@@ -18,6 +19,7 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
         ...headers,
         authorization: token ? `Bearer ${token}` : "",
       },
+      link: createHttpLink({ uri: "/graphql" }),
     };
   });
 
