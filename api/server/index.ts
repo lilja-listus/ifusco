@@ -37,6 +37,9 @@ async function createServer() {
     });
 
     apolloServer.applyMiddleware({ app, cors: true });
+    console.log("================================");
+    console.log(apolloServer.graphqlPath);
+    console.log("================================");
 
     app.listen({ port }, () => {
       console.log(
