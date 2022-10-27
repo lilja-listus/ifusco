@@ -3,31 +3,32 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import cors from "cors";
-import nextApp from "@ifusco/app";
-import createSchema from "../schema/";
-import createSession from "../session/";
 
+import createSchema from "../schema";
+import createSession from "../session";
+
+const dev = process.env.NODE_ENV !== "production";
 const port = process.env.PORT || 8000;
-const handle = nextApp.getRequestHandler();
 
 async function createServer() {
   try {
     await createSession();
     const app = express();
-    const corsOptions = {
-      credentials: true,
-      origin: true,
-    };
 
-    app.use(cors(corsOptions));
+    app.use(
+      cors({
+        origin: dev ? process.env.URL_APP : process.env.PRODUCTION_URL_APP,
+        credentials: true,
+      })
+    );
     app.use(express.json());
+
     const schema = await createSchema();
 
     const apolloServer = new ApolloServer({
       schema,
       context: ({ req, res }) => ({ req, res }),
       introspection: true,
-
       playground: {
         settings: {
           "request.credentials": "include",
@@ -35,19 +36,16 @@ async function createServer() {
       },
     });
 
-    apolloServer.applyMiddleware({ app, cors: corsOptions });
-
-    await nextApp.prepare();
-
-    app.get("*", (req, res) => handle(req, res));
+    apolloServer.applyMiddleware({ app, cors: true });
 
     app.listen({ port }, () => {
       console.log(
-        `Server is running at http://localhost:${port}${apolloServer.graphqlPath}`
+        `🚀 Server ready at http://localhost:${port}${apolloServer.graphqlPath}`
       );
     });
   } catch (err) {
     console.log(err);
   }
 }
+
 createServer();
