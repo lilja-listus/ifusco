@@ -2,7 +2,7 @@ import { Box, Container, Typography } from "@material-ui/core";
 import styles from '../../styles/Home.module.scss';
 import Cards from '../../components/Cards';
 import NewsCard from "components/NewsCard";
-import { INews } from '../../../interfaces/INews';
+import { INews } from '../../interfaces/INews';
 
 export default function Faq(): JSX.Element {
     const news: INews[] = [

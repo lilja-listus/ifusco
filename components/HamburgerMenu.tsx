@@ -7,8 +7,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
-import { INavigationLinks } from '../../interfaces/INavigationLinks';
-import { ILink } from '../../interfaces/ILink';
+import { INavigationLinks } from '../interfaces/INavigationLinks';
+import { ILink } from '../interfaces/ILink';
 import { useAuth } from '../lib/useAuth';
 
 interface IProps {

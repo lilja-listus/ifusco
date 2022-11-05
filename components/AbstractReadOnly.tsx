@@ -1,6 +1,6 @@
 import { TextField, Typography } from "@material-ui/core";
 import React from 'react';
-import { IAbstract } from '../../interfaces/IAbstract';
+import { IAbstract } from '../interfaces/IAbstract';
 
 interface IProps {
     readonly abstract: IAbstract

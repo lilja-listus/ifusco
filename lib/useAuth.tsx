@@ -5,7 +5,7 @@ import { useSigninMutation } from 'lib/graphql/signin.graphql';
 import { useSignupMutation } from 'lib/graphql/signup.graphql';
 import { useEditUserMutation } from 'lib/graphql/edituser.graphql';
 import { useCurrentUserQuery } from 'lib/graphql/currentUser.graphql';
-import { IUser } from '../../interfaces/IUser';
+import { IUser } from '../interfaces/IUser';
 
 type AuthProps = {
     user: IUser;

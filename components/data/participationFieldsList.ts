@@ -1,4 +1,4 @@
-import { IFormField } from "../../../interfaces/IFormField";
+import { IFormField } from "../../interfaces/IFormField";
 
 export const participationFieldsList: IFormField[] = [
   {

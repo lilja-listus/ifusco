@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.scss';
 import { Box, Button, Checkbox, CircularProgress, Container, FormControlLabel } from "@material-ui/core";
 import { useAuth } from "lib/useAuth";
-import { IScheduleCheckboxes } from '../../interfaces/IScheduleCheckboxes';
+import { IScheduleCheckboxes } from '../interfaces/IScheduleCheckboxes';
 
 const MySchedule: React.FC = (): JSX.Element => {
     const { user } = useAuth();

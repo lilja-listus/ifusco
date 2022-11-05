@@ -11,9 +11,9 @@ import {
 import Link from 'next/link';
 import { Switch } from '@mui/material';
 import HamburgerMenu from './HamburgerMenu';
-import { INavigationLinks } from '../../interfaces/INavigationLinks';
+import { INavigationLinks } from '../interfaces/INavigationLinks';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { ILink } from '../../interfaces/ILink';
+import { ILink } from '../interfaces/ILink';
 import { useAuth } from '../lib/useAuth';
 
 interface IProps {

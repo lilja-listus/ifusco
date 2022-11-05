@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@material-ui/core";
 import { useAuth } from "../lib/useAuth";
 import React, { useState } from 'react';
-import { IUser } from "../../interfaces/IUser";
+import { IUser } from "../interfaces/IUser";
 
 interface IUserInfo {
     readonly label: string;

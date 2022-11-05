@@ -3,7 +3,7 @@ import React from 'react';
 import CreateAbstract from "../new";
 import { useFindAbstractByAuthorQuery } from '../../../lib/graphql/findAbstractByAuthor.graphql';
 import AbstractReadOnly from "../../../components/AbstractReadOnly";
-import { IAbstract } from "../../../../interfaces/IAbstract";
+import { IAbstract } from "../../../interfaces/IAbstract";
 
 const Abstract: React.FC = (): JSX.Element => {
     const { data } = useFindAbstractByAuthorQuery();

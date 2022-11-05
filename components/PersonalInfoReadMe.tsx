@@ -2,7 +2,7 @@ import { Typography } from "@material-ui/core";
 import React from 'react';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
-import { IUser } from "../../interfaces/IUser";
+import { IUser } from "../interfaces/IUser";
 
 interface IProps {
     readonly user: IUser;

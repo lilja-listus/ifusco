@@ -6,7 +6,7 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { images } from './data/images';
-import { IImage } from '../../interfaces/IImage';
+import { IImage } from '../interfaces/IImage';
 
 const ResourcesButtons: React.FC = (): JSX.Element => {
     return (
