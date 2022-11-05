@@ -1,9 +1,0 @@
-.env
-mode_modules
-.DS_Store
-.next
-*.graphql.d.ts
-*.graphqls.d.ts
-__generated__
-
-.vercel

@@ -19,17 +19,17 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
         ...headers,
         authorization: token ? `Bearer ${token}` : "",
       },
-      link: createHttpLink({ uri: "/graphql" }),
+      link: createHttpLink({ uri: "/" }),
     };
   });
 
   const httpLink: HttpLink = new HttpLink({
-    credentials: "include",
     uri: process.env.NEXT_PUBLIC_URI,
   });
 
   return new ApolloClient({
     cache: new InMemoryCache(),
+
     link: authLink.concat(httpLink),
   });
 }
