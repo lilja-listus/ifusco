@@ -13,7 +13,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
 function createApolloClient(): ApolloClient<NormalizedCacheObject> {
   const authLink: ApolloLink = setContext((_, { headers }) => {
-    const token: string = sessionStorage.getItem("token");
+    const token: string = sessionStorage.getItem("token") || "thisisunsafe";
     return {
       headers: {
         ...headers,
