@@ -26,7 +26,7 @@ const navigationLinks: INavigationLinks[] = [
     // { label: 'Abstracts', href: '/navigation/abstracts' },
     // { label: 'Programme', href: '/navigation/programme' },
     { href: '/navigation/about-turku', label: 'About Turku' },
-    { href: '/navigation/accomodation', label: 'Accomodation' },
+    { href: '/navigation/accommodation', label: 'Accommodation' },
     { href: '/navigation/contact', label: 'Contact' },
     { href: '/navigation/resources', label: 'Resources' },
 ];
