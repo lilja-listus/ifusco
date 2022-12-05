@@ -122,7 +122,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
             <CardMedia
                 height="510"
                 image='/dom.jpg'
-                title="Paella dish"
+                title="Рускій ваєнний карабль іді ..."
                 component="img"
             />
         </div >
