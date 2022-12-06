@@ -80,3 +80,13 @@
              top:80px;
           }
       }
+
+
+      @keyframes congrats  {
+        from {
+           top: 400px;
+        }
+        to {
+           top:0px;
+        }
+    }
