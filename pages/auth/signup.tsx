@@ -4,6 +4,7 @@ import { Field, FieldProps, Form, Formik } from 'formik';
 import { useAuth } from 'lib/useAuth';
 import * as Yup from "yup";
 import { Button, CardMedia, Container, TextField, Typography } from "@material-ui/core";
+import Alert from '@mui/material/Alert';
 
 interface IFormValues {
     email: string;
@@ -41,7 +42,7 @@ const participationFieldsObject: IFormField[] = [
 ];
 
 const RegisterNewUser: React.FC = (): JSX.Element => {
-    const { signUp } = useAuth();
+    const { signUp, error } = useAuth();
 
     return (
         <div className={styles.signupPage}>
@@ -60,11 +61,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                 }}
 
                 onSubmit={async (values): Promise<void> => {
-                    try {
-                        await signUp(values.email, values.password, values.nameFirst);
-                    } catch (e) {
-                        console.log(e);
-                    }
+                    await signUp(values.email, values.password, values.nameFirst);
                 }
                 }
 
@@ -101,14 +98,16 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                                                     onChange={formikProps.handleChange}
                                                                     onBlur={formikProps.handleBlur}
                                                                     value={formikProps.values[value]} size="small" className={styles.signupPage__fieldValue} />
-                                                                {errors[value] && touched[value] ? (
-                                                                    errors[value]
-                                                                ) : null}
+
+                                                                {errors[value] && touched[value] && <div style={{ color: 'red' }}>      {errors[value]
+                                                                }</div>}
                                                             </>);
                                                     }}
                                                 </Field>
                                             ))}
                                         </div>
+
+                                        {error && <Alert severity="error">{error}</Alert>}
 
                                         <Button
                                             type="submit"
@@ -127,6 +126,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                         </Container >
                     );
                 }}
+
             </Formik >
         </div >
 
