@@ -118,7 +118,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                                     || !!(formikProps.errors.password && formikProps.touched.password))
                                             }
                                         >
-                                            Register
+                                            Sign up
                                         </Button>
                                     </>
                                 </Form >
