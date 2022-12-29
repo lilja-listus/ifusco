@@ -8,9 +8,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Timeline from '../components/TimeLine';
 import { Box, Button, Container, Typography } from '@material-ui/core';
-
+import { useTranslation } from 'react-i18next';
 
 const Index: React.FC = (): JSX.Element => {
+    const { t } = useTranslation();
+
     return (
         <Container className={styles.index__container} maxWidth="md" >
             <Box>
@@ -20,7 +22,7 @@ const Index: React.FC = (): JSX.Element => {
                     <Image src={Kirjasto} width={250} height={200} className={styles.index__img2} />
                 </div>
                 <Link href={'/navigation/about'} key={'about'}>
-                    <h2 className={styles.index__ifusco}>IFUSCO XXXVII, Turku, Finland</h2>
+                    <h2 className={styles.index__ifusco}>{t("IFUSCO_NAME")}</h2>
                 </Link>
                 <FinnishFlag />
             </Box>
