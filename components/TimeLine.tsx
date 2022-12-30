@@ -6,6 +6,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
+import { useTranslation } from 'react-i18next';
 
 interface ITimeLine {
     readonly dates: string;
@@ -13,20 +14,22 @@ interface ITimeLine {
     readonly label: string;
 }
 
-const timeLineObject: ITimeLine[] = [
-    {
-        color: "primary",
-        dates: 'Start date - End Date',
-        label: 'Register',
-    },
-    {
-        color: "secondary",
-        dates: 'Start date - End Date',
-        label: 'Send your abstract',
-    },
-];
-
 export default function TimeLine(): JSX.Element {
+    const { t } = useTranslation();
+
+    const timeLineObject: ITimeLine[] = [
+        {
+            color: "primary",
+            dates: 'Start date - End Date',
+            label: t("REGISTER"),
+        },
+        {
+            color: "secondary",
+            dates: 'Start date - End Date',
+            label: t("SEND_ABSTRACT"),
+        },
+    ];
+
     return (
         <>
             <Timeline position="alternate">

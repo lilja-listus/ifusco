@@ -8,6 +8,7 @@ import { useRouter, NextRouter } from 'next/router';
 import { CountriesAutoComplete } from '../components/CountriesAutoComplete';
 import { useAuth } from "../lib/useAuth";
 import { participationFieldsList } from '../components/data/participationFieldsList';
+import { useTranslation } from 'react-i18next';
 
 interface IFormValues {
     email: string;
@@ -23,6 +24,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
 
     const router: NextRouter = useRouter();
     const { user } = useAuth();
+    const { t } = useTranslation();
 
     const updatedValue = (formikProps: FormikProps<IFormValues>): ((value: string) => void) => {
         return (value: string): void => {
@@ -55,13 +57,13 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                 }
                 }
                 validationSchema={Yup.object().shape({
-                    country: Yup.string().required("Country is required"),
+                    country: Yup.string().required(t("COUNTRY_IS_REQUIRED")),
                     email: Yup.string()
-                        .email("Email not valid")
-                        .required("Email is required"),
-                    nameFirst: Yup.string().required("First name is required"),
-                    nameLast: Yup.string().required("Last name is required"),
-                    university: Yup.string().required("University is required"),
+                        .email(t("EMAIL_NOT_VALID"))
+                        .required(t("EMAIL_IS_REQUIRED")),
+                    nameFirst: Yup.string().required(t("FIRST_NAME_REQUIRED")),
+                    nameLast: Yup.string().required(t("LAST_NAME_REQUIRED")),
+                    university: Yup.string().required(t("UNIVERSITY_REQUIRED")),
                 })}
             >
                 {(formikProps): JSX.Element => {
@@ -69,7 +71,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                         <Container >
                             <Box>
                                 <div className={styles.registerNewParticipant__container}>
-                                    <Typography variant="h5" component="h1" className={styles.registerNewParticipant__title} gutterBottom>Register me for the conference</Typography>
+                                    <Typography variant="h5" component="h1" className={styles.registerNewParticipant__title} gutterBottom>{t("REGISTER_ME")}</Typography>
                                     <Form>
                                         <div className={styles.registerNewParticipant__participationFieldsContainer}>
                                             {participationFieldsList.map(({ value, label, helperText }) => (
@@ -108,7 +110,7 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                                                     || !!(formikProps.errors.country && formikProps.touched.country))
                                             }
                                         >
-                                            Register
+                                            {t("REGISTER")}
                                         </Button>
                                         {errorMessage && <Typography variant="h5" className={styles.registerNewParticipant__errorMessage}>{errorMessage}</Typography>}
                                     </Form>

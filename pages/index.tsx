@@ -30,17 +30,17 @@ const Index: React.FC = (): JSX.Element => {
 
                 <Box my={3} >
                     <Typography variant="h5" component="h1" className={styles.registerNewParticipant__title} gutterBottom>Applications are open!</Typography>
-                    <Typography variant="h6" gutterBottom> Sign up before October 15th</Typography>
-                    <Button href='/register-new-participant' color="inherit">Register here</Button>
+                    <Typography variant="h6" gutterBottom>{t("SIGN_UP_BEFORE")}</Typography>
+                    <Button href='/register-new-participant' color="inherit">{t("REGISTER_HERE")}</Button>
                 </Box >
 
                 <Box my={5} className={styles.index__box} >
-                    <Typography variant="h6" gutterBottom> 39 conferences since 1984</Typography>
-                    <Typography variant="h6" gutterBottom> 10 countries</Typography>
-                    <Typography variant="h6" gutterBottom> 23 cities</Typography>
+                    <Typography variant="h6" gutterBottom>{t("CONFERENCES_SINCE_1984")}</Typography>
+                    <Typography variant="h6" gutterBottom>{t("AMOUNT_COUNTRIES")}</Typography>
+                    <Typography variant="h6" gutterBottom>{t("AMOUNT_CITIES")}</Typography>
                 </Box>
                 <Box my={3} className={styles.index__box} >
-                    <Typography variant="body2" gutterBottom> IFUSCO (International Finno-Ugric Students’ Conference) is an annual international conference for and by students interested in matters related to Finno-Ugric (Uralic) languages and peoples. The conference brings together students of various disciplines such as linguistics, ethnography, history, literature, translation theory, and many more. Since 1984, IFUSCO has been held in a different place each year. IFUSCO 2022 will take place in Prague from May 23rd to May 27th, 2022. See you in Prague! For all participants: we would appreciate it if you could find some time to fill in this evaluation form. Thank you and thank you for attending IFUSCO!</Typography>
+                    <Typography variant="body2" gutterBottom>{t("IFUSCO_DESCRIPTION")}</Typography>
                 </Box>
 
                 <Box my={3} className={styles.index__box} >

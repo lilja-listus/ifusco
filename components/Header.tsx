@@ -15,33 +15,38 @@ import { INavigationLinks } from '../interfaces/INavigationLinks';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ILink } from '../interfaces/ILink';
 import { useAuth } from '../lib/useAuth';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitch from './LanguageSwitch';
 
 interface IProps {
     darkState: boolean;
     handleThemeChange: () => void;
 }
 
-const navigationLinks: INavigationLinks[] = [
-    { href: '/navigation/registration', label: 'Registration' },
-    // { label: 'Abstracts', href: '/navigation/abstracts' },
-    // { label: 'Programme', href: '/navigation/programme' },
-    { href: '/navigation/about-turku', label: 'About Turku' },
-    { href: '/navigation/accommodation', label: 'Accommodation' },
-    { href: '/navigation/contact', label: 'Contact' },
-    { href: '/navigation/resources', label: 'Resources' },
-];
 
 const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element => {
     const isDesktopView: boolean = useMediaQuery('(min-width:600px)');
 
     const { user } = useAuth();
+    const { t } = useTranslation();
 
     const links: ILink[] = [
-        !user && { href: '/auth/signup', label: 'Sign Up' },
-        !user && { href: '/auth/login', label: 'Log In' },
-        user && { href: '/my-dashboard', label: 'My Dashboard' },
-        user && { href: '/auth/signout', label: 'Sign Out' },
+        !user && { href: '/auth/signup', label: t("SIGN_UP") },
+        !user && { href: '/auth/login', label: t("LOG_IN") },
+        user && { href: '/my-dashboard', label: t("MY_DASHBOARD") },
+        user && { href: '/auth/signout', label: t("SIGN_OUT") },
     ].filter((link) => link);
+
+    const navigationLinks: INavigationLinks[] = [
+        { href: '/navigation/registration', label: t("REGISTRATION") },
+        // { label: 'Abstracts', href: '/navigation/abstracts' },
+        // { label: 'Programme', href: '/navigation/programme' },
+        { href: '/navigation/about-turku', label: t("ABOUT_TURKU") },
+        { href: '/navigation/accommodation', label: t("ACCOMMODATION") },
+        { href: '/navigation/contact', label: t("CONTACT") },
+        { href: '/navigation/resources', label: t("RESOURCES") },
+    ];
+
 
     return (
         <div className={styles.headerContainer}>
@@ -56,10 +61,9 @@ const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element
                             <Typography variant="h5" component="h5">
                                 <Link href="/">
                                     <LinkText href="" color="inherit">
-                                        IFUSCO XXXVIII
+                                        {t("IFUSCO_NAME")}
                                     </LinkText>
                                 </Link>
-
                             </Typography>
 
                         </Grid>
@@ -83,9 +87,11 @@ const Header: React.FC<IProps> = ({ darkState, handleThemeChange }): JSX.Element
                                     </Link>
                                 ))}
                             </Grid>
+                            <LanguageSwitch />
                         </>
                             : <Grid item>
                                 <HamburgerMenu navigationLinks={navigationLinks} />
+                                <LanguageSwitch />
                             </Grid>
 
                         }

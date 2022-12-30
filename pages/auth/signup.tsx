@@ -5,6 +5,7 @@ import { useAuth } from 'lib/useAuth';
 import * as Yup from "yup";
 import { Button, CardMedia, Container, TextField, Typography } from "@material-ui/core";
 import Alert from '@mui/material/Alert';
+import { useTranslation } from 'react-i18next';
 
 interface IFormValues {
     email: string;
@@ -19,37 +20,40 @@ interface IFormField {
     readonly type?: string;
 }
 
-const participationFieldsObject: IFormField[] = [
-    {
-        label: 'Email',
-        type: 'email',
-        value: 'email',
-    },
-    {
-        label: 'First Name',
-        value: 'nameFirst',
-    },
-    {
-        label: 'Password',
-        type: 'password',
-        value: 'password',
-    },
-    {
-        label: 'Confirm Password',
-        type: 'password',
-        value: 'passwordConfirm',
-    },
-];
 
 const RegisterNewUser: React.FC = (): JSX.Element => {
     const { signUp, error } = useAuth();
+    const { t } = useTranslation();
+
+    const participationFieldsObject: IFormField[] = [
+        {
+            label: t("EMAIL"),
+            type: 'email',
+            value: 'email',
+        },
+        {
+            label: t("FIRST_NAME"),
+            value: 'nameFirst',
+        },
+        {
+            label: t("PASSWORD"),
+            type: 'password',
+            value: 'password',
+        },
+        {
+            label: t("CONFIRM_PASSWORD"),
+            type: 'password',
+            value: 'passwordConfirm',
+        },
+    ];
+
 
     return (
         <div className={styles.signupPage}>
             <CardMedia
                 height="510"
                 image='/registration.jpg'
-                title="Paella dish"
+                title="ПТН ПНХ"
                 component="img"
             />
             <Formik<IFormValues>
@@ -68,12 +72,12 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                 validationSchema={
                     Yup.object().shape({
                         email: Yup.string()
-                            .email("Email not valid")
-                            .required("Email is required"),
-                        nameFirst: Yup.string().required("Name is required"),
-                        password: Yup.string().required('Password is required').min(8, 'Password is too short - should be 8 chars minimum.'),
+                            .email(t("EMAIL_NOT_VALID"))
+                            .required(t("EMAIL_IS_REQUIRED")),
+                        nameFirst: Yup.string().required(t("FIRST_NAME_REQUIRED")),
+                        password: Yup.string().required(t("PASSWORD_REQUIRED")).min(8, t("PASSWORD_TOO_SHORT")),
                         passwordConfirm: Yup.string()
-                            .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+                            .oneOf([Yup.ref('password'), null], t("PASSWORDS_DONT_MATCH")),
                     })
                 }
             >
@@ -81,7 +85,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                     return (
                         <Container>
                             <div className={styles.signupPage__container} >
-                                <Typography variant="h5" component="h1" className={styles.signupPage__headerText} gutterBottom>Register</Typography>
+                                <Typography variant="h5" component="h1" className={styles.signupPage__headerText} gutterBottom>{t("REGISTER")}</Typography>
                                 <Form>
                                     <>
                                         <div className={styles.signupPage__participationFieldsContainer}>
@@ -99,8 +103,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                                                     onBlur={formikProps.handleBlur}
                                                                     value={formikProps.values[value]} size="small" className={styles.signupPage__fieldValue} />
 
-                                                                {errors[value] && touched[value] && <div style={{ color: 'red' }}>      {errors[value]
-                                                                }</div>}
+                                                                {errors[value] && touched[value] && <div style={{ color: 'red' }}>{errors[value]}</div>}
                                                             </>);
                                                     }}
                                                 </Field>
@@ -118,7 +121,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                                     || !!(formikProps.errors.password && formikProps.touched.password))
                                             }
                                         >
-                                            Sign up
+                                            {t("SIGN_UP")}
                                         </Button>
                                     </>
                                 </Form >

@@ -2,23 +2,25 @@ import styles from '../styles/Home.module.scss';
 import { Box, Button, Checkbox, CircularProgress, Container, FormControlLabel } from "@material-ui/core";
 import { useAuth } from "lib/useAuth";
 import { IScheduleCheckboxes } from '../interfaces/IScheduleCheckboxes';
+import { useTranslation } from 'react-i18next';
 
 const MySchedule: React.FC = (): JSX.Element => {
     const { user } = useAuth();
+    const { t } = useTranslation();
 
     const mySchedulecheckboxes: IScheduleCheckboxes[] = [
         {
-            button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">Go to registration</Button>),
+            button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">{t("GO_TO_REGISTRATION")}</Button>),
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Register to conference' }} color="secondary" checked={user?.isParticipant} />,
-            label: "Register to the conference by July 5, 2023",
+            label: t("REGISTER_BY"),
         },
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Submit abstract' }} color="secondary" />,
-            label: "Submit abstract by July 10, 2023 (only for registered to the conference)",
+            label: t("SUBMIT_BY"),
         },
         {
             checkbox: <Checkbox inputProps={{ 'aria-label': 'Come to Turku' }} color="secondary" />,
-            label: "Come to Turku for May 15-18",
+            label: t("ARRIVE_BY"),
         },
     ];
 

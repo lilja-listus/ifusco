@@ -3,18 +3,21 @@ import { FormEvent, useState } from "react";
 import { NextRouter, useRouter } from 'next/router';
 import { useAddAbstractMutation } from 'lib/graphql/addabstract.graphql';
 import { Box, Button, Container, TextField } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 
 export default function CreateAbstract(): JSX.Element {
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');
     const [language, setLanguage] = useState('');
 
+    const { t } = useTranslation();
     const router: NextRouter = useRouter();
 
     const [addAbstractMutation] = useAddAbstractMutation();
 
 
     const onSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
+
         event.preventDefault();
         try {
             const { data } = await addAbstractMutation({ variables: { input: { language, text, title } } });
@@ -38,7 +41,7 @@ export default function CreateAbstract(): JSX.Element {
                     </Box>
                     <TextField
                         id="filled-multiline-flexible"
-                        label="Your text"
+                        label={t("YOUR_TEXT")}
                         multiline
                         rows={10}
                         defaultValue="Default Value"
@@ -51,10 +54,10 @@ export default function CreateAbstract(): JSX.Element {
                         required
                     />
                     <Box >
-                        <Button type="submit" size="small">Add abstract</Button>
+                        <Button type="submit" size="small">{t("ADD_ABSTRACT")}</Button>
                     </Box>
                 </form>
-            </Box>
+            </Box >
         </Container >
     );
 }

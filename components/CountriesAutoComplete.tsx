@@ -4,13 +4,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { countries } from './countries';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
     readonly updateValue: (value: any) => void;
 }
 
 export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }): JSX.Element => {
-
+    const { t } = useTranslation();
     return (
         <Autocomplete
             id="country-select"
@@ -29,12 +30,12 @@ export const CountriesAutoComplete: React.FC<IProps> = ({ updateValue }): JSX.El
                     className={styles.textField}
                     id="country-select"
                     required size="small"
-                    helperText="eg. Porola"
+                    helperText={t("EG_POROLA")}
                     {...params}
-                    label="Choose a country"
+                    label={t("CHOOSE_COUNTRY")}
                     inputProps={{
                         ...params.inputProps,
-                        autoComplete: 'new-password',
+                        autoComplete: 'new-password', // TODO: CHECK THIS
                     }}
                 />
             )}

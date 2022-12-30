@@ -1,5 +1,7 @@
+/** TODO: TO ADD TRANSLATIONS WHEN TEXT */
 import { Box, Container, Typography } from "@material-ui/core";
 import styles from '../../styles/Home.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface IAboutObject {
     readonly label: string;
@@ -9,10 +11,11 @@ interface IAboutObject {
 
 export default function AboutTurku(): JSX.Element {
 
+    const { t } = useTranslation();
 
     return (<Container maxWidth="md" className={styles.pageContainer} >
         <Box my={4}>
-            <Typography variant="h4" gutterBottom>AboutTurku</Typography>
+            <Typography variant="h4" gutterBottom>{t("ABOUT_TURKU")}</Typography>
             {aboutInfo.map(({ label, info }) => (
                 <div key={label} style={{ marginBottom: '20px' }}>
                     <Typography variant="h5" component="h1" style={{ marginBottom: '10px' }}>{label}</Typography>

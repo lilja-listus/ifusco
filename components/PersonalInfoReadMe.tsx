@@ -3,6 +3,7 @@ import React from 'react';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import { IUser } from "../interfaces/IUser";
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
     readonly user: IUser;
@@ -15,15 +16,16 @@ interface IInfo {
 }
 
 const PersonalInfoReadMe: React.FC<IProps> = ({ user, setReadme }): JSX.Element => {
+    const { t } = useTranslation();
 
     const userInfoObject: IInfo[] = [
-        { label: "First Name", value: user.nameFirst },
-        { label: "Email", value: user.email },
+        { label: t("FIRST_NAME"), value: user.nameFirst },
+        { label: t("EMAIL"), value: user.email },
     ];
 
     return (
         <>
-            <Typography variant="h5" component="h1" gutterBottom>User Info</Typography>
+            <Typography variant="h5" component="h1" gutterBottom>{t("USER_INFO")}</Typography>
             {user && userInfoObject.map(infoField => (
                 <Typography variant={'body2'} component={'p'} key={infoField.label} gutterBottom>{`${infoField.label}: ${infoField.value || 'N/A'}`}</Typography>
             ))

@@ -8,7 +8,7 @@ import { INews } from '../interfaces/INews';
 
 const NewsCard: React.FC<INews> = ({ title, text, image }): JSX.Element => {
     return (
-        <Card sx={{ marginTop: '10px', marginBottom: '10px' }}>
+        <Card sx={{ marginBottom: '10px', marginTop: '10px', }}>
             <CardActionArea>
                 <CardMedia
                     component="img"

@@ -15,7 +15,7 @@ export default function PDF(): JSX.Element {
     return (
         <Container maxWidth="md" className={styles.pageContainer}>
             <Box my={4}>
-                <Typography variant="h4" component="h1" gutterBottom >The Vihreä Könyv</Typography>
+                <Typography variant="h4" component="h1" gutterBottom>The Vihreä Könyv</Typography>
                 <PDFViewer file="/GreenBook.pdf" />
             </Box>
         </Container >

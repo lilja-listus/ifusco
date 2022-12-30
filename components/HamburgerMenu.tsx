@@ -10,12 +10,15 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { INavigationLinks } from '../interfaces/INavigationLinks';
 import { ILink } from '../interfaces/ILink';
 import { useAuth } from '../lib/useAuth';
+import { useTranslation } from 'react-i18next';
 
 interface IProps {
     navigationLinks: INavigationLinks[]
 }
 
 const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
+    const { t } = useTranslation();
+
     const [open, setState] = useState(false);
     const toggleDrawer = (open) => (event) => {
         if (
@@ -30,10 +33,10 @@ const HamburgerMenu: React.FC<IProps> = ({ navigationLinks }): JSX.Element => {
     const { user } = useAuth();
 
     const links: ILink[] = [
-        !user && { href: '/auth/signup', label: 'Sign Up' },
-        !user && { href: '/auth/login', label: 'Log In' },
-        user && { href: '/my-dashboard', label: 'My Dashboard' },
-        user && { href: '/auth/signout', label: 'Sign Out' },
+        !user && { href: '/auth/signup', label: t("SIGN_UP") },
+        !user && { href: '/auth/login', label: t("LOG_IN") },
+        user && { href: '/my-dashboard', label: t("MY_DASHBOARD") },
+        user && { href: '/auth/signout', label: t("SIGN_OUT") },
     ].filter((link) => link);
 
     return (

@@ -94,7 +94,7 @@ const ParticipantsTable: React.FC = (): JSX.Element => {
     };
 
     return (
-        <Paper sx={{ width: '50%', overflow: 'hidden' }}>
+        <Paper sx={{ overflow: 'hidden', width: '50%', }}>
             <TableContainer sx={{ maxHeight: 440 }}>
                 <Table stickyHeader aria-label="sticky table">
                     <TableHead>

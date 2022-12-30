@@ -4,6 +4,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import workerSrc from "../pdf-worker";
 import styles from '../styles/Home.module.scss';
 import { isMobile } from 'react-device-detect';
+import { useTranslation } from 'react-i18next';
 
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
@@ -14,6 +15,8 @@ interface IProps {
 const PDFViewer: React.FC<IProps> = ({ file }): JSX.Element => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
+
+    const { t } = useTranslation();
 
     const onDocumentLoadSuccess = ({ numPages }): void => {
         setNumPages(numPages);
@@ -42,14 +45,14 @@ const PDFViewer: React.FC<IProps> = ({ file }): JSX.Element => {
         <div style={{ alignContent: "center" }} >
             <div >
                 <span>   {pageNumber > 1 &&
-                    <Button onClick={changePageBack}>Previous Page</Button>
+                    <Button onClick={changePageBack}>{t("PREVIOUS_PAGE")}</Button>
                 }
                     {
                         pageNumber < numPages &&
-                        <Button onClick={changePageNext}>Next Page</Button>
+                        <Button onClick={changePageNext}>{t("NEXT_PAGE")}</Button>
                     }
                 </span>
-                Page <Select
+                {t("PAGE")} <Select
                     labelId="demo-select-small"
                     id="demo-select-small"
                     value={pageNumber}
@@ -62,7 +65,8 @@ const PDFViewer: React.FC<IProps> = ({ file }): JSX.Element => {
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess}  >
                 <Page pageNumber={pageNumber} className={styles.Pdf} width={pageWidth} />
             </Document>
-            <p> Page {pageNumber} of {numPages}</p>
+            {/** TODO: figure out this */}
+            <p> {t("PAGE")} {pageNumber} of {numPages}</p>
         </div >
     );
 };

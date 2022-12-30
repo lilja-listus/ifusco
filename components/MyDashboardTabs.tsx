@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import PersonalInfo from '../pages/user-info/PersonalInfo';
 import Abstract from '../pages/abstract/[id]/Abstract';
 import MySchedule from '../pages/my-schedule';
+import { useTranslation } from 'react-i18next';
 
 interface ITabPanelProps {
     readonly children?: React.ReactNode;
@@ -19,7 +20,6 @@ interface IAllProps {
 
 function TabPanel(props: ITabPanelProps): JSX.Element {
     const { children, value, index, ...other } = props;
-
 
     return (
         <div
@@ -48,6 +48,8 @@ function a11yProps(index: number): IAllProps {
 const MyDashboardTabs: React.FC = () => {
     const [value, setValue] = React.useState(0);
 
+    const { t } = useTranslation();
+
     const handleChange = (newValue: number): void => {
         setValue(newValue);
     };
@@ -56,9 +58,9 @@ const MyDashboardTabs: React.FC = () => {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={(_event: React.SyntheticEvent<Element, Event>, value: any): void => handleChange(value)} aria-label="basic tabs example" variant="fullWidth">
-                    <Tab label="My Schedule" {...a11yProps(0)} />
-                    <Tab label="My Abstract" {...a11yProps(1)} />
-                    <Tab label="My Info" {...a11yProps(2)} />
+                    <Tab label={t("MY_SCHEDULE")} {...a11yProps(0)} />
+                    <Tab label={t("MY_ABSTRACT")} {...a11yProps(1)} />
+                    < Tab label={t("MY_INFO")} {...a11yProps(2)} />
 
                 </Tabs>
             </Box>
