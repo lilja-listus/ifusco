@@ -29,7 +29,7 @@ const Footer: React.FC = (): JSX.Element => {
                     </div>
 
                 </Box>
-                <Typography variant="caption" color="initial" sx={{
+                <Typography variant="caption" color="grey" sx={{
                     display: "flex",
                     flexGrow: 1,
                     justifyContent: "center",
@@ -45,7 +45,7 @@ const Footer: React.FC = (): JSX.Element => {
                         mb: 2,
                     }}
                 >
-                    <Typography variant="caption" color="initial">
+                    <Typography variant="caption" color="grey">
                         Lilja Lisztusz, Copyright ©2023
                     </Typography>
                 </Box>

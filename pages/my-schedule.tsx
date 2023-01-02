@@ -8,18 +8,18 @@ const MySchedule: React.FC = (): JSX.Element => {
     const { user } = useAuth();
     const { t } = useTranslation();
 
-    const mySchedulecheckboxes: IScheduleCheckboxes[] = [
+    const myScheduleCheckBoxes: IScheduleCheckboxes[] = [
         {
             button: (!user?.isParticipant && <Button href='/register-new-participant' color="inherit">{t("GO_TO_REGISTRATION")}</Button>),
-            checkbox: <Checkbox inputProps={{ 'aria-label': 'Register to conference' }} color="secondary" checked={user?.isParticipant} />,
+            checkbox: <Checkbox disabled inputProps={{ 'aria-label': 'Register to conference' }} color="secondary" checked={user?.isParticipant} />,
             label: t("REGISTER_BY"),
         },
         {
-            checkbox: <Checkbox inputProps={{ 'aria-label': 'Submit abstract' }} color="secondary" />,
+            checkbox: <Checkbox disabled inputProps={{ 'aria-label': 'Submit abstract' }} color="secondary" />,
             label: t("SUBMIT_BY"),
         },
         {
-            checkbox: <Checkbox inputProps={{ 'aria-label': 'Come to Turku' }} color="secondary" />,
+            checkbox: <Checkbox disabled inputProps={{ 'aria-label': 'Come to Turku' }} color="secondary" />,
             label: t("ARRIVE_BY"),
         },
     ];
@@ -29,7 +29,7 @@ const MySchedule: React.FC = (): JSX.Element => {
             {user ?
                 <Box my={5} >
                     <div className={styles.boxesContainer} >
-                        {mySchedulecheckboxes.map(({ checkbox, label, button }) =>
+                        {myScheduleCheckBoxes.map(({ checkbox, label, button }) =>
                             <div key={label}>
                                 <FormControlLabel control={checkbox} label={label} />
                                 {button}

@@ -15,7 +15,7 @@ export default function Faq(): JSX.Element {
     return (
         <Container maxWidth="md" className={styles.pageContainer}>
             <Box my={4}>
-                <Typography variant="h4" component="h1" gutterBottom>{t("NEWS_AND_RESOURCES")}</Typography>
+                <Typography variant="h4" component="h1" gutterBottom color="textPrimary">{t("NEWS_AND_RESOURCES")}</Typography>
                 <Cards />
                 {news.map(item => <NewsCard title={item.title} text={item.text} image={item.image} key={item.title} />)}
             </Box>

@@ -1,14 +1,14 @@
-import React, { ChangeEventHandler } from 'react';
+import React from 'react';
 import i18n from 'i18next';
 
 const LanguageSwitch = (): JSX.Element => {
-    const onLanguageChange = (event: React.ChangeEvent<HTMLInputElement>): ChangeEventHandler<HTMLSelectElement> => {
-        i18n.changeLanguage(event.target.value);
+    const onLanguageChange = (value): void => {
+        i18n.changeLanguage(value);
     };
 
     return (
         <div>
-            <select name="Lanuage" onChange={onLanguageChange}>
+            <select name="Language" onChange={(event: React.ChangeEvent<HTMLSelectElement>): void => onLanguageChange(event.target.value)}>
                 <option value="en">English</option>
                 <option value="ru">Russian</option>
             </select>

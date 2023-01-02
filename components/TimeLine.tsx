@@ -35,7 +35,7 @@ export default function TimeLine(): JSX.Element {
             <Timeline position="alternate">
                 {timeLineObject.map(timelineItem => (
                     <TimelineItem key={timelineItem.label}>
-                        <TimelineOppositeContent color="text.secondary">
+                        <TimelineOppositeContent color="text.success">
                             {timelineItem.dates}
                         </TimelineOppositeContent>
                         <TimelineSeparator>
@@ -46,7 +46,7 @@ export default function TimeLine(): JSX.Element {
                     </TimelineItem>
                 ))}
                 <TimelineItem>
-                    <TimelineOppositeContent color="text.secondary">
+                    <TimelineOppositeContent color="text.success">
                         Start date - End Date
                     </TimelineOppositeContent>
                     <TimelineSeparator>

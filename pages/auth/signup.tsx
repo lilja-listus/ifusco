@@ -8,10 +8,11 @@ import Alert from '@mui/material/Alert';
 import { useTranslation } from 'react-i18next';
 
 interface IFormValues {
-    email: string;
-    nameFirst: string;
-    password: string;
-    passwordConfirm: string;
+    readonly email: string;
+    readonly nameFirst: string;
+    readonly password: string;
+    readonly passwordConfirm: string;
+
 }
 
 interface IFormField {
@@ -19,7 +20,6 @@ interface IFormField {
     readonly label: string;
     readonly type?: string;
 }
-
 
 const RegisterNewUser: React.FC = (): JSX.Element => {
     const { signUp, error } = useAuth();
@@ -92,6 +92,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                             {participationFieldsObject.map(({ value, label, type }) => (
                                                 <Field name={value} key={value}>
                                                     {({ field, form: { touched, errors, isSubmitting } }: FieldProps): JSX.Element => {
+                                                        const error: string = errors[value] as string;
                                                         return (
                                                             <>
                                                                 <TextField
@@ -102,8 +103,7 @@ const RegisterNewUser: React.FC = (): JSX.Element => {
                                                                     onChange={formikProps.handleChange}
                                                                     onBlur={formikProps.handleBlur}
                                                                     value={formikProps.values[value]} size="small" className={styles.signupPage__fieldValue} />
-
-                                                                {errors[value] && touched[value] && <div style={{ color: 'red' }}>{errors[value]}</div>}
+                                                                {error && touched[value] && <div style={{ color: 'red' }}>{error}</div>}
                                                             </>);
                                                     }}
                                                 </Field>

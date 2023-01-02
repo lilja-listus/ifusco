@@ -20,7 +20,7 @@ const NewsCard: React.FC<INews> = ({ title, text, image }): JSX.Element => {
                     <Typography gutterBottom variant="h5" component="div">
                         {title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="grey">
                         {text}
                     </Typography>
                 </CardContent>

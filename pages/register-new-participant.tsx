@@ -71,11 +71,11 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                         <Container >
                             <Box>
                                 <div className={styles.registerNewParticipant__container}>
-                                    <Typography variant="h5" component="h1" className={styles.registerNewParticipant__title} gutterBottom>{t("REGISTER_ME")}</Typography>
+                                    <Typography color="secondary" variant="h5" component="h1" className={styles.registerNewParticipant__title} gutterBottom >{t("REGISTER_ME")}</Typography>
                                     <Form>
                                         <div className={styles.registerNewParticipant__participationFieldsContainer}>
                                             {participationFieldsList.map(({ value, label, helperText }) => (
-                                                <Field name={value} key={label}>
+                                                <Field name={value} key={label} >
                                                     {({ field, form: { touched, errors, isSubmitting } }: FieldProps): JSX.Element => {
                                                         return (
                                                             <TextField
@@ -99,7 +99,9 @@ const RegisterNewParticipant: React.FC = (): JSX.Element => {
                                                 );
                                             }}
                                         </Field>
+
                                         <Button
+                                            color="secondary"
                                             type="submit"
                                             disabled={
                                                 formikProps.isSubmitting ||

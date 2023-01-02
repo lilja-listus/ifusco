@@ -9,10 +9,10 @@ export const translationRu: any = {
   AMOUNT_CITIES: "23 города",
   IFUSCO_DESCRIPTION:
     "ИФУСКО (IFUSO: International Finno-Ugric Students’ Conference, Международная конференция студентов финнно-угристов) is an annual international conference for and by students interested in matters related to Finno-Ugric (Uralic) languages and peoples. The conference brings together students of various disciplines such as linguistics, ethnography, history, literature, translation theory, and many more. Since 1984, IFUSCO has been held in a different place each year. IFUSCO 2022 will take place in Prague from May 23rd to May 27th, 2022. See you in Prague! For all participants: we would appreciate it if you could find some time to fill in this evaluation form. Thank you and thank you for attending IFUSCO!", // взять перевод с вики
-  REGISTER_BY: "Зарегистрируйся на конференцию до 5 апреля 2023го",
+  REGISTER_BY: "Зарегистрироваться на конференцию до 5 апреля 2023го",
   SUBMIT_BY:
-    "Отправь абстракт до 10го июля 2023 (только для зарегистрированных на конференцию)",
-  ARRIVE_BY: "Будь в Турку (физически или виртуально) 15-18 мая",
+    "Отправить абстракт до 10го июля 2023 (только для зарегистрированных на конференцию)",
+  ARRIVE_BY: "Быть в Турку (физически или виртуально) 15-18 мая",
   REGISTER: "Зарегистрироваться",
   GO_TO_REGISTRATION: "Перейти к регистрации",
   COUNTRY_IS_REQUIRED: "Страну указать обязательно",
@@ -25,10 +25,10 @@ export const translationRu: any = {
   REGISTER_ME: "Зарегистрировать меня на конференцию",
   YOUR_TEXT: "Твой текст",
   ADD_ABSTRACT: "Добавить абстракт",
-  LOGIN: "Лонин",
+  LOGIN: "Логин",
   PASSWORD: "Пароль",
   CONFIRM_PASSWORD: "Подтвердить пароль",
-  EMAIL: "электронная почна",
+  EMAIL: "Электронная почта",
   SIGNOUT: "выйти",
   PASSWORDS_DONT_MATCH: "Пароли не совпадают",
   PASSWORD_TOO_SHORT: "Пароль слишком короткий - должно быть минимум 8 знаков.",
@@ -51,7 +51,7 @@ export const translationRu: any = {
   REGISTRATION_FORM: "Регистрационная форма",
   NEWS_AND_RESOURCES: "Новости и другие ресурсы",
   CONGRATS_REGISTERED_CONFERENCE:
-    "Поздравляем, ты зарегестрирован на конференцию. Проверь свой почтовый ящик!",
+    "Поздравляем, на конференцию прошла успешно. Проверь свой почтовый ящик!",
   CHOOSE_COUNTRY: "Выбери страну",
   EG_POROLA: "К примеру, Порола",
   LOG_IN: "Войти",
