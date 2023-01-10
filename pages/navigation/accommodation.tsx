@@ -12,7 +12,7 @@ export default function Accommodation(): JSX.Element {
             <Box my={4}>
                 <Typography variant="h4" component="h1" gutterBottom>{t("ACCOMMODATION")}</Typography>
                 <Typography variant="body1" component="p" gutterBottom>
-                    There is no info on Accommodation yet. Just remember Finland is pretty expensive, so start saving money already. Or get some local friends. Or use Tinder.
+                    {t("INFO_ON_ACCOMMODATION")}
                 </Typography>
                 <Image src={Valo} />
             </Box>

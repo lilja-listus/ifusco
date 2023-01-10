@@ -69,4 +69,71 @@ export const translationEn: any = {
   SEND_ABSTRACT: "Send your abstract",
   ABOUT_TURKU: "About Turku",
   RESOURCES: "Resources",
+  GETTING_AROUND: "Getting around",
+  INFO_ON_GETTING_AROUND: `Keskustan ja yliopiston alueella välimatkat ovat varsin lyhyitä, joten ainakin osa liikkumisesta sujunee kävellen. Pidemmät matkat taittuvat bussilla. Mikäli bussimatkoja tekee konferenssin aikana useita päivittäin, edullisin vaihtoehto on ostaa useamman päivän vuorokausilippu. Esimerkiksi viiden vuorokauden lippu maksaa 20 euroa. Vuorokausilippuja voi ostaa Föli-sovelluksesta sekä R-kioskeista ja Fölin palvelupisteistä, joiden sijainnit löytyvät Fölin sivuilta.
+  Kaksi tuntia voimassa oleva kertalippu maksaa Föli-sovelluksesta, bussissa lähimaksulla, lippuautomaatista tai R-kioskista ostettuna 3 euroa, bussissa käteisellä 4 euroa. Yöaikaan (aikavälillä 23–4) hinnat ovat euron kalliimpia, siis 4 ja 5 euroa.
+  Yöaikaan useat linjat liikennöivät valitettavasti harvemmin tai eivät lainkaan, joten iltaohjelmiin osallistujien on hyvä varmistaa bussivuorot etukäteen. Aikataulut löytyvät Föli-sovelluksesta ja Fölin reittioppaasta.
+  (varmaan sitte jotain tarkempaa ja konkreettisempaa kulkuohjetta myös kuhan tietää jotain majotuksesta että voi kertoo millä linjoilla kannattaa mennä jne, samoin et miten pääsee iltaohjelmien ja muitten paikkoihin)
+  `,
+  GETTING_TO_TURKU: "Getting to Turku",
+  INFO_ON_GETTING_TO_TURKU: `Turkuun voi matkustaa Tukholmasta laivalla ja Helsingistä junalla tai linja-autolla.
+  Satamasta keskustaan pääsee bussilla linjoilla 1 ja 1B.
+  Helsinki–Vantaan lentoasemalta pääsee Turkuun suoraan bussilla, joka liikennöi ympäri vuorokauden. Turun linja-autoasema on hyvin lähellä keskustaa. 
+  Junalla kulkiessa junaa on vaihdettava lähijunasta kaukojunaan Pasilassa. Helsinki–Turku-juna ei liikennöi öisin. Matkan pääteasemaksi on valittava Turun rautatieaseman sijaan Kupittaa. Kupittaalta keskustaan pääsee bussilla pysäkiltä Kupittaan asema 846 linjoilla 32, 32T, 42 ja 42T. Matkaa on noin kaksi kilometriä, joten keskustaan on mahdollista myös kävellä.
+  `,
+  RESTAURANTS_SHOPS: "Restaurants, food and shops near univeristy",
+  INFO_ON_RESTAURANTS_SHOPS: `Ravintoloita yliopiston läheisyydessä:
+  Sekä edullisin että lähin ravintolavaihtoehto ovat opiskelijaravintolat. Aukioloajat ja viikon menut löytyvät ravintoloiden sivuilta, joilla mainitaan myös ruokien soveltuvuus eri ruokavalioihin. Kaikissa ravintoloissa on päivittäin tarjolla ainakin yksi kasvisvaihtoehto, lisäksi Bryggessä on aina myös vegaaninen lounas. Suomalaisessa yliopistossa opiskeleville lounaan hinta on 3,20 €, muille 9,00 €.
+  Konferenssitiloja lähimpänä ovat Assarin ullakko (sekä sen yhteydessä toimiva kasvisravintola Brygge, Rehtorinpellonkatu 4A), Macciavelli (Vesilinnantie 3) ja Galilei (Assistentinkatu 5).. 
+
+  `,
+
+  OTHER_PLACES: "Other Places",
+  INFO_ON_OTHER_PLACES: `Hesburger Hämeenkatu, Rehtorinpellonkatu 2 (pikaruokaa)
+  
+  Pizzeria Pronto, Hämeenkatu 1 (pizzaa)
+  
+  VG Wok Hämeenkatu, Hämeenkatu 1 (thaimaalaista ja vietnamilaista)
+  
+  Kiinanmuuri Ravintola 2, Vähä Hämeenkatu 1 (kiinalaista)
+  
+  Delhi Darbar, Hämeenkatu 8 (intialaista)
+  
+  Yangtze, Hämeenkatu 9 (kiinalaista)
+  
+  Zhong Hua, Hämeenkatu 10 (thaimaalaista ja kiinalaista)
+  
+  Ruokakauppoja yliopiston läheisyydessä:
+  K-market Puhakka, Hämeenkatu 5
+  
+  K-market Pippuri, Kiinamyllynkatu 3
+  
+  Sale Hämeenkatu, Hämeenkatu 6`,
+  MONEY: "Money",
+  INFO_ON_MONEY: `Suomen valuutta on euro. Korttimaksu on pääsääntöisesti mahdollista kaikkialla, käteistä taas ei välttämättä hyväksytä aivan joka paikassa.`,
+  INFO_ON_ACCOMMODATION: `tähän varmaan sitte jotaki jos saa hommattua sitä jotain mihin vois mennä makuupussien tms kanssa)
+
+  Hotellimajoituksen hintataso on varsin korkea, joten voi olla kannattavaa miettiä, löytyykö omasta tuttavapiiristä Turussa asuvia, joiden luona voisi yöpyä.
+  
+  Joitakin verrattain edullisia majoitusvaihtoehtoja:
+  
+  HeseHotelli Linja-autoasema, Läntinen Pitkäkatu 1
+  
+  HeseHotelli Kaskentie, Kurjenmäenkatu 7
+  
+  Hotel Harriet, Käsityöläiskatu 11
+  
+  Bed and Breakfast Tuure, Tuureporinkatu 17
+  
+  Borent Apartment, Läntinen Pitkäkatu 11
+  
+  Tapulitalo, Kaivokatu 14
+  
+  Omena-hotelli Humalistonkatu, Humalistonkatu 7
+  
+  Omena-hotelli Kauppiaskatu, Kauppiaskatu 4
+  
+  HVC Hostel Turku, Hämeenkatu 20
+  
+  `,
 };
